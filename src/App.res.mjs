@@ -885,6 +885,123 @@ function App$TabsPreviewDemo(props) {
             });
 }
 
+function App$AlertDemo(props) {
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("h1", {
+                      children: "Alert Demo",
+                      className: "text-2xl font-bold mb-6 mt-12"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Alert Variants",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx(DesignSystem.Alert, {
+                                      heading: "Primary Alert",
+                                      description: "This is a primary alert with important information.",
+                                      variant: "primary"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Alert, {
+                                      heading: "Success Alert",
+                                      description: "Your action was completed successfully.",
+                                      variant: "success",
+                                      icon: Caml_option.some(JsxRuntime.jsx(LucideReact.Check, {
+                                                size: 16
+                                              }))
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Alert, {
+                                      heading: "Warning Alert",
+                                      description: "Please be aware of this important warning.",
+                                      variant: "warning"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Alert, {
+                                      heading: "Error Alert",
+                                      description: "An error occurred while processing your request.",
+                                      variant: "error"
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Alert Styles",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx(DesignSystem.Alert, {
+                                      heading: "Fill Style",
+                                      description: "This alert uses the fill style.",
+                                      variant: "primary",
+                                      style: "fill"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Alert, {
+                                      heading: "Subtle Style",
+                                      description: "This alert uses the subtle style.",
+                                      variant: "primary",
+                                      style: "subtle"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Alert, {
+                                      heading: "No Fill Style",
+                                      description: "This alert uses the no fill style.",
+                                      variant: "primary",
+                                      style: "noFill"
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    })
+              ]
+            });
+}
+
+function App$BreadcrumbDemo(props) {
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("h1", {
+                      children: "Breadcrumb Demo",
+                      className: "text-2xl font-bold mb-6 mt-12"
+                    }),
+                JsxRuntime.jsx(DesignSystem.Breadcrumb, {
+                      variant: "default",
+                      items: [
+                        {
+                          label: "Home",
+                          href: "/",
+                          onClick: (function () {
+                              console.log("Home clicked");
+                            })
+                        },
+                        {
+                          label: "Products",
+                          href: "/products",
+                          onClick: (function () {
+                              console.log("Products clicked");
+                            })
+                        },
+                        {
+                          label: "Categories",
+                          href: "/categories",
+                          onClick: (function () {
+                              console.log("Categories clicked");
+                            })
+                        }
+                      ]
+                    })
+              ]
+            });
+}
+
 function App$TabInterface(props) {
   var match = React.useState(function () {
         return "Buttons";
@@ -917,6 +1034,12 @@ function App$TabInterface(props) {
         break;
     case "TabsComponent" :
         tmp = JsxRuntime.jsx(App$TabsPreviewDemo, {});
+        break;
+    case "Alerts" :
+        tmp = JsxRuntime.jsx(App$AlertDemo, {});
+        break;
+    case "Breadcrumb" :
+        tmp = JsxRuntime.jsx(App$BreadcrumbDemo, {});
         break;
     
   }
@@ -966,6 +1089,24 @@ function App$TabInterface(props) {
                               onClick: (function (param) {
                                   setActiveTab(function (param) {
                                         return "TabsComponent";
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("button", {
+                              children: "Alerts",
+                              className: getTabClass("Alerts"),
+                              onClick: (function (param) {
+                                  setActiveTab(function (param) {
+                                        return "Alerts";
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("button", {
+                              children: "Breadcrumb",
+                              className: getTabClass("Alerts"),
+                              onClick: (function (param) {
+                                  setActiveTab(function (param) {
+                                        return "Breadcrumb";
                                       });
                                 })
                             })

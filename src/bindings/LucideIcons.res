@@ -61,4 +61,14 @@ module Users = {
 module BarChart = {
   @module("lucide-react") @react.component
   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "BarChart"
-} 
+}
+
+// module AlertCircle = {
+//   @module("lucide-react") @react.component
+//   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "AlertCircle"
+// }
+
+// module Info = {
+//   @module("lucide-react") @react.component
+//   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Info"
+// } 
