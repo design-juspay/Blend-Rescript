@@ -2285,6 +2285,242 @@ function App$SwitchDemo(props) {
             });
 }
 
+function App$DateRangePickerDemo(props) {
+  var today = new Date();
+  var future = new Date();
+  future.setDate(future.getDate() + 7.0);
+  var match = React.useState(function () {
+        return {
+                startDate: today,
+                endDate: future
+              };
+      });
+  var setDateRange = match[1];
+  var dateRange = match[0];
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("h1", {
+                      children: "DateRangePicker Demo",
+                      className: "text-2xl font-bold mb-6 mt-12"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Basic DateRangePicker",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                      value: dateRange,
+                                      onChange: (function (range) {
+                                          setDateRange(function (param) {
+                                                return range;
+                                              });
+                                        }),
+                                      placeholder: "Select date range"
+                                    }),
+                                JsxRuntime.jsx("div", {
+                                      children: "Selected range: " + dateRange.startDate.toLocaleDateString() + " - " + dateRange.endDate.toLocaleDateString(),
+                                      className: "text-sm text-gray-600"
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "DateRangePicker Variants",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Primary Variant",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                              variant: "primary",
+                                              placeholder: "Primary variant"
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Secondary Variant",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                              variant: "secondary",
+                                              placeholder: "Secondary variant"
+                                            })
+                                      ]
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "DateRangePicker with Time Picker",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                    showTimePicker: true,
+                                    placeholder: "Select date and time range"
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "DateRangePicker with Presets",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                    showPresets: true,
+                                    placeholder: "Select from presets"
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Disabled DateRangePicker",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                    placeholder: "Disabled picker",
+                                    isDisabled: true
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "DateRangePicker with Custom Icon",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                    placeholder: "Custom calendar icon",
+                                    icon: Caml_option.some(JsxRuntime.jsx(LucideReact.Check, {
+                                              size: 16
+                                            }))
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "DateRangePicker with Date Constraints",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Disable Future Dates",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                              placeholder: "No future dates",
+                                              disableFutureDates: true
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Disable Past Dates",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                              placeholder: "No past dates",
+                                              disablePastDates: true
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Min/Max Date Range",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                              placeholder: "Limited to 2023",
+                                              minDate: Caml_option.some(new Date(2023.0, 0.0, 1.0)),
+                                              maxDate: Caml_option.some(new Date(2023.0, 11.0, 31.0))
+                                            })
+                                      ]
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Single Date Selection",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                    placeholder: "Select one date",
+                                    allowSingleDateSelection: true
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Custom Format",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                                    placeholder: "MM/DD/YYYY format",
+                                    dateFormat: "MM/dd/yyyy"
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    })
+              ]
+            });
+}
+
 function App$TabInterface(props) {
   var match = React.useState(function () {
         return "Buttons";
@@ -2338,6 +2574,9 @@ function App$TabInterface(props) {
         break;
     case "Switch" :
         tmp = JsxRuntime.jsx(App$SwitchDemo, {});
+        break;
+    case "DateRangePicker" :
+        tmp = JsxRuntime.jsx(App$DateRangePickerDemo, {});
         break;
     
   }
@@ -2450,6 +2689,15 @@ function App$TabInterface(props) {
                               onClick: (function (param) {
                                   setActiveTab(function (param) {
                                         return "Switch";
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("button", {
+                              children: "DateRangePicker",
+                              className: getTabClass("DateRangePicker"),
+                              onClick: (function (param) {
+                                  setActiveTab(function (param) {
+                                        return "DateRangePicker";
                                       });
                                 })
                             })

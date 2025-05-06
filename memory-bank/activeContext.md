@@ -1,21 +1,20 @@
 # Active Context
 
 ## Current Focus
-- Implementation of Switch component binding and demo
+- Implementation of Checkbox component binding and demo
 - Expanding design system component coverage
 - Following established patterns for component bindings
 - Ensuring consistent user experience across components
 
 ## Recent Changes
-- Created Switch binding in src/bindings/Switch.res
-- Added SwitchGroup component binding as a submodule
-- Added Switch demo component to App.res
-- Updated TabInterface to include Switch tab
-- Implemented various Switch configurations and examples
+- Created Checkbox binding in src/bindings/Checkbox.res
+- Added Checkbox demo component to App.res
+- Updated TabInterface to include Checkbox tab
+- Implemented various Checkbox configurations and examples
 
 ## Next Steps
-- Test the Switch component in various scenarios
-- Ensure proper functionality for both Switch and SwitchGroup
+- Test the Checkbox component in various scenarios
+- Ensure proper functionality for all states (checked, unchecked, indeterminate)
 - Consider any additional design system components for implementation
 - Update documentation as needed
 
