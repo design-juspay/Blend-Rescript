@@ -1002,6 +1002,1289 @@ function App$BreadcrumbDemo(props) {
             });
 }
 
+function App$ButtonGroupDemo(props) {
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("h1", {
+                      children: "ButtonGroup Demo",
+                      className: "text-2xl font-bold mb-6 mt-12"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "ButtonGroup Sizes",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs(DesignSystem.ButtonGroup, {
+                                      size: "sm",
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Button, {
+                                              buttonType: "primary",
+                                              text: "Primary"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.Button, {
+                                              buttonType: "secondary",
+                                              text: "Secondary"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.Button, {
+                                              buttonType: "secondary",
+                                              text: "Action"
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs(DesignSystem.ButtonGroup, {
+                                      size: "md",
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Button, {
+                                              buttonType: "primary",
+                                              text: "Primary"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.Button, {
+                                              buttonType: "secondary",
+                                              text: "Secondary"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.Button, {
+                                              buttonType: "secondary",
+                                              text: "Action"
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs(DesignSystem.ButtonGroup, {
+                                      size: "lg",
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Button, {
+                                              buttonType: "primary",
+                                              text: "Primary"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.Button, {
+                                              buttonType: "secondary",
+                                              text: "Secondary"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.Button, {
+                                              buttonType: "secondary",
+                                              text: "Action"
+                                            })
+                                      ]
+                                    })
+                              ],
+                              className: "flex flex-col gap-6"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "ButtonGroup Modes",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Mode: singlePrimary (default)",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsxs(DesignSystem.ButtonGroup, {
+                                              mode: "singlePrimary",
+                                              children: [
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "primary",
+                                                      text: "Primary"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "danger",
+                                                      text: "Danger"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "success",
+                                                      text: "Success"
+                                                    })
+                                              ]
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Mode: allSecondary",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsxs(DesignSystem.ButtonGroup, {
+                                              mode: "allSecondary",
+                                              children: [
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "primary",
+                                                      text: "Primary"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "danger",
+                                                      text: "Danger"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "success",
+                                                      text: "Success"
+                                                    })
+                                              ]
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Mode: noTransform",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsxs(DesignSystem.ButtonGroup, {
+                                              mode: "noTransform",
+                                              children: [
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "primary",
+                                                      text: "Primary"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "danger",
+                                                      text: "Danger"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "success",
+                                                      text: "Success"
+                                                    })
+                                              ]
+                                            })
+                                      ]
+                                    })
+                              ],
+                              className: "flex flex-col gap-6"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Stacked vs Non-stacked",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "isStacked: true (default)",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsxs(DesignSystem.ButtonGroup, {
+                                              isStacked: true,
+                                              children: [
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "primary",
+                                                      text: "First"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "secondary",
+                                                      text: "Second"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "secondary",
+                                                      text: "Third"
+                                                    })
+                                              ]
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "isStacked: false",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsxs(DesignSystem.ButtonGroup, {
+                                              isStacked: false,
+                                              children: [
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "primary",
+                                                      text: "First"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "secondary",
+                                                      text: "Second"
+                                                    }),
+                                                JsxRuntime.jsx(DesignSystem.Button, {
+                                                      buttonType: "secondary",
+                                                      text: "Third"
+                                                    })
+                                              ]
+                                            })
+                                      ]
+                                    })
+                              ],
+                              className: "flex flex-col gap-6"
+                            })
+                      ],
+                      className: "mb-8"
+                    })
+              ]
+            });
+}
+
+function App$AvatarDemo(props) {
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("h1", {
+                      children: "Avatar Demo",
+                      className: "text-2xl font-bold mb-6 mt-12"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Avatar Sizes",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              fallback: "SM",
+                                              size: "sm"
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "Small",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              fallback: "RE",
+                                              size: "regular"
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "Regular",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              fallback: "MD",
+                                              size: "md"
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "Medium",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              fallback: "LG",
+                                              size: "lg"
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "Large",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              fallback: "XL",
+                                              size: "xl"
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "Extra Large",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    })
+                              ],
+                              className: "flex items-center gap-6"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Avatar Shapes",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              fallback: "CR",
+                                              size: "lg",
+                                              shape: "circular"
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "Circular",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              fallback: "RO",
+                                              size: "lg",
+                                              shape: "rounded"
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "Rounded",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    })
+                              ],
+                              className: "flex items-center gap-8"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Avatar with Image vs Fallback",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              src: "https://i.pravatar.cc/150?img=1",
+                                              alt: "User avatar",
+                                              size: "lg"
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "With Image",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              fallback: "JD",
+                                              size: "lg"
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "With Fallback",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    })
+                              ],
+                              className: "flex items-center gap-8"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Online Status",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              src: "https://i.pravatar.cc/150?img=2",
+                                              alt: "Online user",
+                                              size: "lg",
+                                              online: true
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "Online",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              src: "https://i.pravatar.cc/150?img=3",
+                                              alt: "Offline user",
+                                              size: "lg",
+                                              online: false
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "Offline",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    })
+                              ],
+                              className: "flex items-center gap-8"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Comprehensive Examples",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              src: "https://i.pravatar.cc/150?img=4",
+                                              alt: "User 1",
+                                              size: "md",
+                                              shape: "circular",
+                                              online: true
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "User 1",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              fallback: "AB",
+                                              size: "md",
+                                              shape: "circular",
+                                              online: true
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "User 2",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx(DesignSystem.Avatar, {
+                                              src: "https://i.pravatar.cc/150?img=6",
+                                              alt: "User 3",
+                                              size: "md",
+                                              shape: "rounded",
+                                              online: false
+                                            }),
+                                        JsxRuntime.jsx("span", {
+                                              children: "User 3",
+                                              className: "mt-2 text-sm"
+                                            })
+                                      ],
+                                      className: "flex flex-col items-center"
+                                    })
+                              ],
+                              className: "grid grid-cols-3 gap-8"
+                            })
+                      ],
+                      className: "mb-8"
+                    })
+              ]
+            });
+}
+
+function App$AvatarGroupDemo(props) {
+  var avatarData = [
+    {
+      id: "1",
+      src: "https://i.pravatar.cc/150?img=1",
+      alt: "User 1",
+      fallback: "U1",
+      size: undefined,
+      shape: undefined,
+      online: true
+    },
+    {
+      id: "2",
+      src: "https://i.pravatar.cc/150?img=2",
+      alt: "User 2",
+      fallback: "U2",
+      size: undefined,
+      shape: undefined,
+      online: false
+    },
+    {
+      id: "3",
+      src: "https://i.pravatar.cc/150?img=3",
+      alt: "User 3",
+      fallback: "U3",
+      size: undefined,
+      shape: undefined,
+      online: true
+    },
+    {
+      id: "4",
+      src: undefined,
+      alt: "User 4",
+      fallback: "U4",
+      size: undefined,
+      shape: undefined,
+      online: undefined
+    },
+    {
+      id: "5",
+      src: "https://i.pravatar.cc/150?img=5",
+      alt: "User 5",
+      fallback: "U5",
+      size: undefined,
+      shape: undefined,
+      online: undefined
+    },
+    {
+      id: "6",
+      src: "https://i.pravatar.cc/150?img=6",
+      alt: "User 6",
+      fallback: "U6",
+      size: undefined,
+      shape: undefined,
+      online: undefined
+    }
+  ];
+  var match = React.useState(function () {
+        return [];
+      });
+  var setSelectedAvatarIds = match[1];
+  var selectedAvatarIds = match[0];
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("h1", {
+                      children: "Avatar Group Demo",
+                      className: "text-2xl font-bold mb-6 mt-12"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Basic Avatar Group",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                    avatars: avatarData
+                                  }),
+                              className: "flex flex-col gap-6"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Avatar Group Sizes",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Size: small",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: avatarData,
+                                              size: "sm"
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Size: regular",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: avatarData,
+                                              size: "regular"
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Size: medium",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: avatarData,
+                                              size: "md"
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Size: large",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: avatarData,
+                                              size: "lg"
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Size: extra large",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: avatarData,
+                                              size: "xl"
+                                            })
+                                      ]
+                                    })
+                              ],
+                              className: "flex flex-col gap-6"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Max Count Variations",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Max Count: 3",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: avatarData,
+                                              maxCount: 3
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Max Count: 4",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: avatarData,
+                                              maxCount: 4
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Max Count: 5",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: avatarData,
+                                              maxCount: 5
+                                            })
+                                      ]
+                                    })
+                              ],
+                              className: "flex flex-col gap-6"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Selection Functionality",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsxs("div", {
+                                    children: [
+                                      JsxRuntime.jsx("div", {
+                                            children: "Selectable Avatars",
+                                            className: "mb-2"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                            avatars: avatarData,
+                                            selectedAvatarIds: selectedAvatarIds,
+                                            onSelectionChange: (function (ids) {
+                                                setSelectedAvatarIds(function (param) {
+                                                      return ids;
+                                                    });
+                                              })
+                                          }),
+                                      JsxRuntime.jsx("div", {
+                                            children: "Selected IDs: " + selectedAvatarIds.join(", "),
+                                            className: "mt-2"
+                                          })
+                                    ]
+                                  }),
+                              className: "flex flex-col gap-6"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Edge Cases",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Empty Avatar Array",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: []
+                                            }),
+                                        JsxRuntime.jsx("div", {
+                                              children: "No avatars to display",
+                                              className: "mt-2 text-gray-500 italic"
+                                            })
+                                      ]
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsx("div", {
+                                              children: "Avatars with Fallbacks Only",
+                                              className: "mb-2"
+                                            }),
+                                        JsxRuntime.jsx(DesignSystem.AvatarGroup, {
+                                              avatars: [
+                                                {
+                                                  id: "1",
+                                                  src: undefined,
+                                                  alt: "User 1",
+                                                  fallback: "U1",
+                                                  size: undefined,
+                                                  shape: undefined,
+                                                  online: undefined
+                                                },
+                                                {
+                                                  id: "2",
+                                                  src: undefined,
+                                                  alt: "User 2",
+                                                  fallback: "U2",
+                                                  size: undefined,
+                                                  shape: undefined,
+                                                  online: undefined
+                                                },
+                                                {
+                                                  id: "3",
+                                                  src: undefined,
+                                                  alt: "User 3",
+                                                  fallback: "U3",
+                                                  size: undefined,
+                                                  shape: undefined,
+                                                  online: undefined
+                                                }
+                                              ]
+                                            })
+                                      ]
+                                    })
+                              ],
+                              className: "flex flex-col gap-6"
+                            })
+                      ],
+                      className: "mb-8"
+                    })
+              ]
+            });
+}
+
+function App$RadioDemo(props) {
+  var match = React.useState(function () {
+        return "option1";
+      });
+  var setSelectedValue = match[1];
+  var selectedValue = match[0];
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("h1", {
+                      children: "Radio Button Demo",
+                      className: "text-2xl font-bold mb-6 mt-12"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Radio Sizes",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx(DesignSystem.Radio, {
+                                      value: "small",
+                                      size: "sm",
+                                      children: "Small Radio Button"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Radio, {
+                                      value: "medium",
+                                      size: "md",
+                                      children: "Medium Radio Button"
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Radio with Subtext",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.Radio, {
+                                    value: "subtext_example",
+                                    children: "Radio with Subtext",
+                                    subtext: "This is additional information about this option"
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Radio with Right Slot",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.Radio, {
+                                    value: "right_slot",
+                                    children: "Radio with Right Slot",
+                                    rightSlot: Caml_option.some(JsxRuntime.jsx(DesignSystem.Tag, {
+                                              variant: "attentive",
+                                              color: "primary",
+                                              label: "New"
+                                            }))
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Radio States",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx(DesignSystem.Radio, {
+                                      value: "enabled",
+                                      children: "Enabled Radio"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Radio, {
+                                      value: "checked",
+                                      checked: true,
+                                      children: "Checked Radio"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Radio, {
+                                      value: "disabled",
+                                      isDisabled: true,
+                                      children: "Disabled Radio"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Radio, {
+                                      value: "disabled_checked",
+                                      checked: true,
+                                      isDisabled: true,
+                                      children: "Disabled and Checked"
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Radio Group (Uncontrolled)",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx(DesignSystem.RadioGroup, {
+                              label: "Select an option",
+                              name: "uncontrolled-group",
+                              defaultValue: "option1",
+                              children: JsxRuntime.jsxs("div", {
+                                    children: [
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "option1",
+                                            children: "Option 1"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "option2",
+                                            children: "Option 2"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "option3",
+                                            children: "Option 3"
+                                          })
+                                    ],
+                                    className: "flex flex-col gap-2"
+                                  })
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Radio Group (Controlled)",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx(DesignSystem.RadioGroup, {
+                              label: "Select an option",
+                              name: "controlled-group",
+                              value: selectedValue,
+                              children: JsxRuntime.jsxs("div", {
+                                    children: [
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "option1",
+                                            children: "Option 1"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "option2",
+                                            children: "Option 2"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "option3",
+                                            children: "Option 3"
+                                          })
+                                    ],
+                                    className: "flex flex-col gap-2"
+                                  }),
+                              onChange: (function (data) {
+                                  setSelectedValue(function (param) {
+                                        return data.value;
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: "Selected value: " + selectedValue,
+                              className: "mt-2"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Disabled Radio Group",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx(DesignSystem.RadioGroup, {
+                              label: "Disabled group",
+                              name: "disabled-group",
+                              defaultValue: "option1",
+                              children: JsxRuntime.jsxs("div", {
+                                    children: [
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "option1",
+                                            children: "Option 1"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "option2",
+                                            children: "Option 2"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "option3",
+                                            children: "Option 3"
+                                          })
+                                    ],
+                                    className: "flex flex-col gap-2"
+                                  }),
+                              isDisabled: true
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Radio with Custom Validation",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx(DesignSystem.RadioGroup, {
+                              label: "Choose a valid option",
+                              name: "validation-group",
+                              children: JsxRuntime.jsxs("div", {
+                                    children: [
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "valid",
+                                            children: "Valid Option",
+                                            rightSlot: Caml_option.some(JsxRuntime.jsx(LucideReact.Check, {
+                                                      size: 16,
+                                                      color: "green"
+                                                    }))
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "invalid",
+                                            children: "Invalid Option",
+                                            rightSlot: Caml_option.some(JsxRuntime.jsx(LucideReact.Check, {
+                                                      size: 16,
+                                                      color: "red"
+                                                    }))
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Radio, {
+                                            value: "warning",
+                                            children: "Warning Option",
+                                            subtext: "This option requires additional verification",
+                                            rightSlot: Caml_option.some(JsxRuntime.jsx(LucideReact.Check, {
+                                                      size: 16,
+                                                      color: "orange"
+                                                    }))
+                                          })
+                                    ],
+                                    className: "flex flex-col gap-2"
+                                  })
+                            })
+                      ],
+                      className: "mb-8"
+                    })
+              ]
+            });
+}
+
+function App$SwitchDemo(props) {
+  var match = React.useState(function () {
+        return false;
+      });
+  var setIsChecked = match[1];
+  var isChecked = match[0];
+  var match$1 = React.useState(function () {
+        return ["option1"];
+      });
+  var setGroupValues = match$1[1];
+  var groupValues = match$1[0];
+  return JsxRuntime.jsxs("div", {
+              children: [
+                JsxRuntime.jsx("h1", {
+                      children: "Switch Demo",
+                      className: "text-2xl font-bold mb-6 mt-12"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Basic Switch",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx(DesignSystem.Switch, {
+                                      checked: isChecked,
+                                      onCheckedChange: (function (checked) {
+                                          setIsChecked(function (param) {
+                                                return checked;
+                                              });
+                                        }),
+                                      label: "Toggle me"
+                                    }),
+                                JsxRuntime.jsx("div", {
+                                      children: "Current state: " + (
+                                        isChecked ? "On" : "Off"
+                                      ),
+                                      className: "text-sm text-gray-600"
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Switch Sizes",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx(DesignSystem.Switch, {
+                                      size: "sm",
+                                      label: "Small Switch"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Switch, {
+                                      size: "md",
+                                      label: "Medium Switch"
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Switch States",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx(DesignSystem.Switch, {
+                                      label: "Enabled Switch"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Switch, {
+                                      checked: true,
+                                      label: "Checked Switch"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Switch, {
+                                      disabled: true,
+                                      label: "Disabled Switch"
+                                    }),
+                                JsxRuntime.jsx(DesignSystem.Switch, {
+                                      checked: true,
+                                      disabled: true,
+                                      label: "Disabled and Checked Switch"
+                                    })
+                              ],
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Switch with Subtext",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.Switch, {
+                                    label: "Switch with Subtext",
+                                    subtext: "Additional information about this switch option"
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Switch with Right Slot",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.Switch, {
+                                    label: "Switch with Icon",
+                                    rightSlot: Caml_option.some(JsxRuntime.jsx(LucideReact.Check, {
+                                              size: 16,
+                                              color: "green"
+                                            }))
+                                  }),
+                              className: "flex flex-col gap-4"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Switch Group",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx(DesignSystem.SwitchGroup, {
+                              label: "Select multiple options",
+                              name: "options",
+                              value: groupValues,
+                              children: JsxRuntime.jsxs("div", {
+                                    children: [
+                                      JsxRuntime.jsx(DesignSystem.Switch, {
+                                            value: "option1",
+                                            label: "Option 1"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Switch, {
+                                            value: "option2",
+                                            label: "Option 2"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Switch, {
+                                            value: "option3",
+                                            label: "Option 3",
+                                            subtext: "With additional description"
+                                          })
+                                    ],
+                                    className: "flex flex-col gap-3"
+                                  }),
+                              onChange: (function (data) {
+                                  setGroupValues(function (param) {
+                                        return data.values;
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: "Selected values: " + groupValues.join(", "),
+                              className: "mt-2 text-sm text-gray-600"
+                            })
+                      ],
+                      className: "mb-8"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Disabled Switch Group",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx(DesignSystem.SwitchGroup, {
+                              label: "Disabled options group",
+                              name: "disabled-options",
+                              defaultValue: ["option1"],
+                              children: JsxRuntime.jsxs("div", {
+                                    children: [
+                                      JsxRuntime.jsx(DesignSystem.Switch, {
+                                            value: "option1",
+                                            label: "Option 1"
+                                          }),
+                                      JsxRuntime.jsx(DesignSystem.Switch, {
+                                            value: "option2",
+                                            label: "Option 2"
+                                          })
+                                    ],
+                                    className: "flex flex-col gap-3"
+                                  }),
+                              isDisabled: true
+                            })
+                      ],
+                      className: "mb-8"
+                    })
+              ]
+            });
+}
+
 function App$TabInterface(props) {
   var match = React.useState(function () {
         return "Buttons";
@@ -1040,6 +2323,21 @@ function App$TabInterface(props) {
         break;
     case "Breadcrumb" :
         tmp = JsxRuntime.jsx(App$BreadcrumbDemo, {});
+        break;
+    case "ButtonGroup" :
+        tmp = JsxRuntime.jsx(App$ButtonGroupDemo, {});
+        break;
+    case "Avatar" :
+        tmp = JsxRuntime.jsx(App$AvatarDemo, {});
+        break;
+    case "AvatarGroup" :
+        tmp = JsxRuntime.jsx(App$AvatarGroupDemo, {});
+        break;
+    case "Radio" :
+        tmp = JsxRuntime.jsx(App$RadioDemo, {});
+        break;
+    case "Switch" :
+        tmp = JsxRuntime.jsx(App$SwitchDemo, {});
         break;
     
   }
@@ -1103,10 +2401,55 @@ function App$TabInterface(props) {
                             }),
                         JsxRuntime.jsx("button", {
                               children: "Breadcrumb",
-                              className: getTabClass("Alerts"),
+                              className: getTabClass("Breadcrumb"),
                               onClick: (function (param) {
                                   setActiveTab(function (param) {
                                         return "Breadcrumb";
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("button", {
+                              children: "ButtonGroup",
+                              className: getTabClass("ButtonGroup"),
+                              onClick: (function (param) {
+                                  setActiveTab(function (param) {
+                                        return "ButtonGroup";
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("button", {
+                              children: "Avatar",
+                              className: getTabClass("Avatar"),
+                              onClick: (function (param) {
+                                  setActiveTab(function (param) {
+                                        return "Avatar";
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("button", {
+                              children: "AvatarGroup",
+                              className: getTabClass("AvatarGroup"),
+                              onClick: (function (param) {
+                                  setActiveTab(function (param) {
+                                        return "AvatarGroup";
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("button", {
+                              children: "Radio",
+                              className: getTabClass("Radio"),
+                              onClick: (function (param) {
+                                  setActiveTab(function (param) {
+                                        return "Radio";
+                                      });
+                                })
+                            }),
+                        JsxRuntime.jsx("button", {
+                              children: "Switch",
+                              className: getTabClass("Switch"),
+                              onClick: (function (param) {
+                                  setActiveTab(function (param) {
+                                        return "Switch";
                                       });
                                 })
                             })

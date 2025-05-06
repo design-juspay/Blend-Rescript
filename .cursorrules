@@ -1,0 +1,39 @@
+# Cursor Rules for Design System Usage Project
+
+## Project Patterns
+- ReScript files (.res) should have corresponding interface files (.resi)
+- Design system components should be accessed through proper ReScript bindings
+- Follow ReScript naming conventions (camelCase for variables, PascalCase for modules)
+- Maintain clean separation between component implementation and interface
+
+## Code Style
+- Use ReScript's type system to ensure type safety
+- Prefer composition of design system components over custom components
+- Document component props and usage patterns
+- Follow functional programming principles
+
+## Component Usage
+- Access design system components through bindings in src/bindings
+- Follow the component API as defined in the design system
+- Use Tailwind for additional styling when needed
+- Ensure all component props are properly typed
+
+## Development Workflow
+- Run ReScript compiler in watch mode during development
+- Keep the Vite development server running
+- Verify component rendering after changes
+- Track compiled .res.mjs files in git
+
+## Documentation
+- Document component usage with clear examples
+- Maintain the memory bank with up-to-date information
+- Update progress.md after significant changes
+- Keep activeContext.md current with ongoing work
+
+## Known Challenges
+- Ensuring proper typing for all design system components
+- Maintaining compatibility with design system updates
+- Balancing type safety with ease of use
+
+## User Preferences
+- To be determined as project progresses 

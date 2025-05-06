@@ -1,6 +1,9 @@
 // Import the Button component from our bindings
 open LucideIcons
 
+// Import the avatarData type from AvatarGroup
+open AvatarGroup
+
 module ButtonDemo = {
   @react.component
   let make = () => {
@@ -476,6 +479,705 @@ module BreadcrumbDemo = {
   }
 }
 
+module ButtonGroupDemo = {
+  @react.component
+  let make = () => {
+    <div>
+      <h1 className="text-2xl font-bold mb-6 mt-12"> {"ButtonGroup Demo"->React.string} </h1>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"ButtonGroup Sizes"->React.string} </h2>
+        <div className="flex flex-col gap-6">
+          <ButtonGroup size=#sm>
+            <DesignSystem buttonType=#primary text="Primary" />
+            <DesignSystem buttonType=#secondary text="Secondary" />
+            <DesignSystem buttonType=#secondary text="Action" />
+          </ButtonGroup>
+          
+          <ButtonGroup size=#md>
+            <DesignSystem buttonType=#primary text="Primary" />
+            <DesignSystem buttonType=#secondary text="Secondary" />
+            <DesignSystem buttonType=#secondary text="Action" />
+          </ButtonGroup>
+          
+          <ButtonGroup size=#lg>
+            <DesignSystem buttonType=#primary text="Primary" />
+            <DesignSystem buttonType=#secondary text="Secondary" />
+            <DesignSystem buttonType=#secondary text="Action" />
+          </ButtonGroup>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"ButtonGroup Modes"->React.string} </h2>
+        <div className="flex flex-col gap-6">
+          <div>
+            <div className="mb-2">{"Mode: singlePrimary (default)"->React.string}</div>
+            <ButtonGroup mode=#singlePrimary>
+              <DesignSystem buttonType=#primary text="Primary" />
+              <DesignSystem buttonType=#danger text="Danger" />
+              <DesignSystem buttonType=#success text="Success" />
+            </ButtonGroup>
+          </div>
+          
+          <div>
+            <div className="mb-2">{"Mode: allSecondary"->React.string}</div>
+            <ButtonGroup mode=#allSecondary>
+              <DesignSystem buttonType=#primary text="Primary" />
+              <DesignSystem buttonType=#danger text="Danger" />
+              <DesignSystem buttonType=#success text="Success" />
+            </ButtonGroup>
+          </div>
+          
+          <div>
+            <div className="mb-2">{"Mode: noTransform"->React.string}</div>
+            <ButtonGroup mode=#noTransform>
+              <DesignSystem buttonType=#primary text="Primary" />
+              <DesignSystem buttonType=#danger text="Danger" />
+              <DesignSystem buttonType=#success text="Success" />
+            </ButtonGroup>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Stacked vs Non-stacked"->React.string} </h2>
+        <div className="flex flex-col gap-6">
+          <div>
+            <div className="mb-2">{"isStacked: true (default)"->React.string}</div>
+            <ButtonGroup isStacked=true>
+              <DesignSystem buttonType=#primary text="First" />
+              <DesignSystem buttonType=#secondary text="Second" />
+              <DesignSystem buttonType=#secondary text="Third" />
+            </ButtonGroup>
+          </div>
+          
+          <div>
+            <div className="mb-2">{"isStacked: false"->React.string}</div>
+            <ButtonGroup isStacked=false>
+              <DesignSystem buttonType=#primary text="First" />
+              <DesignSystem buttonType=#secondary text="Second" />
+              <DesignSystem buttonType=#secondary text="Third" />
+            </ButtonGroup>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+}
+
+module AvatarDemo = {
+  @react.component
+  let make = () => {
+    <div>
+      <h1 className="text-2xl font-bold mb-6 mt-12"> {"Avatar Demo"->React.string} </h1>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Avatar Sizes"->React.string} </h2>
+        <div className="flex items-center gap-6">
+          <div className="flex flex-col items-center">
+            <Avatar size=#sm fallback="SM" />
+            <span className="mt-2 text-sm">{"Small"->React.string}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Avatar size=#regular fallback="RE" />
+            <span className="mt-2 text-sm">{"Regular"->React.string}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Avatar size=#md fallback="MD" />
+            <span className="mt-2 text-sm">{"Medium"->React.string}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Avatar size=#lg fallback="LG" />
+            <span className="mt-2 text-sm">{"Large"->React.string}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Avatar size=#xl fallback="XL" />
+            <span className="mt-2 text-sm">{"Extra Large"->React.string}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Avatar Shapes"->React.string} </h2>
+        <div className="flex items-center gap-8">
+          <div className="flex flex-col items-center">
+            <Avatar shape=#circular fallback="CR" size=#lg />
+            <span className="mt-2 text-sm">{"Circular"->React.string}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Avatar shape=#rounded fallback="RO" size=#lg />
+            <span className="mt-2 text-sm">{"Rounded"->React.string}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Avatar with Image vs Fallback"->React.string} </h2>
+        <div className="flex items-center gap-8">
+          <div className="flex flex-col items-center">
+            <Avatar 
+              src="https://i.pravatar.cc/150?img=1" 
+              alt="User avatar" 
+              size=#lg 
+            />
+            <span className="mt-2 text-sm">{"With Image"->React.string}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Avatar fallback="JD" size=#lg />
+            <span className="mt-2 text-sm">{"With Fallback"->React.string}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Online Status"->React.string} </h2>
+        <div className="flex items-center gap-8">
+          <div className="flex flex-col items-center">
+            <Avatar 
+              src="https://i.pravatar.cc/150?img=2" 
+              alt="Online user" 
+              size=#lg 
+              online=true
+            />
+            <span className="mt-2 text-sm">{"Online"->React.string}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Avatar 
+              src="https://i.pravatar.cc/150?img=3" 
+              alt="Offline user" 
+              size=#lg 
+              online=false
+            />
+            <span className="mt-2 text-sm">{"Offline"->React.string}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Comprehensive Examples"->React.string} </h2>
+        <div className="grid grid-cols-3 gap-8">
+          <div className="flex flex-col items-center">
+            <Avatar 
+              src="https://i.pravatar.cc/150?img=4" 
+              alt="User 1" 
+              size=#md 
+              shape=#circular
+              online=true
+            />
+            <span className="mt-2 text-sm">{"User 1"->React.string}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Avatar 
+              fallback="AB" 
+              size=#md 
+              shape=#circular
+              online=true
+            />
+            <span className="mt-2 text-sm">{"User 2"->React.string}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <Avatar 
+              src="https://i.pravatar.cc/150?img=6" 
+              alt="User 3" 
+              size=#md 
+              shape=#rounded
+              online=false
+            />
+            <span className="mt-2 text-sm">{"User 3"->React.string}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+}
+
+module AvatarGroupDemo = {
+  @react.component
+  let make = () => {
+    // Sample avatar data for demos
+    let avatarData = [
+      {
+        id: "1",
+        src: Some("https://i.pravatar.cc/150?img=1"),
+        alt: Some("User 1"),
+        fallback: Some("U1"),
+        size: None,
+        shape: None,
+        online: Some(true),
+      },
+      {
+        id: "2",
+        src: Some("https://i.pravatar.cc/150?img=2"),
+        alt: Some("User 2"),
+        fallback: Some("U2"),
+        size: None,
+        shape: None,
+        online: Some(false),
+      },
+      {
+        id: "3",
+        src: Some("https://i.pravatar.cc/150?img=3"),
+        alt: Some("User 3"),
+        fallback: Some("U3"),
+        size: None,
+        shape: None,
+        online: Some(true),
+      },
+      {
+        id: "4",
+        src: None,
+        alt: Some("User 4"),
+        fallback: Some("U4"),
+        size: None,
+        shape: None,
+        online: None,
+      },
+      {
+        id: "5",
+        src: Some("https://i.pravatar.cc/150?img=5"),
+        alt: Some("User 5"),
+        fallback: Some("U5"),
+        size: None,
+        shape: None,
+        online: None,
+      },
+      {
+        id: "6",
+        src: Some("https://i.pravatar.cc/150?img=6"),
+        alt: Some("User 6"),
+        fallback: Some("U6"),
+        size: None,
+        shape: None,
+        online: None,
+      },
+    ]
+
+    // State for selected avatars
+    let (selectedAvatarIds, setSelectedAvatarIds) = React.useState(_ => [])
+
+    <div>
+      <h1 className="text-2xl font-bold mb-6 mt-12"> {"Avatar Group Demo"->React.string} </h1>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Basic Avatar Group"->React.string} </h2>
+        <div className="flex flex-col gap-6">
+          <AvatarGroup 
+            avatars={avatarData} 
+          />
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Avatar Group Sizes"->React.string} </h2>
+        <div className="flex flex-col gap-6">
+          <div>
+            <div className="mb-2">{"Size: small"->React.string}</div>
+            <AvatarGroup 
+              avatars={avatarData} 
+              size=#sm
+            />
+          </div>
+          
+          <div>
+            <div className="mb-2">{"Size: regular"->React.string}</div>
+            <AvatarGroup 
+              avatars={avatarData} 
+              size=#regular
+            />
+          </div>
+          
+          <div>
+            <div className="mb-2">{"Size: medium"->React.string}</div>
+            <AvatarGroup 
+              avatars={avatarData} 
+              size=#md
+            />
+          </div>
+          
+          <div>
+            <div className="mb-2">{"Size: large"->React.string}</div>
+            <AvatarGroup 
+              avatars={avatarData} 
+              size=#lg
+            />
+          </div>
+          
+          <div>
+            <div className="mb-2">{"Size: extra large"->React.string}</div>
+            <AvatarGroup 
+              avatars={avatarData} 
+              size=#xl
+            />
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Max Count Variations"->React.string} </h2>
+        <div className="flex flex-col gap-6">
+          <div>
+            <div className="mb-2">{"Max Count: 3"->React.string}</div>
+            <AvatarGroup 
+              avatars={avatarData} 
+              maxCount=3
+            />
+          </div>
+          
+          <div>
+            <div className="mb-2">{"Max Count: 4"->React.string}</div>
+            <AvatarGroup 
+              avatars={avatarData} 
+              maxCount=4
+            />
+          </div>
+          
+          <div>
+            <div className="mb-2">{"Max Count: 5"->React.string}</div>
+            <AvatarGroup 
+              avatars={avatarData} 
+              maxCount=5
+            />
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Selection Functionality"->React.string} </h2>
+        <div className="flex flex-col gap-6">
+          <div>
+            <div className="mb-2">{"Selectable Avatars"->React.string}</div>
+            <AvatarGroup 
+              avatars={avatarData} 
+              selectedAvatarIds={selectedAvatarIds}
+              onSelectionChange={ids => setSelectedAvatarIds(_ => ids)}
+            />
+            <div className="mt-2">
+              {`Selected IDs: ${selectedAvatarIds->Js.Array2.joinWith(", ")}`->React.string}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Edge Cases"->React.string} </h2>
+        <div className="flex flex-col gap-6">
+          <div>
+            <div className="mb-2">{"Empty Avatar Array"->React.string}</div>
+            <AvatarGroup 
+              avatars={[]} 
+            />
+            <div className="mt-2 text-gray-500 italic">
+              {"No avatars to display"->React.string}
+            </div>
+          </div>
+          
+          <div>
+            <div className="mb-2">{"Avatars with Fallbacks Only"->React.string}</div>
+            <AvatarGroup 
+              avatars={[
+                {
+                  id: "1",
+                  src: None,
+                  alt: Some("User 1"),
+                  fallback: Some("U1"),
+                  size: None,
+                  shape: None,
+                  online: None,
+                },
+                {
+                  id: "2",
+                  src: None,
+                  alt: Some("User 2"),
+                  fallback: Some("U2"),
+                  size: None,
+                  shape: None,
+                  online: None,
+                },
+                {
+                  id: "3",
+                  src: None,
+                  alt: Some("User 3"),
+                  fallback: Some("U3"),
+                  size: None,
+                  shape: None,
+                  online: None,
+                },
+              ]}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+}
+
+module RadioDemo = {
+  @react.component
+  let make = () => {
+    let (selectedValue, setSelectedValue) = React.useState(_ => "option1")
+
+    <div>
+      <h1 className="text-2xl font-bold mb-6 mt-12"> {"Radio Button Demo"->React.string} </h1>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Radio Sizes"->React.string} </h2>
+        <div className="flex flex-col gap-4">
+          <Radio value="small" size=#sm> {React.string("Small Radio Button")} </Radio>
+          <Radio value="medium" size=#md> {React.string("Medium Radio Button")} </Radio>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Radio with Subtext"->React.string} </h2>
+        <div className="flex flex-col gap-4">
+          <Radio 
+            value="subtext_example" 
+            subtext="This is additional information about this option"
+          >
+            {React.string("Radio with Subtext")}
+          </Radio>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Radio with Right Slot"->React.string} </h2>
+        <div className="flex flex-col gap-4">
+          <Radio 
+            value="right_slot" 
+            rightSlot={<Tag variant=#attentive label="New" color=#primary />}
+          >
+            {React.string("Radio with Right Slot")}
+          </Radio>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Radio States"->React.string} </h2>
+        <div className="flex flex-col gap-4">
+          <Radio value="enabled"> {React.string("Enabled Radio")} </Radio>
+          <Radio value="checked" checked=true> {React.string("Checked Radio")} </Radio>
+          <Radio value="disabled" isDisabled=true> {React.string("Disabled Radio")} </Radio>
+          <Radio value="disabled_checked" isDisabled=true checked=true> 
+            {React.string("Disabled and Checked")} 
+          </Radio>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Radio Group (Uncontrolled)"->React.string} </h2>
+        <Radio.RadioGroup
+          name="uncontrolled-group"
+          defaultValue="option1"
+          label="Select an option"
+        >
+          <div className="flex flex-col gap-2">
+            <Radio value="option1"> {React.string("Option 1")} </Radio>
+            <Radio value="option2"> {React.string("Option 2")} </Radio>
+            <Radio value="option3"> {React.string("Option 3")} </Radio>
+          </div>
+        </Radio.RadioGroup>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Radio Group (Controlled)"->React.string} </h2>
+        <Radio.RadioGroup
+          name="controlled-group"
+          value=selectedValue
+          label="Select an option"
+          onChange={data => setSelectedValue(_ => data["value"])}
+        >
+          <div className="flex flex-col gap-2">
+            <Radio value="option1"> {React.string("Option 1")} </Radio>
+            <Radio value="option2"> {React.string("Option 2")} </Radio>
+            <Radio value="option3"> {React.string("Option 3")} </Radio>
+          </div>
+        </Radio.RadioGroup>
+        <div className="mt-2">
+          {`Selected value: ${selectedValue}`->React.string}
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Disabled Radio Group"->React.string} </h2>
+        <Radio.RadioGroup
+          name="disabled-group"
+          defaultValue="option1"
+          isDisabled=true
+          label="Disabled group"
+        >
+          <div className="flex flex-col gap-2">
+            <Radio value="option1"> {React.string("Option 1")} </Radio>
+            <Radio value="option2"> {React.string("Option 2")} </Radio>
+            <Radio value="option3"> {React.string("Option 3")} </Radio>
+          </div>
+        </Radio.RadioGroup>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Radio with Custom Validation"->React.string} </h2>
+        <Radio.RadioGroup
+          name="validation-group"
+          label="Choose a valid option"
+        >
+          <div className="flex flex-col gap-2">
+            <Radio 
+              value="valid" 
+              rightSlot={<Check size=16 color="green" />}
+            > 
+              {React.string("Valid Option")} 
+            </Radio>
+            <Radio 
+              value="invalid" 
+              rightSlot={<Check size=16 color="red" />}
+            > 
+              {React.string("Invalid Option")} 
+            </Radio>
+            <Radio 
+              value="warning" 
+              rightSlot={<Check size=16 color="orange" />}
+              subtext="This option requires additional verification"
+            > 
+              {React.string("Warning Option")} 
+            </Radio>
+          </div>
+        </Radio.RadioGroup>
+      </div>
+    </div>
+  }
+}
+
+module SwitchDemo = {
+  @react.component
+  let make = () => {
+    let (isChecked, setIsChecked) = React.useState(_ => false)
+    let (groupValues, setGroupValues) = React.useState(_ => ["option1"])
+
+    <div>
+      <h1 className="text-2xl font-bold mb-6 mt-12"> {"Switch Demo"->React.string} </h1>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Basic Switch"->React.string} </h2>
+        <div className="flex flex-col gap-4">
+          <Switch 
+            checked=isChecked
+            onCheckedChange={checked => setIsChecked(_ => checked)}
+            label={React.string("Toggle me")}
+          />
+          <div className="text-sm text-gray-600">
+            {`Current state: ${isChecked ? "On" : "Off"}`->React.string}
+          </div>
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Switch Sizes"->React.string} </h2>
+        <div className="flex flex-col gap-4">
+          <Switch 
+            size=#sm
+            label={React.string("Small Switch")}
+          />
+          <Switch 
+            size=#md 
+            label={React.string("Medium Switch")}
+          />
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Switch States"->React.string} </h2>
+        <div className="flex flex-col gap-4">
+          <Switch 
+            label={React.string("Enabled Switch")}
+          />
+          <Switch 
+            checked=true 
+            label={React.string("Checked Switch")}
+          />
+          <Switch 
+            disabled=true
+            label={React.string("Disabled Switch")}
+          />
+          <Switch 
+            disabled=true 
+            checked=true
+            label={React.string("Disabled and Checked Switch")}
+          />
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Switch with Subtext"->React.string} </h2>
+        <div className="flex flex-col gap-4">
+          <Switch 
+            label={React.string("Switch with Subtext")}
+            subtext="Additional information about this switch option"
+          />
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Switch with Right Slot"->React.string} </h2>
+        <div className="flex flex-col gap-4">
+          <Switch 
+            label={React.string("Switch with Icon")}
+            rightSlot={<Check size=16 color="green" />}
+          />
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Switch Group"->React.string} </h2>
+        <Switch.SwitchGroup
+          name="options"
+          label="Select multiple options"
+          value=groupValues
+          onChange={data => setGroupValues(_ => data["values"])}
+        >
+          <div className="flex flex-col gap-3">
+            <Switch 
+              value="option1"
+              label={React.string("Option 1")}
+            />
+            <Switch 
+              value="option2"
+              label={React.string("Option 2")}
+            />
+            <Switch 
+              value="option3"
+              label={React.string("Option 3")}
+              subtext="With additional description"
+            />
+          </div>
+        </Switch.SwitchGroup>
+        <div className="mt-2 text-sm text-gray-600">
+          {`Selected values: ${groupValues->Js.Array2.joinWith(", ")}`->React.string}
+        </div>
+      </div>
+      
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4"> {"Disabled Switch Group"->React.string} </h2>
+        <Switch.SwitchGroup
+          name="disabled-options"
+          label="Disabled options group"
+          isDisabled=true
+          defaultValue={["option1"]}
+        >
+          <div className="flex flex-col gap-3">
+            <Switch 
+              value="option1"
+              label={React.string("Option 1")}
+            />
+            <Switch 
+              value="option2"
+              label={React.string("Option 2")}
+            />
+          </div>
+        </Switch.SwitchGroup>
+      </div>
+    </div>
+  }
+}
 
 module TabInterface = {
   type tab =
@@ -486,6 +1188,11 @@ module TabInterface = {
     | TabsComponent
     | Alerts
     | Breadcrumb
+    | ButtonGroup
+    | Avatar
+    | AvatarGroup
+    | Radio
+    | Switch
 
   @react.component
   let make = () => {
@@ -520,8 +1227,23 @@ module TabInterface = {
         <button className={getTabClass(Alerts)} onClick={_ => setActiveTab(_ => Alerts)}>
           {"Alerts"->React.string}
         </button>
-        <button className={getTabClass(Alerts)} onClick={_ => setActiveTab(_ => Breadcrumb)}>
+        <button className={getTabClass(Breadcrumb)} onClick={_ => setActiveTab(_ => Breadcrumb)}>
           {"Breadcrumb"->React.string}
+        </button>
+        <button className={getTabClass(ButtonGroup)} onClick={_ => setActiveTab(_ => ButtonGroup)}>
+          {"ButtonGroup"->React.string}
+        </button>
+        <button className={getTabClass(Avatar)} onClick={_ => setActiveTab(_ => Avatar)}>
+          {"Avatar"->React.string}
+        </button>
+        <button className={getTabClass(AvatarGroup)} onClick={_ => setActiveTab(_ => AvatarGroup)}>
+          {"AvatarGroup"->React.string}
+        </button>
+        <button className={getTabClass(Radio)} onClick={_ => setActiveTab(_ => Radio)}>
+          {"Radio"->React.string}
+        </button>
+        <button className={getTabClass(Switch)} onClick={_ => setActiveTab(_ => Switch)}>
+          {"Switch"->React.string}
         </button>
       </div>
       <div className="tab-content">
@@ -533,11 +1255,17 @@ module TabInterface = {
         | TabsComponent => <TabsPreviewDemo />
         | Alerts => <AlertDemo />
         | Breadcrumb => <BreadcrumbDemo/>
+        | ButtonGroup => <ButtonGroupDemo />
+        | Avatar => <AvatarDemo />
+        | AvatarGroup => <AvatarGroupDemo />
+        | Radio => <RadioDemo />
+        | Switch => <SwitchDemo />
         }}
       </div>
     </div>
   }
 }
+
 
 let tooltipExample = () => {
   <div className="tooltip-example" style={ReactDOM.Style.make(~margin="20px", ~padding="20px", ())}>
