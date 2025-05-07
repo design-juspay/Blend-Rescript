@@ -261,15 +261,15 @@ module SnackbarDemo = {
   }
 }
 
-module TooltipDemo = {
+module TooltipDemo2 = {
   @react.component
   let make = () => {
     <div>
-      <h1 className="text-2xl font-bold mb-6 mt-12"> {"Tooltip Demo"->React.string} </h1>
-      <ToolTipVinit content={React.string("This is a basic tooltip")}>
+      <h1 className="text-2xl font-bold mb-6 mt-12"> {"Tooltip V2 Demo"->React.string} </h1>
+      <TooltipV2 content={React.string("This is a basic tooltip")}>
         <button> {React.string("Hover me")} </button>
-        </ToolTipVinit>
-      </div>
+      </TooltipV2>
+    </div>
   }
 }
 
@@ -401,55 +401,49 @@ module AlertDemo = {
   let make = () => {
     <div>
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"Alert Demo"->React.string} </h1>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Alert Variants"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Alert 
-            heading="Primary Alert" 
+          <Alert
+            heading="Primary Alert"
             description="This is a primary alert with important information."
             variant=#primary
           />
-          <Alert 
-            heading="Success Alert" 
+          <Alert
+            heading="Success Alert"
             description="Your action was completed successfully."
             variant=#success
             icon={<Check size=16 />}
           />
-          
           <Alert
-            heading="Warning Alert" 
+            heading="Warning Alert"
             description="Please be aware of this important warning."
             variant=#warning
           />
-          
-          <Alert 
-            heading="Error Alert" 
+          <Alert
+            heading="Error Alert"
             description="An error occurred while processing your request."
             variant=#error
           />
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Alert Styles"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Alert 
-            heading="Fill Style" 
+          <Alert
+            heading="Fill Style"
             description="This alert uses the fill style."
             variant=#primary
             style=#fill
           />
-          
-          <Alert 
-            heading="Subtle Style" 
+          <Alert
+            heading="Subtle Style"
             description="This alert uses the subtle style."
             variant=#primary
             style=#subtle
           />
-          
-          <Alert 
-            heading="No Fill Style" 
+          <Alert
+            heading="No Fill Style"
             description="This alert uses the no fill style."
             variant=#primary
             style=#noFill
@@ -460,19 +454,17 @@ module AlertDemo = {
   }
 }
 
-
 module BreadcrumbDemo = {
   @react.component
   let make = () => {
     <div>
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"Breadcrumb Demo"->React.string} </h1>
-      
       <Breadcrumb
         variant=#default
         items=[
           {label: "Home", href: "/", onClick: () => Js.log("Home clicked")},
           {label: "Products", href: "/products", onClick: () => Js.log("Products clicked")},
-          {label: "Categories", href: "/categories", onClick: () => Js.log("Categories clicked")}
+          {label: "Categories", href: "/categories", onClick: () => Js.log("Categories clicked")},
         ]
       />
     </div>
@@ -484,7 +476,6 @@ module ButtonGroupDemo = {
   let make = () => {
     <div>
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"ButtonGroup Demo"->React.string} </h1>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"ButtonGroup Sizes"->React.string} </h2>
         <div className="flex flex-col gap-6">
@@ -493,13 +484,11 @@ module ButtonGroupDemo = {
             <DesignSystem buttonType=#secondary text="Secondary" />
             <DesignSystem buttonType=#secondary text="Action" />
           </ButtonGroup>
-          
           <ButtonGroup size=#md>
             <DesignSystem buttonType=#primary text="Primary" />
             <DesignSystem buttonType=#secondary text="Secondary" />
             <DesignSystem buttonType=#secondary text="Action" />
           </ButtonGroup>
-          
           <ButtonGroup size=#lg>
             <DesignSystem buttonType=#primary text="Primary" />
             <DesignSystem buttonType=#secondary text="Secondary" />
@@ -507,30 +496,27 @@ module ButtonGroupDemo = {
           </ButtonGroup>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"ButtonGroup Modes"->React.string} </h2>
         <div className="flex flex-col gap-6">
           <div>
-            <div className="mb-2">{"Mode: singlePrimary (default)"->React.string}</div>
+            <div className="mb-2"> {"Mode: singlePrimary (default)"->React.string} </div>
             <ButtonGroup mode=#singlePrimary>
               <DesignSystem buttonType=#primary text="Primary" />
               <DesignSystem buttonType=#danger text="Danger" />
               <DesignSystem buttonType=#success text="Success" />
             </ButtonGroup>
           </div>
-          
           <div>
-            <div className="mb-2">{"Mode: allSecondary"->React.string}</div>
+            <div className="mb-2"> {"Mode: allSecondary"->React.string} </div>
             <ButtonGroup mode=#allSecondary>
               <DesignSystem buttonType=#primary text="Primary" />
               <DesignSystem buttonType=#danger text="Danger" />
               <DesignSystem buttonType=#success text="Success" />
             </ButtonGroup>
           </div>
-          
           <div>
-            <div className="mb-2">{"Mode: noTransform"->React.string}</div>
+            <div className="mb-2"> {"Mode: noTransform"->React.string} </div>
             <ButtonGroup mode=#noTransform>
               <DesignSystem buttonType=#primary text="Primary" />
               <DesignSystem buttonType=#danger text="Danger" />
@@ -539,21 +525,19 @@ module ButtonGroupDemo = {
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Stacked vs Non-stacked"->React.string} </h2>
         <div className="flex flex-col gap-6">
           <div>
-            <div className="mb-2">{"isStacked: true (default)"->React.string}</div>
+            <div className="mb-2"> {"isStacked: true (default)"->React.string} </div>
             <ButtonGroup isStacked=true>
               <DesignSystem buttonType=#primary text="First" />
               <DesignSystem buttonType=#secondary text="Second" />
               <DesignSystem buttonType=#secondary text="Third" />
             </ButtonGroup>
           </div>
-          
           <div>
-            <div className="mb-2">{"isStacked: false"->React.string}</div>
+            <div className="mb-2"> {"isStacked: false"->React.string} </div>
             <ButtonGroup isStacked=false>
               <DesignSystem buttonType=#primary text="First" />
               <DesignSystem buttonType=#secondary text="Second" />
@@ -571,120 +555,100 @@ module AvatarDemo = {
   let make = () => {
     <div>
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"Avatar Demo"->React.string} </h1>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Avatar Sizes"->React.string} </h2>
         <div className="flex items-center gap-6">
           <div className="flex flex-col items-center">
             <Avatar size=#sm fallback="SM" />
-            <span className="mt-2 text-sm">{"Small"->React.string}</span>
+            <span className="mt-2 text-sm"> {"Small"->React.string} </span>
           </div>
           <div className="flex flex-col items-center">
             <Avatar size=#regular fallback="RE" />
-            <span className="mt-2 text-sm">{"Regular"->React.string}</span>
+            <span className="mt-2 text-sm"> {"Regular"->React.string} </span>
           </div>
           <div className="flex flex-col items-center">
             <Avatar size=#md fallback="MD" />
-            <span className="mt-2 text-sm">{"Medium"->React.string}</span>
+            <span className="mt-2 text-sm"> {"Medium"->React.string} </span>
           </div>
           <div className="flex flex-col items-center">
             <Avatar size=#lg fallback="LG" />
-            <span className="mt-2 text-sm">{"Large"->React.string}</span>
+            <span className="mt-2 text-sm"> {"Large"->React.string} </span>
           </div>
           <div className="flex flex-col items-center">
             <Avatar size=#xl fallback="XL" />
-            <span className="mt-2 text-sm">{"Extra Large"->React.string}</span>
+            <span className="mt-2 text-sm"> {"Extra Large"->React.string} </span>
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Avatar Shapes"->React.string} </h2>
         <div className="flex items-center gap-8">
           <div className="flex flex-col items-center">
             <Avatar shape=#circular fallback="CR" size=#lg />
-            <span className="mt-2 text-sm">{"Circular"->React.string}</span>
+            <span className="mt-2 text-sm"> {"Circular"->React.string} </span>
           </div>
           <div className="flex flex-col items-center">
             <Avatar shape=#rounded fallback="RO" size=#lg />
-            <span className="mt-2 text-sm">{"Rounded"->React.string}</span>
+            <span className="mt-2 text-sm"> {"Rounded"->React.string} </span>
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4"> {"Avatar with Image vs Fallback"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"Avatar with Image vs Fallback"->React.string}
+        </h2>
         <div className="flex items-center gap-8">
           <div className="flex flex-col items-center">
-            <Avatar 
-              src="https://i.pravatar.cc/150?img=1" 
-              alt="User avatar" 
-              size=#lg 
-            />
-            <span className="mt-2 text-sm">{"With Image"->React.string}</span>
+            <Avatar src="https://i.pravatar.cc/150?img=1" alt="User avatar" size=#lg />
+            <span className="mt-2 text-sm"> {"With Image"->React.string} </span>
           </div>
           <div className="flex flex-col items-center">
             <Avatar fallback="JD" size=#lg />
-            <span className="mt-2 text-sm">{"With Fallback"->React.string}</span>
+            <span className="mt-2 text-sm"> {"With Fallback"->React.string} </span>
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Online Status"->React.string} </h2>
         <div className="flex items-center gap-8">
           <div className="flex flex-col items-center">
-            <Avatar 
-              src="https://i.pravatar.cc/150?img=2" 
-              alt="Online user" 
-              size=#lg 
-              online=true
-            />
-            <span className="mt-2 text-sm">{"Online"->React.string}</span>
+            <Avatar src="https://i.pravatar.cc/150?img=2" alt="Online user" size=#lg online=true />
+            <span className="mt-2 text-sm"> {"Online"->React.string} </span>
           </div>
           <div className="flex flex-col items-center">
-            <Avatar 
-              src="https://i.pravatar.cc/150?img=3" 
-              alt="Offline user" 
-              size=#lg 
-              online=false
+            <Avatar
+              src="https://i.pravatar.cc/150?img=3" alt="Offline user" size=#lg online=false
             />
-            <span className="mt-2 text-sm">{"Offline"->React.string}</span>
+            <span className="mt-2 text-sm"> {"Offline"->React.string} </span>
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Comprehensive Examples"->React.string} </h2>
         <div className="grid grid-cols-3 gap-8">
           <div className="flex flex-col items-center">
-            <Avatar 
-              src="https://i.pravatar.cc/150?img=4" 
-              alt="User 1" 
-              size=#md 
+            <Avatar
+              src="https://i.pravatar.cc/150?img=4"
+              alt="User 1"
+              size=#md
               shape=#circular
               online=true
             />
-            <span className="mt-2 text-sm">{"User 1"->React.string}</span>
+            <span className="mt-2 text-sm"> {"User 1"->React.string} </span>
           </div>
           <div className="flex flex-col items-center">
-            <Avatar 
-              fallback="AB" 
-              size=#md 
-              shape=#circular
-              online=true
-            />
-            <span className="mt-2 text-sm">{"User 2"->React.string}</span>
+            <Avatar fallback="AB" size=#md shape=#circular online=true />
+            <span className="mt-2 text-sm"> {"User 2"->React.string} </span>
           </div>
           <div className="flex flex-col items-center">
-            <Avatar 
-              src="https://i.pravatar.cc/150?img=6" 
-              alt="User 3" 
-              size=#md 
+            <Avatar
+              src="https://i.pravatar.cc/150?img=6"
+              alt="User 3"
+              size=#md
               shape=#rounded
               online=false
             />
-            <span className="mt-2 text-sm">{"User 3"->React.string}</span>
+            <span className="mt-2 text-sm"> {"User 3"->React.string} </span>
           </div>
         </div>
       </div>
@@ -758,97 +722,61 @@ module AvatarGroupDemo = {
 
     <div>
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"Avatar Group Demo"->React.string} </h1>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Basic Avatar Group"->React.string} </h2>
         <div className="flex flex-col gap-6">
-          <AvatarGroup 
-            avatars={avatarData} 
-          />
+          <AvatarGroup avatars={avatarData} />
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Avatar Group Sizes"->React.string} </h2>
         <div className="flex flex-col gap-6">
           <div>
-            <div className="mb-2">{"Size: small"->React.string}</div>
-            <AvatarGroup 
-              avatars={avatarData} 
-              size=#sm
-            />
+            <div className="mb-2"> {"Size: small"->React.string} </div>
+            <AvatarGroup avatars={avatarData} size=#sm />
           </div>
-          
           <div>
-            <div className="mb-2">{"Size: regular"->React.string}</div>
-            <AvatarGroup 
-              avatars={avatarData} 
-              size=#regular
-            />
+            <div className="mb-2"> {"Size: regular"->React.string} </div>
+            <AvatarGroup avatars={avatarData} size=#regular />
           </div>
-          
           <div>
-            <div className="mb-2">{"Size: medium"->React.string}</div>
-            <AvatarGroup 
-              avatars={avatarData} 
-              size=#md
-            />
+            <div className="mb-2"> {"Size: medium"->React.string} </div>
+            <AvatarGroup avatars={avatarData} size=#md />
           </div>
-          
           <div>
-            <div className="mb-2">{"Size: large"->React.string}</div>
-            <AvatarGroup 
-              avatars={avatarData} 
-              size=#lg
-            />
+            <div className="mb-2"> {"Size: large"->React.string} </div>
+            <AvatarGroup avatars={avatarData} size=#lg />
           </div>
-          
           <div>
-            <div className="mb-2">{"Size: extra large"->React.string}</div>
-            <AvatarGroup 
-              avatars={avatarData} 
-              size=#xl
-            />
+            <div className="mb-2"> {"Size: extra large"->React.string} </div>
+            <AvatarGroup avatars={avatarData} size=#xl />
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Max Count Variations"->React.string} </h2>
         <div className="flex flex-col gap-6">
           <div>
-            <div className="mb-2">{"Max Count: 3"->React.string}</div>
-            <AvatarGroup 
-              avatars={avatarData} 
-              maxCount=3
-            />
+            <div className="mb-2"> {"Max Count: 3"->React.string} </div>
+            <AvatarGroup avatars={avatarData} maxCount=3 />
           </div>
-          
           <div>
-            <div className="mb-2">{"Max Count: 4"->React.string}</div>
-            <AvatarGroup 
-              avatars={avatarData} 
-              maxCount=4
-            />
+            <div className="mb-2"> {"Max Count: 4"->React.string} </div>
+            <AvatarGroup avatars={avatarData} maxCount=4 />
           </div>
-          
           <div>
-            <div className="mb-2">{"Max Count: 5"->React.string}</div>
-            <AvatarGroup 
-              avatars={avatarData} 
-              maxCount=5
-            />
+            <div className="mb-2"> {"Max Count: 5"->React.string} </div>
+            <AvatarGroup avatars={avatarData} maxCount=5 />
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Selection Functionality"->React.string} </h2>
         <div className="flex flex-col gap-6">
           <div>
-            <div className="mb-2">{"Selectable Avatars"->React.string}</div>
-            <AvatarGroup 
-              avatars={avatarData} 
+            <div className="mb-2"> {"Selectable Avatars"->React.string} </div>
+            <AvatarGroup
+              avatars={avatarData}
               selectedAvatarIds={selectedAvatarIds}
               onSelectionChange={ids => setSelectedAvatarIds(_ => ids)}
             />
@@ -858,23 +786,19 @@ module AvatarGroupDemo = {
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Edge Cases"->React.string} </h2>
         <div className="flex flex-col gap-6">
           <div>
-            <div className="mb-2">{"Empty Avatar Array"->React.string}</div>
-            <AvatarGroup 
-              avatars={[]} 
-            />
+            <div className="mb-2"> {"Empty Avatar Array"->React.string} </div>
+            <AvatarGroup avatars={[]} />
             <div className="mt-2 text-gray-500 italic">
               {"No avatars to display"->React.string}
             </div>
           </div>
-          
           <div>
-            <div className="mb-2">{"Avatars with Fallbacks Only"->React.string}</div>
-            <AvatarGroup 
+            <div className="mb-2"> {"Avatars with Fallbacks Only"->React.string} </div>
+            <AvatarGroup
               avatars={[
                 {
                   id: "1",
@@ -919,7 +843,6 @@ module RadioDemo = {
 
     <div>
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"Radio Button Demo"->React.string} </h1>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Radio Sizes"->React.string} </h2>
         <div className="flex flex-col gap-4">
@@ -927,50 +850,39 @@ module RadioDemo = {
           <Radio value="medium" size=#md> {React.string("Medium Radio Button")} </Radio>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Radio with Subtext"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Radio 
-            value="subtext_example" 
-            subtext="This is additional information about this option"
-          >
+          <Radio value="subtext_example" subtext="This is additional information about this option">
             {React.string("Radio with Subtext")}
           </Radio>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Radio with Right Slot"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Radio 
-            value="right_slot" 
-            rightSlot={<Tag variant=#attentive label="New" color=#primary />}
-          >
+          <Radio
+            value="right_slot" rightSlot={<Tag variant=#attentive label="New" color=#primary />}>
             {React.string("Radio with Right Slot")}
           </Radio>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Radio States"->React.string} </h2>
         <div className="flex flex-col gap-4">
           <Radio value="enabled"> {React.string("Enabled Radio")} </Radio>
           <Radio value="checked" checked=true> {React.string("Checked Radio")} </Radio>
           <Radio value="disabled" isDisabled=true> {React.string("Disabled Radio")} </Radio>
-          <Radio value="disabled_checked" isDisabled=true checked=true> 
-            {React.string("Disabled and Checked")} 
+          <Radio value="disabled_checked" isDisabled=true checked=true>
+            {React.string("Disabled and Checked")}
           </Radio>
         </div>
       </div>
-      
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4"> {"Radio Group (Uncontrolled)"->React.string} </h2>
-        <Radio.RadioGroup
-          name="uncontrolled-group"
-          defaultValue="option1"
-          label="Select an option"
-        >
+        <h2 className="text-xl font-semibold mb-4">
+          {"Radio Group (Uncontrolled)"->React.string}
+        </h2>
+        <Radio.RadioGroup name="uncontrolled-group" defaultValue="option1" label="Select an option">
           <div className="flex flex-col gap-2">
             <Radio value="option1"> {React.string("Option 1")} </Radio>
             <Radio value="option2"> {React.string("Option 2")} </Radio>
@@ -978,34 +890,25 @@ module RadioDemo = {
           </div>
         </Radio.RadioGroup>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Radio Group (Controlled)"->React.string} </h2>
         <Radio.RadioGroup
           name="controlled-group"
           value=selectedValue
           label="Select an option"
-          onChange={data => setSelectedValue(_ => data["value"])}
-        >
+          onChange={data => setSelectedValue(_ => data["value"])}>
           <div className="flex flex-col gap-2">
             <Radio value="option1"> {React.string("Option 1")} </Radio>
             <Radio value="option2"> {React.string("Option 2")} </Radio>
             <Radio value="option3"> {React.string("Option 3")} </Radio>
           </div>
         </Radio.RadioGroup>
-        <div className="mt-2">
-          {`Selected value: ${selectedValue}`->React.string}
-        </div>
+        <div className="mt-2"> {`Selected value: ${selectedValue}`->React.string} </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Disabled Radio Group"->React.string} </h2>
         <Radio.RadioGroup
-          name="disabled-group"
-          defaultValue="option1"
-          isDisabled=true
-          label="Disabled group"
-        >
+          name="disabled-group" defaultValue="option1" isDisabled=true label="Disabled group">
           <div className="flex flex-col gap-2">
             <Radio value="option1"> {React.string("Option 1")} </Radio>
             <Radio value="option2"> {React.string("Option 2")} </Radio>
@@ -1013,32 +916,23 @@ module RadioDemo = {
           </div>
         </Radio.RadioGroup>
       </div>
-      
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4"> {"Radio with Custom Validation"->React.string} </h2>
-        <Radio.RadioGroup
-          name="validation-group"
-          label="Choose a valid option"
-        >
+        <h2 className="text-xl font-semibold mb-4">
+          {"Radio with Custom Validation"->React.string}
+        </h2>
+        <Radio.RadioGroup name="validation-group" label="Choose a valid option">
           <div className="flex flex-col gap-2">
-            <Radio 
-              value="valid" 
-              rightSlot={<Check size=16 color="green" />}
-            > 
-              {React.string("Valid Option")} 
+            <Radio value="valid" rightSlot={<Check size=16 color="green" />}>
+              {React.string("Valid Option")}
             </Radio>
-            <Radio 
-              value="invalid" 
-              rightSlot={<Check size=16 color="red" />}
-            > 
-              {React.string("Invalid Option")} 
+            <Radio value="invalid" rightSlot={<Check size=16 color="red" />}>
+              {React.string("Invalid Option")}
             </Radio>
-            <Radio 
-              value="warning" 
+            <Radio
+              value="warning"
               rightSlot={<Check size=16 color="orange" />}
-              subtext="This option requires additional verification"
-            > 
-              {React.string("Warning Option")} 
+              subtext="This option requires additional verification">
+              {React.string("Warning Option")}
             </Radio>
           </div>
         </Radio.RadioGroup>
@@ -1055,11 +949,10 @@ module SwitchDemo = {
 
     <div>
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"Switch Demo"->React.string} </h1>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Basic Switch"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Switch 
+          <Switch
             checked=isChecked
             onCheckedChange={checked => setIsChecked(_ => checked)}
             label={React.string("Toggle me")}
@@ -1069,84 +962,51 @@ module SwitchDemo = {
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Switch Sizes"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Switch 
-            size=#sm
-            label={React.string("Small Switch")}
-          />
-          <Switch 
-            size=#md 
-            label={React.string("Medium Switch")}
-          />
+          <Switch size=#sm label={React.string("Small Switch")} />
+          <Switch size=#md label={React.string("Medium Switch")} />
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Switch States"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Switch 
-            label={React.string("Enabled Switch")}
-          />
-          <Switch 
-            checked=true 
-            label={React.string("Checked Switch")}
-          />
-          <Switch 
-            disabled=true
-            label={React.string("Disabled Switch")}
-          />
-          <Switch 
-            disabled=true 
-            checked=true
-            label={React.string("Disabled and Checked Switch")}
-          />
+          <Switch label={React.string("Enabled Switch")} />
+          <Switch checked=true label={React.string("Checked Switch")} />
+          <Switch disabled=true label={React.string("Disabled Switch")} />
+          <Switch disabled=true checked=true label={React.string("Disabled and Checked Switch")} />
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Switch with Subtext"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Switch 
+          <Switch
             label={React.string("Switch with Subtext")}
             subtext="Additional information about this switch option"
           />
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Switch with Right Slot"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Switch 
-            label={React.string("Switch with Icon")}
-            rightSlot={<Check size=16 color="green" />}
+          <Switch
+            label={React.string("Switch with Icon")} rightSlot={<Check size=16 color="green" />}
           />
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Switch Group"->React.string} </h2>
         <Switch.SwitchGroup
           name="options"
           label="Select multiple options"
           value=groupValues
-          onChange={data => setGroupValues(_ => data["values"])}
-        >
+          onChange={data => setGroupValues(_ => data["values"])}>
           <div className="flex flex-col gap-3">
-            <Switch 
-              value="option1"
-              label={React.string("Option 1")}
-            />
-            <Switch 
-              value="option2"
-              label={React.string("Option 2")}
-            />
-            <Switch 
-              value="option3"
-              label={React.string("Option 3")}
-              subtext="With additional description"
+            <Switch value="option1" label={React.string("Option 1")} />
+            <Switch value="option2" label={React.string("Option 2")} />
+            <Switch
+              value="option3" label={React.string("Option 3")} subtext="With additional description"
             />
           </div>
         </Switch.SwitchGroup>
@@ -1154,24 +1014,16 @@ module SwitchDemo = {
           {`Selected values: ${groupValues->Js.Array2.joinWith(", ")}`->React.string}
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Disabled Switch Group"->React.string} </h2>
         <Switch.SwitchGroup
           name="disabled-options"
           label="Disabled options group"
           isDisabled=true
-          defaultValue={["option1"]}
-        >
+          defaultValue={["option1"]}>
           <div className="flex flex-col gap-3">
-            <Switch 
-              value="option1"
-              label={React.string("Option 1")}
-            />
-            <Switch 
-              value="option2"
-              label={React.string("Option 2")}
-            />
+            <Switch value="option1" label={React.string("Option 1")} />
+            <Switch value="option2" label={React.string("Option 2")} />
           </div>
         </Switch.SwitchGroup>
       </div>
@@ -1185,109 +1037,88 @@ module DateRangePickerDemo = {
     let today = Js.Date.make()
     let future = Js.Date.make()
     let _ = Js.Date.setDate(future, Js.Date.getDate(future) +. 7.0)
-    
-    let (dateRange, setDateRange) = React.useState(_ => ({
+
+    let (dateRange, setDateRange) = React.useState((_): DateRangePicker.dateRange => {
       startDate: today,
       endDate: future,
-    }: DateRangePicker.dateRange))
+    })
 
     <div>
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"DateRangePicker Demo"->React.string} </h1>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Basic DateRangePicker"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <DateRangePicker 
+          <DateRangePicker
             value=dateRange
             onChange={range => setDateRange(_ => range)}
             placeholder="Select date range"
           />
           <div className="text-sm text-gray-600">
-            {`Selected range: ${Js.Date.toLocaleDateString(dateRange.startDate)} - ${Js.Date.toLocaleDateString(dateRange.endDate)}`->React.string}
+            {`Selected range: ${Js.Date.toLocaleDateString(
+                dateRange.startDate,
+              )} - ${Js.Date.toLocaleDateString(dateRange.endDate)}`->React.string}
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"DateRangePicker Variants"->React.string} </h2>
         <div className="flex flex-col gap-4">
           <div>
-            <div className="mb-2">{"Primary Variant"->React.string}</div>
-            <DateRangePicker 
-              variant=#primary
-              placeholder="Primary variant"
-            />
+            <div className="mb-2"> {"Primary Variant"->React.string} </div>
+            <DateRangePicker variant=#primary placeholder="Primary variant" />
           </div>
           <div>
-            <div className="mb-2">{"Secondary Variant"->React.string}</div>
-            <DateRangePicker 
-              variant=#secondary
-              placeholder="Secondary variant"
-            />
+            <div className="mb-2"> {"Secondary Variant"->React.string} </div>
+            <DateRangePicker variant=#secondary placeholder="Secondary variant" />
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4"> {"DateRangePicker with Time Picker"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"DateRangePicker with Time Picker"->React.string}
+        </h2>
         <div className="flex flex-col gap-4">
-          <DateRangePicker 
-            showTimePicker=true
-            placeholder="Select date and time range"
-          />
+          <DateRangePicker showTimePicker=true placeholder="Select date and time range" />
         </div>
       </div>
-      
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4"> {"DateRangePicker with Presets"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"DateRangePicker with Presets"->React.string}
+        </h2>
         <div className="flex flex-col gap-4">
-          <DateRangePicker 
-            showPresets=true
-            placeholder="Select from presets"
-          />
+          <DateRangePicker showPresets=true placeholder="Select from presets" />
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Disabled DateRangePicker"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <DateRangePicker 
-            isDisabled=true
-            placeholder="Disabled picker"
-          />
+          <DateRangePicker isDisabled=true placeholder="Disabled picker" />
         </div>
       </div>
-      
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4"> {"DateRangePicker with Custom Icon"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"DateRangePicker with Custom Icon"->React.string}
+        </h2>
         <div className="flex flex-col gap-4">
-          <DateRangePicker 
-            icon={<Check size=16 />}
-            placeholder="Custom calendar icon"
-          />
+          <DateRangePicker icon={<Check size=16 />} placeholder="Custom calendar icon" />
         </div>
       </div>
-      
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4"> {"DateRangePicker with Date Constraints"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"DateRangePicker with Date Constraints"->React.string}
+        </h2>
         <div className="flex flex-col gap-4">
           <div>
-            <div className="mb-2">{"Disable Future Dates"->React.string}</div>
-            <DateRangePicker 
-              disableFutureDates=true
-              placeholder="No future dates"
-            />
+            <div className="mb-2"> {"Disable Future Dates"->React.string} </div>
+            <DateRangePicker disableFutureDates=true placeholder="No future dates" />
           </div>
           <div>
-            <div className="mb-2">{"Disable Past Dates"->React.string}</div>
-            <DateRangePicker 
-              disablePastDates=true
-              placeholder="No past dates"
-            />
+            <div className="mb-2"> {"Disable Past Dates"->React.string} </div>
+            <DateRangePicker disablePastDates=true placeholder="No past dates" />
           </div>
           <div>
-            <div className="mb-2">{"Min/Max Date Range"->React.string}</div>
-            <DateRangePicker 
+            <div className="mb-2"> {"Min/Max Date Range"->React.string} </div>
+            <DateRangePicker
               minDate={Js.Date.makeWithYMD(~year=2023.0, ~month=0.0, ~date=1.0, ())}
               maxDate={Js.Date.makeWithYMD(~year=2023.0, ~month=11.0, ~date=31.0, ())}
               placeholder="Limited to 2023"
@@ -1295,24 +1126,16 @@ module DateRangePickerDemo = {
           </div>
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Single Date Selection"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <DateRangePicker 
-            allowSingleDateSelection=true
-            placeholder="Select one date"
-          />
+          <DateRangePicker allowSingleDateSelection=true placeholder="Select one date" />
         </div>
       </div>
-      
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Custom Format"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <DateRangePicker 
-            dateFormat="MM/dd/yyyy"
-            placeholder="MM/DD/YYYY format"
-          />
+          <DateRangePicker dateFormat="MM/dd/yyyy" placeholder="MM/DD/YYYY format" />
         </div>
       </div>
     </div>
@@ -1324,7 +1147,6 @@ module Sidebar = {
     | Buttons
     | Tags
     | Snackbars
-    | Tooltips
     | TabsComponent
     | Alerts
     | Breadcrumb
@@ -1334,7 +1156,7 @@ module Sidebar = {
     | Radio
     | Switch
     | DateRangePicker
-
+    | TooltipDemo2
   // Add a type for component metadata
   type componentInfo = {
     variant: component,
@@ -1346,7 +1168,6 @@ module Sidebar = {
     {variant: Buttons, label: "Buttons"},
     {variant: Tags, label: "Tags"},
     {variant: Snackbars, label: "Snackbars"},
-    {variant: Tooltips, label: "Tooltips"},
     {variant: TabsComponent, label: "Tabs"},
     {variant: Alerts, label: "Alerts"},
     {variant: Breadcrumb, label: "Breadcrumb"},
@@ -1356,6 +1177,7 @@ module Sidebar = {
     {variant: Radio, label: "Radio"},
     {variant: Switch, label: "Switch"},
     {variant: DateRangePicker, label: "DateRangePicker"},
+    {variant: TooltipDemo2, label: "TooltipDemo2"},
   ]
 
   @react.component
@@ -1368,20 +1190,19 @@ module Sidebar = {
       activeComponent === component ? activeClass : inactiveClass
     }
 
-    <div className="w-64 h-screen bg-white border-r border-gray-200 fixed left-0 top-0 overflow-y-auto">
+    <div
+      className="w-64 h-screen bg-white border-r border-gray-200 fixed left-0 top-0 overflow-y-auto">
       <div className="p-4 border-b border-gray-200">
-        <h2 className="text-xl font-bold">{"Components"->React.string}</h2>
+        <h2 className="text-xl font-bold"> {"Components"->React.string} </h2>
       </div>
       <nav className="py-2">
-        {components->Belt.Array.map(({variant, label}) => 
-          <button 
-            key={label} 
-            className={getItemClass(variant)} 
-            onClick={_ => onSelect(variant)}
-          >
+        {components
+        ->Belt.Array.map(({variant, label}) =>
+          <button key={label} className={getItemClass(variant)} onClick={_ => onSelect(variant)}>
             {label->React.string}
           </button>
-        )->React.array}
+        )
+        ->React.array}
       </nav>
     </div>
   }
@@ -1392,10 +1213,7 @@ let make = () => {
   let (activeComponent, setActiveComponent) = React.useState(_ => Sidebar.Buttons)
 
   <div className="flex">
-    <Sidebar 
-      activeComponent 
-      onSelect={component => setActiveComponent(_ => component)} 
-    />
+    <Sidebar activeComponent onSelect={component => setActiveComponent(_ => component)} />
     <div className="ml-64 flex-1 p-6">
       <h1 className="text-3xl font-bold mb-8 text-center">
         {"Design System Components"->React.string}
@@ -1404,16 +1222,16 @@ let make = () => {
       | Buttons => <ButtonDemo />
       | Tags => <TagDemo />
       | Snackbars => <SnackbarDemo />
-      | Tooltips => <TooltipDemo />
       | TabsComponent => <TabsPreviewDemo />
       | Alerts => <AlertDemo />
-      | Breadcrumb => <BreadcrumbDemo/>
+      | Breadcrumb => <BreadcrumbDemo />
       | ButtonGroup => <ButtonGroupDemo />
       | Avatar => <AvatarDemo />
       | AvatarGroup => <AvatarGroupDemo />
       | Radio => <RadioDemo />
       | Switch => <SwitchDemo />
       | DateRangePicker => <DateRangePickerDemo />
+      | TooltipDemo2 => <TooltipDemo2 />
       }}
     </div>
   </div>

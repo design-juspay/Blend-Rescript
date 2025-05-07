@@ -582,14 +582,14 @@ function App$SnackbarDemo(props) {
             });
 }
 
-function App$TooltipDemo(props) {
+function App$TooltipDemo2(props) {
   return JsxRuntime.jsxs("div", {
               children: [
                 JsxRuntime.jsx("h1", {
-                      children: "Tooltip Demo",
+                      children: "Tooltip V2 Demo",
                       className: "text-2xl font-bold mb-6 mt-12"
                     }),
-                JsxRuntime.jsx(DesignSystem.Tooltip, {
+                JsxRuntime.jsx(DesignSystem.TooltipV2, {
                       children: JsxRuntime.jsx("button", {
                             children: "Hover me"
                           }),
@@ -2536,10 +2536,6 @@ var components = [
     label: "Snackbars"
   },
   {
-    variant: "Tooltips",
-    label: "Tooltips"
-  },
-  {
     variant: "TabsComponent",
     label: "Tabs"
   },
@@ -2574,6 +2570,10 @@ var components = [
   {
     variant: "DateRangePicker",
     label: "DateRangePicker"
+  },
+  {
+    variant: "TooltipDemo2",
+    label: "TooltipDemo2"
   }
 ];
 
@@ -2635,9 +2635,6 @@ function App(props) {
     case "Snackbars" :
         tmp = JsxRuntime.jsx(App$SnackbarDemo, {});
         break;
-    case "Tooltips" :
-        tmp = JsxRuntime.jsx(App$TooltipDemo, {});
-        break;
     case "TabsComponent" :
         tmp = JsxRuntime.jsx(App$TabsPreviewDemo, {});
         break;
@@ -2664,6 +2661,9 @@ function App(props) {
         break;
     case "DateRangePicker" :
         tmp = JsxRuntime.jsx(App$DateRangePickerDemo, {});
+        break;
+    case "TooltipDemo2" :
+        tmp = JsxRuntime.jsx(App$TooltipDemo2, {});
         break;
     
   }
