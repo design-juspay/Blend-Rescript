@@ -268,8 +268,8 @@ module TooltipDemo = {
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"Tooltip Demo"->React.string} </h1>
       <ToolTipVinit content={React.string("This is a basic tooltip")}>
         <button> {React.string("Hover me")} </button>
-      </ToolTipVinit>
-    </div>
+        </ToolTipVinit>
+      </div>
   }
 }
 
@@ -1319,8 +1319,8 @@ module DateRangePickerDemo = {
   }
 }
 
-module TabInterface = {
-  type tab =
+module Sidebar = {
+  type component =
     | Buttons
     | Tags
     | Snackbars
@@ -1335,173 +1335,86 @@ module TabInterface = {
     | Switch
     | DateRangePicker
 
+  // Add a type for component metadata
+  type componentInfo = {
+    variant: component,
+    label: string,
+  }
+
+  // Create a list of all components with their labels
+  let components: array<componentInfo> = [
+    {variant: Buttons, label: "Buttons"},
+    {variant: Tags, label: "Tags"},
+    {variant: Snackbars, label: "Snackbars"},
+    {variant: Tooltips, label: "Tooltips"},
+    {variant: TabsComponent, label: "Tabs"},
+    {variant: Alerts, label: "Alerts"},
+    {variant: Breadcrumb, label: "Breadcrumb"},
+    {variant: ButtonGroup, label: "ButtonGroup"},
+    {variant: Avatar, label: "Avatar"},
+    {variant: AvatarGroup, label: "AvatarGroup"},
+    {variant: Radio, label: "Radio"},
+    {variant: Switch, label: "Switch"},
+    {variant: DateRangePicker, label: "DateRangePicker"},
+  ]
+
   @react.component
-  let make = () => {
-    let (activeTab, setActiveTab) = React.useState(_ => Buttons)
-
-    let getTabClass = tab => {
-      let baseClass = "px-4 py-2 font-medium rounded-t-lg transition-colors duration-200"
+  let make = (~onSelect, ~activeComponent) => {
+    let getItemClass = component => {
+      let baseClass = "px-4 py-2 w-full text-left transition-colors duration-200"
       let activeClass = baseClass ++ " bg-blue-500 text-white"
-      let inactiveClass = baseClass ++ " bg-gray-200 text-gray-700 hover:bg-gray-300"
+      let inactiveClass = baseClass ++ " hover:bg-gray-100"
 
-      activeTab === tab ? activeClass : inactiveClass
+      activeComponent === component ? activeClass : inactiveClass
     }
 
-    <div>
-      <div className="flex border-b border-gray-200 mb-6">
-        <button className={getTabClass(Buttons)} onClick={_ => setActiveTab(_ => Buttons)}>
-          {"Buttons"->React.string}
-        </button>
-        <button className={getTabClass(Tags)} onClick={_ => setActiveTab(_ => Tags)}>
-          {"Tags"->React.string}
-        </button>
-        <button className={getTabClass(Snackbars)} onClick={_ => setActiveTab(_ => Snackbars)}>
-          {"Snackbars"->React.string}
-        </button>
-        <button className={getTabClass(Tooltips)} onClick={_ => setActiveTab(_ => Tooltips)}>
-          {"Tooltips"->React.string}
-        </button>
-        <button
-          className={getTabClass(TabsComponent)} onClick={_ => setActiveTab(_ => TabsComponent)}>
-          {"Tabs"->React.string}
-        </button>
-        <button className={getTabClass(Alerts)} onClick={_ => setActiveTab(_ => Alerts)}>
-          {"Alerts"->React.string}
-        </button>
-        <button className={getTabClass(Breadcrumb)} onClick={_ => setActiveTab(_ => Breadcrumb)}>
-          {"Breadcrumb"->React.string}
-        </button>
-        <button className={getTabClass(ButtonGroup)} onClick={_ => setActiveTab(_ => ButtonGroup)}>
-          {"ButtonGroup"->React.string}
-        </button>
-        <button className={getTabClass(Avatar)} onClick={_ => setActiveTab(_ => Avatar)}>
-          {"Avatar"->React.string}
-        </button>
-        <button className={getTabClass(AvatarGroup)} onClick={_ => setActiveTab(_ => AvatarGroup)}>
-          {"AvatarGroup"->React.string}
-        </button>
-        <button className={getTabClass(Radio)} onClick={_ => setActiveTab(_ => Radio)}>
-          {"Radio"->React.string}
-        </button>
-        <button className={getTabClass(Switch)} onClick={_ => setActiveTab(_ => Switch)}>
-          {"Switch"->React.string}
-        </button>
-        <button className={getTabClass(DateRangePicker)} onClick={_ => setActiveTab(_ => DateRangePicker)}>
-          {"DateRangePicker"->React.string}
-        </button>
+    <div className="w-64 h-screen bg-white border-r border-gray-200 fixed left-0 top-0 overflow-y-auto">
+      <div className="p-4 border-b border-gray-200">
+        <h2 className="text-xl font-bold">{"Components"->React.string}</h2>
       </div>
-      <div className="tab-content">
-        {switch activeTab {
-        | Buttons => <ButtonDemo />
-        | Tags => <TagDemo />
-        | Snackbars => <SnackbarDemo />
-        | Tooltips => <TooltipDemo />
-        | TabsComponent => <TabsPreviewDemo />
-        | Alerts => <AlertDemo />
-        | Breadcrumb => <BreadcrumbDemo/>
-        | ButtonGroup => <ButtonGroupDemo />
-        | Avatar => <AvatarDemo />
-        | AvatarGroup => <AvatarGroupDemo />
-        | Radio => <RadioDemo />
-        | Switch => <SwitchDemo />
-        | DateRangePicker => <DateRangePickerDemo />
-        }}
-      </div>
+      <nav className="py-2">
+        {components->Belt.Array.map(({variant, label}) => 
+          <button 
+            key={label} 
+            className={getItemClass(variant)} 
+            onClick={_ => onSelect(variant)}
+          >
+            {label->React.string}
+          </button>
+        )->React.array}
+      </nav>
     </div>
   }
 }
 
-
-let tooltipExample = () => {
-  <div className="tooltip-example" style={ReactDOM.Style.make(~margin="20px", ~padding="20px", ())}>
-    <h2> {React.string("Tooltip Component Example")} </h2>
-    <div style={ReactDOM.Style.make(~display="flex", ~gap="20px", ~marginTop="20px", ())} />
-  </div>
-}
-
-
 @react.component
 let make = () => {
-  <div className="p-6">
-    <h1 className="text-3xl font-bold mb-8 text-center">
-      {"Design System Components"->React.string}
-    </h1>
-    <TabInterface />
-    <h2 className="text-2xl font-bold mb-4 mt-12">
-      {React.string("Design System Tabs Example")}
-    </h2>
-    <Tabs defaultValue="tab1" className="tabs-root">
-      <Tabs.List className="tabs-list">
-        <Tabs.Trigger value="tab1" className="tabs-trigger">
-          {React.string("Features")}
-        </Tabs.Trigger>
-        <Tabs.Trigger value="tab2" className="tabs-trigger">
-          {React.string("Specifications")}
-        </Tabs.Trigger>
-        <Tabs.Trigger value="tab3" className="tabs-trigger">
-          {React.string("Reviews")}
-        </Tabs.Trigger>
-      </Tabs.List>
-      <Tabs.Content value="tab1" className="tabs-content">
-        <div>
-          <h3 className="text-xl font-semibold mb-3"> {React.string("Key Features")} </h3>
-          <ul className="list-disc pl-5 space-y-2">
-            <li> {React.string("Fully accessible tabs component")} </li>
-            <li> {React.string("Keyboard navigation support")} </li>
-            <li> {React.string("Customizable styling")} </li>
-            <li> {React.string("Smooth transitions between tabs")} </li>
-          </ul>
-        </div>
-      </Tabs.Content>
-      <Tabs.Content value="tab2" className="tabs-content">
-        <div>
-          <h3 className="text-xl font-semibold mb-3">
-            {React.string("Technical Specifications")}
-          </h3>
-          <table className="w-full border-collapse">
-            <tbody>
-              <tr className="border-b">
-                <td className="py-2 font-medium"> {React.string("Component")} </td>
-                <td className="py-2"> {React.string("Design System Tabs")} </td>
-              </tr>
-              <tr className="border-b">
-                <td className="py-2 font-medium"> {React.string("Language")} </td>
-                <td className="py-2"> {React.string("ReScript")} </td>
-              </tr>
-              <tr className="border-b">
-                <td className="py-2 font-medium"> {React.string("Styling")} </td>
-                <td className="py-2"> {React.string("Design System CSS")} </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </Tabs.Content>
-      <Tabs.Content value="tab3" className="tabs-content">
-        <div>
-          <h3 className="text-xl font-semibold mb-3"> {React.string("User Reviews")} </h3>
-          <div className="space-y-4">
-            <div className="p-3 bg-gray-50 rounded-lg">
-              <div className="flex items-center mb-2">
-                <div className="font-medium"> {React.string("John Doe")} </div>
-                <div className="ml-auto text-yellow-500"> {"★★★★★"->React.string} </div>
-              </div>
-              <p className="text-gray-700">
-                {React.string("This tabs component is amazing! Very easy to use and customize.")}
-              </p>
-            </div>
-            <div className="p-3 bg-gray-50 rounded-lg">
-              <div className="flex items-center mb-2">
-                <div className="font-medium"> {React.string("Jane Smith")} </div>
-                <div className="ml-auto text-yellow-500"> {"★★★★☆"->React.string} </div>
-              </div>
-              <p className="text-gray-700">
-                {React.string("Great component with good accessibility features.")}
-              </p>
-            </div>
-          </div>
-        </div>
-      </Tabs.Content>
-    </Tabs>
-    {tooltipExample()}
+  let (activeComponent, setActiveComponent) = React.useState(_ => Sidebar.Buttons)
+
+  <div className="flex">
+    <Sidebar 
+      activeComponent 
+      onSelect={component => setActiveComponent(_ => component)} 
+    />
+    <div className="ml-64 flex-1 p-6">
+      <h1 className="text-3xl font-bold mb-8 text-center">
+        {"Design System Components"->React.string}
+      </h1>
+      {switch activeComponent {
+      | Buttons => <ButtonDemo />
+      | Tags => <TagDemo />
+      | Snackbars => <SnackbarDemo />
+      | Tooltips => <TooltipDemo />
+      | TabsComponent => <TabsPreviewDemo />
+      | Alerts => <AlertDemo />
+      | Breadcrumb => <BreadcrumbDemo/>
+      | ButtonGroup => <ButtonGroupDemo />
+      | Avatar => <AvatarDemo />
+      | AvatarGroup => <AvatarGroupDemo />
+      | Radio => <RadioDemo />
+      | Switch => <SwitchDemo />
+      | DateRangePicker => <DateRangePickerDemo />
+      }}
+    </div>
   </div>
 }
