@@ -11,6 +11,7 @@ import * as ButtonDemo from "./demo/ButtonDemo.res.mjs";
 import * as SwitchDemo from "./demo/SwitchDemo.res.mjs";
 import * as CheckboxDemo from "./demo/CheckboxDemo.res.mjs";
 import * as SnackbarDemo from "./demo/SnackbarDemo.res.mjs";
+import * as StatCardDemo from "./demo/StatCardDemo.res.mjs";
 import * as AccordionDemo from "./demo/AccordionDemo.res.mjs";
 import * as AvatarGroupDemo from "./demo/AvatarGroupDemo.res.mjs";
 import * as ButtonGroupDemo from "./demo/ButtonGroupDemo.res.mjs";
@@ -133,6 +134,10 @@ var components = [
   {
     variant: "CheckboxDemo",
     label: "CheckboxDemo"
+  },
+  {
+    variant: "StatCardDemo",
+    label: "StatCardDemo"
   }
 ];
 
@@ -229,6 +234,9 @@ function App(props) {
         break;
     case "CheckboxDemo" :
         tmp = JsxRuntime.jsx(CheckboxDemo.CheckboxDemo.make, {});
+        break;
+    case "StatCardDemo" :
+        tmp = JsxRuntime.jsx(StatCardDemo.StatCardDemo.make, {});
         break;
     
   }

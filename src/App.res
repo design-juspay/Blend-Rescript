@@ -12,7 +12,7 @@ open DateRangePickerDemo
 open SwitchDemo
 open AvatarGroupDemo
 open CheckboxDemo
-
+open StatCardDemo
 
 module TooltipDemo2 = {
   @react.component
@@ -60,6 +60,7 @@ module Sidebar = {
     | TooltipDemo2
     | AccordionDemo
     | CheckboxDemo
+    | StatCardDemo
   type componentInfo = {
     variant: component,
     label: string,
@@ -81,6 +82,7 @@ module Sidebar = {
     {variant: TooltipDemo2, label: "TooltipDemo2"},
     {variant: AccordionDemo, label: "AccordionDemo"},
     {variant: CheckboxDemo, label: "CheckboxDemo"},
+    {variant: StatCardDemo, label: "StatCardDemo"},
   ]
 
   @react.component
@@ -137,6 +139,7 @@ let make = () => {
       | TooltipDemo2 => <TooltipDemo2 />
       | AccordionDemo => <AccordionDemo />
       | CheckboxDemo => <CheckboxDemo />
+      | StatCardDemo => <StatCardDemo />
       }}
     </div>
   </div>
