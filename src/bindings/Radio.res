@@ -7,7 +7,7 @@ type radioSize = [
 // Radio component props
 type radioProps = {
   value: string,
-  checked?: bool,
+  isChecked?: bool,
   isDisabled?: bool,
   size?: radioSize,
   children: React.element,
@@ -34,7 +34,7 @@ type radioGroupProps = {
 @module("@vinitjuspay/design-system") @react.component
 external make: (
   ~value: string,
-  ~checked: bool=?,
+  ~isChecked: bool=?,
   ~isDisabled: bool=?,
   ~size: radioSize=?,
   ~children: React.element,

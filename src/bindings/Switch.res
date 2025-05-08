@@ -1,5 +1,3 @@
-// Switch component bindings
-
 type switchSize = [
   | #sm
   | #md
@@ -8,9 +6,9 @@ type switchSize = [
 // Switch component props
 type switchProps = {
   value?: string,
-  checked?: bool,
+  isChecked?: bool,
   onCheckedChange?: bool => unit,
-  disabled?: bool,
+  isDisabled?: bool,
   size?: switchSize,
   label?: React.element,
   subtext?: string,
@@ -39,9 +37,9 @@ type switchGroupProps = {
 @module("@vinitjuspay/design-system") @react.component
 external make: (
   ~value: string=?,
-  ~checked: bool=?,
+  ~isChecked: bool=?,
   ~onCheckedChange: bool => unit=?,
-  ~disabled: bool=?,
+  ~isDisabled: bool=?,
   ~size: switchSize=?,
   ~label: React.element=?,
   ~subtext: string=?,
