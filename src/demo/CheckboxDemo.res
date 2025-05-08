@@ -4,7 +4,6 @@ module CheckboxDemo = {
   @react.component
   let make = () => {
     let (isChecked, setIsChecked) = React.useState(_ => false)
-    let (groupValues, setGroupValues) = React.useState(_ => ["option1"])
 
     <div>
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"Checkbox Demo"->React.string} </h1>
@@ -81,43 +80,7 @@ module CheckboxDemo = {
           </button>
         </div>
       </div>
-      
-
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4"> {"Checkbox Group"->React.string} </h2>
-        <Checkbox.CheckboxGroup
-          label="Select options"
-          name="options"
-          value={groupValues}
-          onChange={e => {
-            let values = e["values"]
-            setGroupValues(_ => values)
-            Js.log2("Selected values:", values)
-          }}
-        >
-          <div className="flex flex-col gap-3">
-            <Checkbox value="option1"> {React.string("Option 1")} </Checkbox>
-            <Checkbox value="option2"> {React.string("Option 2")} </Checkbox>
-            <Checkbox value="option3"> {React.string("Option 3")} </Checkbox>
-          </div>
-        </Checkbox.CheckboxGroup>
-      </div>
-      
-
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4"> {"Disabled Checkbox Group"->React.string} </h2>
-        <Checkbox.CheckboxGroup
-          label="Disabled options group"
-          name="disabled-options"
-          isDisabled=true
-          defaultValue={["option1"]}
-        >
-          <div className="flex flex-col gap-3">
-            <Checkbox value="option1"> {React.string("Option 1")} </Checkbox>
-            <Checkbox value="option2"> {React.string("Option 2")} </Checkbox>
-          </div>
-        </Checkbox.CheckboxGroup>
-      </div>
+    
     </div>
   }
 } 

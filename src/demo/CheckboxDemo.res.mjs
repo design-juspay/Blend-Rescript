@@ -12,10 +12,6 @@ function CheckboxDemo$CheckboxDemo(props) {
       });
   var setIsChecked = match[1];
   var isChecked = match[0];
-  var match$1 = React.useState(function () {
-        return ["option1"];
-      });
-  var setGroupValues = match$1[1];
   return JsxRuntime.jsxs("div", {
               children: [
                 JsxRuntime.jsx("h1", {
@@ -179,72 +175,6 @@ function CheckboxDemo$CheckboxDemo(props) {
                                     })
                               ],
                               className: "flex flex-col gap-4"
-                            })
-                      ],
-                      className: "mb-8"
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("h2", {
-                              children: "Checkbox Group",
-                              className: "text-xl font-semibold mb-4"
-                            }),
-                        JsxRuntime.jsx(DesignSystem.CheckboxGroup, {
-                              label: "Select options",
-                              name: "options",
-                              value: match$1[0],
-                              children: JsxRuntime.jsxs("div", {
-                                    children: [
-                                      JsxRuntime.jsx(DesignSystem.Checkbox, {
-                                            value: "option1",
-                                            children: "Option 1"
-                                          }),
-                                      JsxRuntime.jsx(DesignSystem.Checkbox, {
-                                            value: "option2",
-                                            children: "Option 2"
-                                          }),
-                                      JsxRuntime.jsx(DesignSystem.Checkbox, {
-                                            value: "option3",
-                                            children: "Option 3"
-                                          })
-                                    ],
-                                    className: "flex flex-col gap-3"
-                                  }),
-                              onChange: (function (e) {
-                                  var values = e.values;
-                                  setGroupValues(function (param) {
-                                        return values;
-                                      });
-                                  console.log("Selected values:", values);
-                                })
-                            })
-                      ],
-                      className: "mb-8"
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("h2", {
-                              children: "Disabled Checkbox Group",
-                              className: "text-xl font-semibold mb-4"
-                            }),
-                        JsxRuntime.jsx(DesignSystem.CheckboxGroup, {
-                              label: "Disabled options group",
-                              name: "disabled-options",
-                              defaultValue: ["option1"],
-                              children: JsxRuntime.jsxs("div", {
-                                    children: [
-                                      JsxRuntime.jsx(DesignSystem.Checkbox, {
-                                            value: "option1",
-                                            children: "Option 1"
-                                          }),
-                                      JsxRuntime.jsx(DesignSystem.Checkbox, {
-                                            value: "option2",
-                                            children: "Option 2"
-                                          })
-                                    ],
-                                    className: "flex flex-col gap-3"
-                                  }),
-                              isDisabled: true
                             })
                       ],
                       className: "mb-8"

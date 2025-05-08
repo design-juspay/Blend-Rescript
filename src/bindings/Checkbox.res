@@ -47,21 +47,3 @@ external make: (
   ~subtext: string=?,
   ~rightSlot: React.element=?,
 ) => React.element = "Checkbox"
-
-// CheckboxGroup component - If this exists in the design system
-module CheckboxGroup = {
-  @module("@vinitjuspay/design-system") @react.component
-  external make: (
-    ~label: string=?,
-    ~name: string,
-    ~defaultValue: array<string>=?,
-    ~value: array<string>=?,
-    ~children: React.element,
-    ~onChange: {
-      "name": string,
-      "values": array<string>,
-    } => unit=?,
-    ~className: string=?,
-    ~isDisabled: bool=?,
-  ) => React.element = "CheckboxGroup"
-} 
