@@ -1,36 +1,7 @@
-type accordionType = [
-  | #border
-  | #noborder
-]
+type accordionType = [#border| #noborder ]
 
-type accordionChevronPosition = [
-  | #left
-  | #right
-]
+type accordionChevronPosition = [#left| #right ]
 
-type accordionItemProps = {
-  value: string,
-  title: string,
-  subtext: option<string>,
-  leftSlot: option<React.element>,
-  rightSlot: option<React.element>,
-  subtextSlot: option<React.element>,
-  children: React.element,
-  isDisabled: option<bool>,
-  className: option<string>,
-  chevronPosition: option<accordionChevronPosition>,
-}
-
-type accordionProps = {
-  children: React.element,
-  accordionType: option<accordionType>,
-  defaultValue: option<string>,
-  value: option<string>,
-  isCollapsible: option<bool>,
-  isMultiple: option<bool>,
-  onValueChange: option<string => unit>,
-  className: option<string>,
-}
 
 @module("@vinitjuspay/design-system") @react.component
 external make: (
@@ -58,4 +29,18 @@ module Item = {
     ~className: string=?,
     ~chevronPosition: accordionChevronPosition=?,
   ) => React.element = "AccordionItem"
+}
+
+module Root = {
+  @module("@vinitjuspay/design-system") @react.component
+  external make: (
+    ~accordionType: accordionType=?,
+    ~defaultValue: string=?,
+    ~value: string=?,
+    ~isCollapsible: bool=?,
+    ~isMultiple: bool=?,
+    ~onValueChange: string => unit=?,
+    ~title: string,
+    ~children: React.element,
+  ) => React.element = "Accordion"
 }

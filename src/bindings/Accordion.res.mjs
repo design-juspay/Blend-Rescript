@@ -3,7 +3,10 @@
 
 var Item = {};
 
+var Root = {};
+
 export {
   Item ,
+  Root ,
 }
 /* No side effect */
