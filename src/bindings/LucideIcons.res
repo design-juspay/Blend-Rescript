@@ -63,6 +63,11 @@ module BarChart = {
   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "BarChart"
 }
 
+module X = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?, ~onClick: ReactEvent.Mouse.t => unit=?) => React.element = "X"
+}
+
 // module AlertCircle = {
 //   @module("lucide-react") @react.component
 //   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "AlertCircle"
@@ -71,4 +76,19 @@ module BarChart = {
 // module Info = {
 //   @module("lucide-react") @react.component
 //   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Info"
-// } 
+// }
+
+module Search = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Search"
+}
+
+module Lock = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Lock"
+}
+
+module MapPin = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "MapPin"
+} 

@@ -27,6 +27,14 @@ var Users = {};
 
 var BarChart = {};
 
+var X = {};
+
+var Search = {};
+
+var Lock = {};
+
+var MapPin = {};
+
 export {
   Check ,
   ChevronLeft ,
@@ -41,5 +49,9 @@ export {
   Zap ,
   Users ,
   BarChart ,
+  X ,
+  Search ,
+  Lock ,
+  MapPin ,
 }
 /* No side effect */

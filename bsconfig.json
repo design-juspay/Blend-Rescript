@@ -7,6 +7,9 @@
   ],
   "bs-dependencies": [
     "@rescript/react",
-    "rescript-core"
+    "@rescript/core"
+  ],
+  "bsc-flags": [
+    "-open RescriptCore"
   ]
 } 

@@ -13,6 +13,9 @@ open SwitchDemo
 open AvatarGroupDemo
 open CheckboxDemo
 open StatCardDemo
+open ModalDemo
+open MenuDemo
+open TextInputDemo
 
 module TooltipDemo2 = {
   @react.component
@@ -61,6 +64,9 @@ module Sidebar = {
     | AccordionDemo
     | CheckboxDemo
     | StatCardDemo
+    | ModalComponent
+    | MenuComponent
+    | TextInputComponent
   type componentInfo = {
     variant: component,
     label: string,
@@ -83,6 +89,9 @@ module Sidebar = {
     {variant: AccordionDemo, label: "AccordionDemo"},
     {variant: CheckboxDemo, label: "CheckboxDemo"},
     {variant: StatCardDemo, label: "StatCardDemo"},
+    {variant: ModalComponent, label: "Modal"},
+    {variant: MenuComponent, label: "Menu"},
+    {variant: TextInputComponent, label: "TextInput"},
   ]
 
   @react.component
@@ -140,6 +149,9 @@ let make = () => {
       | AccordionDemo => <AccordionDemo />
       | CheckboxDemo => <CheckboxDemo />
       | StatCardDemo => <StatCardDemo />
+      | ModalComponent => <ModalDemo />
+      | MenuComponent => <MenuDemo />
+      | TextInputComponent => <TextInputDemo />
       }}
     </div>
   </div>

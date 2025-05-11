@@ -3,7 +3,9 @@
 import * as React from "react";
 import * as TabDemo from "./demo/TabDemo.res.mjs";
 import * as TagDemo from "./demo/TagDemo.res.mjs";
+import * as MenuDemo from "./demo/MenuDemo.res.mjs";
 import * as AlertDemo from "./demo/AlertDemo.res.mjs";
+import * as ModalDemo from "./demo/ModalDemo.res.mjs";
 import * as RadioDemo from "./demo/RadioDemo.res.mjs";
 import * as AvatarDemo from "./demo/AvatarDemo.res.mjs";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
@@ -13,6 +15,7 @@ import * as CheckboxDemo from "./demo/CheckboxDemo.res.mjs";
 import * as SnackbarDemo from "./demo/SnackbarDemo.res.mjs";
 import * as StatCardDemo from "./demo/StatCardDemo.res.mjs";
 import * as AccordionDemo from "./demo/AccordionDemo.res.mjs";
+import * as TextInputDemo from "./demo/TextInputDemo.res.mjs";
 import * as AvatarGroupDemo from "./demo/AvatarGroupDemo.res.mjs";
 import * as ButtonGroupDemo from "./demo/ButtonGroupDemo.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
@@ -138,6 +141,18 @@ var components = [
   {
     variant: "StatCardDemo",
     label: "StatCardDemo"
+  },
+  {
+    variant: "ModalComponent",
+    label: "Modal"
+  },
+  {
+    variant: "MenuComponent",
+    label: "Menu"
+  },
+  {
+    variant: "TextInputComponent",
+    label: "TextInput"
   }
 ];
 
@@ -237,6 +252,15 @@ function App(props) {
         break;
     case "StatCardDemo" :
         tmp = JsxRuntime.jsx(StatCardDemo.StatCardDemo.make, {});
+        break;
+    case "ModalComponent" :
+        tmp = JsxRuntime.jsx(ModalDemo.ModalDemo.make, {});
+        break;
+    case "MenuComponent" :
+        tmp = JsxRuntime.jsx(MenuDemo.MenuDemo.make, {});
+        break;
+    case "TextInputComponent" :
+        tmp = JsxRuntime.jsx(TextInputDemo.TextInputDemo.make, {});
         break;
     
   }
