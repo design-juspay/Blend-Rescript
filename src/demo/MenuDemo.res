@@ -98,7 +98,7 @@ module DSMenuDropdown = {
     ~isOpen: bool=?,
     ~onOpenChange: bool => unit=?,
     ~size: [#sm | #md | #lg]=?,
-    ~type_: [#singleSelect | #multiSelect | #iconOnly]=?,
+    ~type_: [#iconOnly | #singleSelect | #multiSelect]=?,
     ~subType: [#hasContainer | #noContainer]=?,
     ~disabled: bool=?,
     ~selectedItems: array<string>=?,
@@ -109,22 +109,23 @@ module DSMenuDropdown = {
 
 // Main component
 module MenuDemo = {
-  let longMenu = Belt.Array.makeBy(20, i => {
+  // Helper to create a menu item with an icon
+  let makeMenuItemWithIcon = (id, text, icon) => {
     let item: Types.menuItemProps = {
-      id: Some(i->Int.toString),
-      text: `Item ${i->Int.toString}`,
+      id: Some(id),
+      text: text,
       className: None,
       disabled: None,
-      type_: None,
+      type_: Some(#DEFAULT),
       state: None,
       action: None,
       onClick: None,
       onMouseEnter: None,
       onMouseLeave: None,
-      hasSlotL: None,
+      hasSlotL: Some(true),
       hasSlotR1: None,
       hasSlotR2: None,
-      slotL: None,
+      slotL: Some(icon),
       slotR1: None,
       slotR2: None,
       hasShortcut: None,
@@ -136,99 +137,225 @@ module MenuDemo = {
       parentId: None,
     }
     item
-  })
+  }
+
+  // Helper to create a submenu item
+  let makeSubmenuItem = (id, text, icon, submenuItems) => {
+    let item: Types.menuItemProps = {
+      id: Some(id),
+      text: text,
+      className: None,
+      disabled: None,
+      type_: Some(#SUBMENU),
+      state: None,
+      action: None,
+      onClick: None,
+      onMouseEnter: None,
+      onMouseLeave: None,
+      hasSlotL: Some(true),
+      hasSlotR1: None,
+      hasSlotR2: None,
+      slotL: Some(icon),
+      slotR1: None,
+      slotR2: None,
+      hasShortcut: None,
+      shortcutValue: None,
+      isMultiSelect: None,
+      isSelected: None,
+      hasSubmenu: Some(true),
+      submenuItems: Some(submenuItems),
+      parentId: None,
+    }
+    item
+  }
+
+  // Helper to create a multi-select item
+  let makeMultiSelectItem = (id, text, isSelected) => {
+    let item: Types.menuItemProps = {
+      id: Some(id),
+      text: text,
+      className: None,
+      disabled: None,
+      type_: Some(#MULTI_SELECT),
+      state: None,
+      action: None,
+      onClick: None,
+      onMouseEnter: None,
+      onMouseLeave: None,
+      hasSlotL: Some(true),
+      hasSlotR1: None,
+      hasSlotR2: None,
+      slotL: Some(<Checkbox isChecked={isSelected} isDisabled=false className="mr-2" />),
+      slotR1: None,
+      slotR2: None,
+      hasShortcut: None,
+      shortcutValue: None,
+      isMultiSelect: Some(true),
+      isSelected: Some(isSelected),
+      hasSubmenu: None,
+      submenuItems: None,
+      parentId: None,
+    }
+    item
+  }
+
+  // Helper to create an action item
+  let makeActionItem = (id, text, icon, action) => {
+    let item: Types.menuItemProps = {
+      id: Some(id),
+      text: text,
+      className: None,
+      disabled: None,
+      type_: Some(#ACTION),
+      state: None,
+      action: Some(action),
+      onClick: None,
+      onMouseEnter: None,
+      onMouseLeave: None,
+      hasSlotL: Some(true),
+      hasSlotR1: None,
+      hasSlotR2: None,
+      slotL: Some(icon),
+      slotR1: None,
+      slotR2: None,
+      hasShortcut: None,
+      shortcutValue: None,
+      isMultiSelect: None,
+      isSelected: None,
+      hasSubmenu: None,
+      submenuItems: None,
+      parentId: None,
+    }
+    item
+  }
 
   @react.component
   let make = () => {
     let (selectedOption, setSelectedOption) = React.useState(_ => "")
     let (selectedMultiOptions, setSelectedMultiOptions) = React.useState(_ => [])
     
-    let menuItems: array<Types.menuItemProps> = [
-      {
-        id: Some("1"),
-        text: "Menu Item 1",
-        className: None,
-        disabled: None,
-        type_: None,
-        state: None,
-        action: None,
-        onClick: None,
-        onMouseEnter: None,
-        onMouseLeave: None,
-        hasSlotL: None,
-        hasSlotR1: None,
-        hasSlotR2: None,
-        slotL: None,
-        slotR1: None,
-        slotR2: None,
-        hasShortcut: None,
-        shortcutValue: None,
-        isMultiSelect: None,
-        isSelected: None,
-        hasSubmenu: None,
-        submenuItems: None,
-        parentId: None,
-      },
-      {
-        id: Some("2"),
-        text: "Menu Item 2",
-        className: None,
-        disabled: None,
-        type_: None,
-        state: None,
-        action: None,
-        onClick: None,
-        onMouseEnter: None,
-        onMouseLeave: None,
-        hasSlotL: None,
-        hasSlotR1: None,
-        hasSlotR2: None,
-        slotL: None,
-        slotR1: None,
-        slotR2: None,
-        hasShortcut: None,
-        shortcutValue: None,
-        isMultiSelect: None,
-        isSelected: None,
-        hasSubmenu: None,
-        submenuItems: None,
-        parentId: None,
-      },
-      {
-        id: Some("3"),
-        text: "Menu Item 3",
-        className: None,
-        disabled: None,
-        type_: None,
-        state: None,
-        action: None,
-        onClick: None,
-        onMouseEnter: None,
-        onMouseLeave: None,
-        hasSlotL: None,
-        hasSlotR1: None,
-        hasSlotR2: None,
-        slotL: None,
-        slotR1: None,
-        slotR2: None,
-        hasShortcut: None,
-        shortcutValue: None,
-        isMultiSelect: None,
-        isSelected: None,
-        hasSubmenu: None,
-        submenuItems: None,
-        parentId: None,
-      },
+    // Basic Menu Items
+    let basicMenuItems = [
+      makeMenuItemWithIcon("1", "Profile", <LucideIcons.User size=16 />),
+      makeMenuItemWithIcon("2", "Settings", <LucideIcons.Settings size=16 />),
+      makeMenuItemWithIcon("3", "Help", <LucideIcons.HelpCircle size=16 />)
+    ]
+
+    // Nested Menu with Submenu
+    let nestedMenuItems = [
+      makeSubmenuItem(
+        "1", 
+        "Profile", 
+        <LucideIcons.User size=16 />,
+        [
+          makeMenuItemWithIcon("1-1", "View Profile", <LucideIcons.User size=16 />),
+          makeSubmenuItem(
+            "1-2", 
+            "Edit Profile", 
+            <LucideIcons.Settings size=16 />,
+            [
+              makeMenuItemWithIcon("1-2-1", "Personal Info", <LucideIcons.User size=16 />),
+              makeMenuItemWithIcon("1-2-2", "Preferences", <LucideIcons.Settings size=16 />),
+              makeMenuItemWithIcon("1-2-3", "Security", <LucideIcons.Shield size=16 />)
+            ]
+          ),
+          makeSubmenuItem(
+            "1-3", 
+            "Account Settings", 
+            <LucideIcons.Shield size=16 />,
+            [
+              makeMenuItemWithIcon("1-3-1", "Billing", <LucideIcons.BarChart size=16 />),
+              makeMenuItemWithIcon("1-3-2", "Subscription", <LucideIcons.Users size=16 />),
+              makeMenuItemWithIcon("1-3-3", "API Keys", <LucideIcons.Shield size=16 />)
+            ]
+          )
+        ]
+      ),
+      makeSubmenuItem(
+        "2", 
+        "Notifications", 
+        <LucideIcons.Mail size=16 />,
+        [
+          makeMenuItemWithIcon("2-1", "All Notifications", <LucideIcons.Mail size=16 />),
+          makeSubmenuItem(
+            "2-2", 
+            "Unread", 
+            <LucideIcons.Mail size=16 />,
+            [
+              makeMenuItemWithIcon("2-2-1", "High Priority", <LucideIcons.Mail size=16 />),
+              makeMenuItemWithIcon("2-2-2", "Medium Priority", <LucideIcons.Mail size=16 />),
+              makeMenuItemWithIcon("2-2-3", "Low Priority", <LucideIcons.Mail size=16 />)
+            ]
+          ),
+          makeSubmenuItem(
+            "2-3", 
+            "Settings", 
+            <LucideIcons.Settings size=16 />,
+            [
+              makeMenuItemWithIcon("2-3-1", "Email Notifications", <LucideIcons.Mail size=16 />),
+              makeMenuItemWithIcon("2-3-2", "Push Notifications", <LucideIcons.Mail size=16 />),
+              makeMenuItemWithIcon("2-3-3", "SMS Notifications", <LucideIcons.Mail size=16 />)
+            ]
+          )
+        ]
+      ),
+      makeSubmenuItem(
+        "3", 
+        "Help & Support", 
+        <LucideIcons.HelpCircle size=16 />,
+        [
+          makeSubmenuItem(
+            "3-1", 
+            "Documentation", 
+            <LucideIcons.Mail size=16 />,
+            [
+              makeMenuItemWithIcon("3-1-1", "Getting Started", <LucideIcons.Home size=16 />),
+              makeMenuItemWithIcon("3-1-2", "API Reference", <LucideIcons.Mail size=16 />),
+              makeMenuItemWithIcon("3-1-3", "Tutorials", <LucideIcons.HelpCircle size=16 />)
+            ]
+          ),
+          makeSubmenuItem(
+            "3-2", 
+            "Contact Support", 
+            <LucideIcons.Mail size=16 />,
+            [
+              makeMenuItemWithIcon("3-2-1", "Email Support", <LucideIcons.Mail size=16 />),
+              makeMenuItemWithIcon("3-2-2", "Live Chat", <LucideIcons.Mail size=16 />),
+              makeMenuItemWithIcon("3-2-3", "Phone Support", <LucideIcons.Mail size=16 />)
+            ]
+          ),
+          makeMenuItemWithIcon("3-3", "FAQ", <LucideIcons.HelpCircle size=16 />)
+        ]
+      )
+    ]
+
+    // Create multi-select items with dynamic checked state
+    let multiSelectMenuItems = [
+      makeMultiSelectItem("1", "Option 1", selectedMultiOptions->Belt.Array.some(id => id === "1")),
+      makeMultiSelectItem("2", "Option 2", selectedMultiOptions->Belt.Array.some(id => id === "2")),
+      makeMultiSelectItem("3", "Option 3", selectedMultiOptions->Belt.Array.some(id => id === "3"))
+    ]
+
+    // Update multi-select state when an item is clicked
+    let handleMultiSelectChange = (selectedIds) => {
+      setSelectedMultiOptions(_ => selectedIds)
+      Console.log2("Selected items changed:", selectedIds)
+    }
+
+    // Action Menu Items
+    let actionMenuItems = [
+      makeActionItem("1", "Edit Profile", <LucideIcons.User size=16 />, #PRIMARY),
+      makeActionItem("2", "Delete Account", <LucideIcons.User size=16 />, #DANGER)
     ]
 
     <div className="p-4 space-y-8">
-      <h1 className="text-2xl font-bold"> {"Menu Components"->React.string} </h1>
+      <h1 className="text-2xl font-bold"> {"Menu Examples"->React.string} </h1>
 
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"Basic Menu"->React.string} </h2>
         <div className="relative">
           <DSMenu 
-            items={menuItems}
+            items={basicMenuItems}
             onItemClick={item => Console.log2("Item clicked:", item)}
             className="min-w-[200px]"
           />
@@ -236,9 +363,65 @@ module MenuDemo = {
       </div>
 
       <div className="border rounded p-4">
+        <h2 className="text-xl font-semibold mb-4"> {"Menu with Submenu"->React.string} </h2>
+        <div className="relative">
+          <DSMenu 
+            items={nestedMenuItems}
+            onItemClick={item => Console.log2("Item clicked:", item)}
+            className="min-w-[200px]"
+          />
+        </div>
+      </div>
+
+      <div className="border rounded p-4">
+        <h2 className="text-xl font-semibold mb-4"> {"Multi-select Menu"->React.string} </h2>
+        <div className="relative">
+          <DSMenu 
+            type_=#MULTI_SELECT
+            items={multiSelectMenuItems}
+            onItemClick={item => {
+              // Handle item click without closing the menu
+              let id = item.id->Belt.Option.getWithDefault("")
+              let newSelections = if (selectedMultiOptions->Belt.Array.some(x => x === id)) {
+                selectedMultiOptions->Belt.Array.keep(x => x !== id)
+              } else {
+                Belt.Array.concat(selectedMultiOptions, [id])
+              }
+              setSelectedMultiOptions(_ => newSelections)
+              Console.log2("Clicked item:", item)
+            }}
+            className="min-w-[200px]"
+            selectedItems={selectedMultiOptions}
+            onSelectionChange={handleMultiSelectChange}
+            // Keep menu open
+            isOpen={true}
+          />
+        </div>
+        <div className="mt-3 text-sm text-gray-600">
+          {`Selected options: ${selectedMultiOptions->Belt.Array.joinWith(", ", x => x)}`->React.string}
+        </div>
+      </div>
+
+      <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"Menu with Search"->React.string} </h2>
         <div className="relative">
-          <DSMenu items={longMenu} hasSearch={true} className="min-w-[200px]" />
+          <DSMenu 
+            items={basicMenuItems} 
+            hasSearch={true}
+            searchPlaceholder="Search items..."
+            className="min-w-[200px]" 
+          />
+        </div>
+      </div>
+
+      <div className="border rounded p-4">
+        <h2 className="text-xl font-semibold mb-4"> {"Menu with Actions"->React.string} </h2>
+        <div className="relative">
+          <DSMenu 
+            items={actionMenuItems}
+            onItemClick={item => Console.log2("Item clicked:", item)}
+            className="min-w-[200px]"
+          />
         </div>
       </div>
 
@@ -249,7 +432,7 @@ module MenuDemo = {
           <div className="border p-4 rounded">
             <h3 className="font-medium mb-3"> {"Single Select Dropdown"->React.string} </h3>
             <DSMenuDropdown
-              menuItems={menuItems}
+              menuItems={basicMenuItems}
               type_=#singleSelect
               label="Single Select"
               placeholder="Choose an option"
@@ -261,167 +444,43 @@ module MenuDemo = {
 
           <div className="border p-4 rounded">
             <h3 className="font-medium mb-3"> {"Icon Only Dropdown"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              type_=#iconOnly
-              dropdownIcon={<span className="flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full text-blue-600"> {"+"->React.string} </span>}
-              className="min-w-[200px]"
-            />
+            <div className="flex flex-col items-center text-center">
+              <DSMenuDropdown
+                menuItems={basicMenuItems}
+                type_=#iconOnly
+                dropdownIcon={<span className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"> {"+"->React.string} </span>}
+                placeholder="Click the icon to select"
+                subType=#noContainer
+                className="w-auto"
+                buttonClassName="flex items-center justify-center"
+              />
+              <p className="mt-2 text-gray-500 text-sm">{"Click the icon to select"->React.string}</p>
+            </div>
           </div>
 
           <div className="border p-4 rounded">
             <h3 className="font-medium mb-3"> {"Multi Select Dropdown"->React.string} </h3>
             <DSMenuDropdown
-              menuItems={menuItems}
+              menuItems={multiSelectMenuItems}
               type_=#multiSelect
               label="Multi Select"
               selectedItems={selectedMultiOptions}
-              onSelectedItemsChange={items => setSelectedMultiOptions(_ => items)}
-              selectionType=#count
+              onSelectedItemsChange={handleMultiSelectChange}
+              selectionType=#text
               className="min-w-[200px]"
+              placeholder="Select options"
+              // Don't auto-close the dropdown when items are selected
+              onOpenChange={isOpen => {
+                // Only close when explicitly requested by clicking outside or pressing escape
+                if (!isOpen) {
+                  Console.log("Dropdown closed by user")
+                }
+              }}
             />
+            <div className="mt-3 text-sm text-gray-600">
+              {`Selected: ${selectedMultiOptions->Belt.Array.joinWith(", ", x => x)}`->React.string}
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"Dropdown Triggers"->React.string} </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border p-4 rounded">
-            <h3 className="font-medium mb-3"> {"Click Trigger"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              openTrigger=#click
-              label="Click to open"
-              className="min-w-[200px]"
-            />
-          </div>
-
-          <div className="border p-4 rounded">
-            <h3 className="font-medium mb-3"> {"Hover Trigger"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              openTrigger=#hover
-              label="Hover to open"
-              className="min-w-[200px]"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"Dropdown Sizes"->React.string} </h2>
-        
-        <div className="flex flex-col md:flex-row items-end gap-6">
-          <div>
-            <h3 className="font-medium mb-3"> {"Small Size"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              size=#sm
-              label="Small"
-              className="min-w-[160px]"
-            />
-          </div>
-
-          <div>
-            <h3 className="font-medium mb-3"> {"Medium Size (Default)"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              size=#md
-              label="Medium"
-              className="min-w-[200px]"
-            />
-          </div>
-
-          <div>
-            <h3 className="font-medium mb-3"> {"Large Size"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              size=#lg
-              label="Large"
-              className="min-w-[240px]"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"Dropdown SubTypes"->React.string} </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border p-4 rounded">
-            <h3 className="font-medium mb-3"> {"With Container (Default)"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              subType=#hasContainer
-              label="Has Container"
-              className="min-w-[200px]"
-            />
-          </div>
-
-          <div className="border p-4 rounded">
-            <h3 className="font-medium mb-3"> {"No Container"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              subType=#noContainer
-              label="No Container"
-              className="min-w-[200px]"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"Dropdown States"->React.string} </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border p-4 rounded">
-            <h3 className="font-medium mb-3"> {"Enabled (Default)"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              label="Enabled Dropdown"
-              className="min-w-[200px]"
-            />
-          </div>
-
-          <div className="border p-4 rounded">
-            <h3 className="font-medium mb-3"> {"Disabled"->React.string} </h3>
-            <DSMenuDropdown
-              menuItems={menuItems}
-              disabled={true}
-              label="Disabled Dropdown"
-              className="min-w-[200px]"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"Dropdown with Search"->React.string} </h2>
-        
-        <div className="border p-4 rounded">
-          <DSMenuDropdown
-            menuItems={longMenu}
-            label="Searchable Dropdown"
-            hasFilterSearch={true}
-            searchPlaceholder="Search items..."
-            className="min-w-[250px]"
-          />
-        </div>
-      </div>
-
-      <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"Stylized Dropdown"->React.string} </h2>
-        
-        <div className="border p-4 rounded">
-          <DSMenuDropdown
-            menuItems={menuItems}
-            label="Custom Styling"
-            className="min-w-[200px]"
-            buttonClassName="bg-indigo-50 hover:bg-indigo-100"
-            menuClassName="border-indigo-200"
-          />
         </div>
       </div>
     </div>

@@ -37,9 +37,6 @@ type dropdownPosition = [
   | #right
 ]
 
-// Import Menu module
-open Menu
-
 @module("@vinitjuspay/design-system") @react.component
 external make: (
   ~children: React.element=?,
@@ -64,4 +61,5 @@ external make: (
   ~selectedItems: array<string>=?,
   ~onSelectedItemsChange: array<string> => unit=?,
   ~selectionType: dropdownSelectionType=?,
+  ~position: dropdownPosition=?,
 ) => React.element = "Dropdown" 

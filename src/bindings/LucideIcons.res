@@ -91,4 +91,9 @@ module Lock = {
 module MapPin = {
   @module("lucide-react") @react.component
   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "MapPin"
+}
+
+module HelpCircle = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "HelpCircle"
 } 

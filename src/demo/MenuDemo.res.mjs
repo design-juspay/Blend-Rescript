@@ -2,7 +2,9 @@
 
 import * as React from "react";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
+import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
+import * as LucideReact from "lucide-react";
 import * as JsxRuntime from "react/jsx-runtime";
 import * as DesignSystem from "@vinitjuspay/design-system";
 
@@ -12,33 +14,121 @@ var DSMenu = {};
 
 var DSMenuDropdown = {};
 
-var longMenu = Belt_Array.makeBy(20, (function (i) {
-        return {
-                id: i.toString(),
-                text: "Item " + i.toString(),
-                className: undefined,
-                disabled: undefined,
-                type_: undefined,
-                state: undefined,
-                action: undefined,
-                onClick: undefined,
-                onMouseEnter: undefined,
-                onMouseLeave: undefined,
-                hasSlotL: undefined,
-                hasSlotR1: undefined,
-                hasSlotR2: undefined,
-                slotL: undefined,
-                slotR1: undefined,
-                slotR2: undefined,
-                hasShortcut: undefined,
-                shortcutValue: undefined,
-                isMultiSelect: undefined,
-                isSelected: undefined,
-                hasSubmenu: undefined,
-                submenuItems: undefined,
-                parentId: undefined
-              };
-      }));
+function makeMenuItemWithIcon(id, text, icon) {
+  return {
+          id: id,
+          text: text,
+          className: undefined,
+          disabled: undefined,
+          type_: "DEFAULT",
+          state: undefined,
+          action: undefined,
+          onClick: undefined,
+          onMouseEnter: undefined,
+          onMouseLeave: undefined,
+          hasSlotL: true,
+          hasSlotR1: undefined,
+          hasSlotR2: undefined,
+          slotL: Caml_option.some(icon),
+          slotR1: undefined,
+          slotR2: undefined,
+          hasShortcut: undefined,
+          shortcutValue: undefined,
+          isMultiSelect: undefined,
+          isSelected: undefined,
+          hasSubmenu: undefined,
+          submenuItems: undefined,
+          parentId: undefined
+        };
+}
+
+function makeSubmenuItem(id, text, icon, submenuItems) {
+  return {
+          id: id,
+          text: text,
+          className: undefined,
+          disabled: undefined,
+          type_: "SUBMENU",
+          state: undefined,
+          action: undefined,
+          onClick: undefined,
+          onMouseEnter: undefined,
+          onMouseLeave: undefined,
+          hasSlotL: true,
+          hasSlotR1: undefined,
+          hasSlotR2: undefined,
+          slotL: Caml_option.some(icon),
+          slotR1: undefined,
+          slotR2: undefined,
+          hasShortcut: undefined,
+          shortcutValue: undefined,
+          isMultiSelect: undefined,
+          isSelected: undefined,
+          hasSubmenu: true,
+          submenuItems: submenuItems,
+          parentId: undefined
+        };
+}
+
+function makeMultiSelectItem(id, text, isSelected) {
+  return {
+          id: id,
+          text: text,
+          className: undefined,
+          disabled: undefined,
+          type_: "MULTI_SELECT",
+          state: undefined,
+          action: undefined,
+          onClick: undefined,
+          onMouseEnter: undefined,
+          onMouseLeave: undefined,
+          hasSlotL: true,
+          hasSlotR1: undefined,
+          hasSlotR2: undefined,
+          slotL: Caml_option.some(JsxRuntime.jsx(DesignSystem.Checkbox, {
+                    isChecked: isSelected,
+                    isDisabled: false,
+                    className: "mr-2"
+                  })),
+          slotR1: undefined,
+          slotR2: undefined,
+          hasShortcut: undefined,
+          shortcutValue: undefined,
+          isMultiSelect: true,
+          isSelected: isSelected,
+          hasSubmenu: undefined,
+          submenuItems: undefined,
+          parentId: undefined
+        };
+}
+
+function makeActionItem(id, text, icon, action) {
+  return {
+          id: id,
+          text: text,
+          className: undefined,
+          disabled: undefined,
+          type_: "ACTION",
+          state: undefined,
+          action: action,
+          onClick: undefined,
+          onMouseEnter: undefined,
+          onMouseLeave: undefined,
+          hasSlotL: true,
+          hasSlotR1: undefined,
+          hasSlotR2: undefined,
+          slotL: Caml_option.some(icon),
+          slotR1: undefined,
+          slotR2: undefined,
+          hasShortcut: undefined,
+          shortcutValue: undefined,
+          isMultiSelect: undefined,
+          isSelected: undefined,
+          hasSubmenu: undefined,
+          submenuItems: undefined,
+          parentId: undefined
+        };
+}
 
 function MenuDemo$MenuDemo(props) {
   var match = React.useState(function () {
@@ -49,87 +139,148 @@ function MenuDemo$MenuDemo(props) {
         return [];
       });
   var setSelectedMultiOptions = match$1[1];
-  var menuItems = [
-    {
-      id: "1",
-      text: "Menu Item 1",
-      className: undefined,
-      disabled: undefined,
-      type_: undefined,
-      state: undefined,
-      action: undefined,
-      onClick: undefined,
-      onMouseEnter: undefined,
-      onMouseLeave: undefined,
-      hasSlotL: undefined,
-      hasSlotR1: undefined,
-      hasSlotR2: undefined,
-      slotL: undefined,
-      slotR1: undefined,
-      slotR2: undefined,
-      hasShortcut: undefined,
-      shortcutValue: undefined,
-      isMultiSelect: undefined,
-      isSelected: undefined,
-      hasSubmenu: undefined,
-      submenuItems: undefined,
-      parentId: undefined
-    },
-    {
-      id: "2",
-      text: "Menu Item 2",
-      className: undefined,
-      disabled: undefined,
-      type_: undefined,
-      state: undefined,
-      action: undefined,
-      onClick: undefined,
-      onMouseEnter: undefined,
-      onMouseLeave: undefined,
-      hasSlotL: undefined,
-      hasSlotR1: undefined,
-      hasSlotR2: undefined,
-      slotL: undefined,
-      slotR1: undefined,
-      slotR2: undefined,
-      hasShortcut: undefined,
-      shortcutValue: undefined,
-      isMultiSelect: undefined,
-      isSelected: undefined,
-      hasSubmenu: undefined,
-      submenuItems: undefined,
-      parentId: undefined
-    },
-    {
-      id: "3",
-      text: "Menu Item 3",
-      className: undefined,
-      disabled: undefined,
-      type_: undefined,
-      state: undefined,
-      action: undefined,
-      onClick: undefined,
-      onMouseEnter: undefined,
-      onMouseLeave: undefined,
-      hasSlotL: undefined,
-      hasSlotR1: undefined,
-      hasSlotR2: undefined,
-      slotL: undefined,
-      slotR1: undefined,
-      slotR2: undefined,
-      hasShortcut: undefined,
-      shortcutValue: undefined,
-      isMultiSelect: undefined,
-      isSelected: undefined,
-      hasSubmenu: undefined,
-      submenuItems: undefined,
-      parentId: undefined
-    }
+  var selectedMultiOptions = match$1[0];
+  var basicMenuItems = [
+    makeMenuItemWithIcon("1", "Profile", JsxRuntime.jsx(LucideReact.User, {
+              size: 16
+            })),
+    makeMenuItemWithIcon("2", "Settings", JsxRuntime.jsx(LucideReact.Settings, {
+              size: 16
+            })),
+    makeMenuItemWithIcon("3", "Help", JsxRuntime.jsx(LucideReact.HelpCircle, {
+              size: 16
+            }))
+  ];
+  var nestedMenuItems = [
+    makeSubmenuItem("1", "Profile", JsxRuntime.jsx(LucideReact.User, {
+              size: 16
+            }), [
+          makeMenuItemWithIcon("1-1", "View Profile", JsxRuntime.jsx(LucideReact.User, {
+                    size: 16
+                  })),
+          makeSubmenuItem("1-2", "Edit Profile", JsxRuntime.jsx(LucideReact.Settings, {
+                    size: 16
+                  }), [
+                makeMenuItemWithIcon("1-2-1", "Personal Info", JsxRuntime.jsx(LucideReact.User, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("1-2-2", "Preferences", JsxRuntime.jsx(LucideReact.Settings, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("1-2-3", "Security", JsxRuntime.jsx(LucideReact.Shield, {
+                          size: 16
+                        }))
+              ]),
+          makeSubmenuItem("1-3", "Account Settings", JsxRuntime.jsx(LucideReact.Shield, {
+                    size: 16
+                  }), [
+                makeMenuItemWithIcon("1-3-1", "Billing", JsxRuntime.jsx(LucideReact.BarChart, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("1-3-2", "Subscription", JsxRuntime.jsx(LucideReact.Users, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("1-3-3", "API Keys", JsxRuntime.jsx(LucideReact.Shield, {
+                          size: 16
+                        }))
+              ])
+        ]),
+    makeSubmenuItem("2", "Notifications", JsxRuntime.jsx(LucideReact.Mail, {
+              size: 16
+            }), [
+          makeMenuItemWithIcon("2-1", "All Notifications", JsxRuntime.jsx(LucideReact.Mail, {
+                    size: 16
+                  })),
+          makeSubmenuItem("2-2", "Unread", JsxRuntime.jsx(LucideReact.Mail, {
+                    size: 16
+                  }), [
+                makeMenuItemWithIcon("2-2-1", "High Priority", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("2-2-2", "Medium Priority", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("2-2-3", "Low Priority", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        }))
+              ]),
+          makeSubmenuItem("2-3", "Settings", JsxRuntime.jsx(LucideReact.Settings, {
+                    size: 16
+                  }), [
+                makeMenuItemWithIcon("2-3-1", "Email Notifications", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("2-3-2", "Push Notifications", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("2-3-3", "SMS Notifications", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        }))
+              ])
+        ]),
+    makeSubmenuItem("3", "Help & Support", JsxRuntime.jsx(LucideReact.HelpCircle, {
+              size: 16
+            }), [
+          makeSubmenuItem("3-1", "Documentation", JsxRuntime.jsx(LucideReact.Mail, {
+                    size: 16
+                  }), [
+                makeMenuItemWithIcon("3-1-1", "Getting Started", JsxRuntime.jsx(LucideReact.Home, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("3-1-2", "API Reference", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("3-1-3", "Tutorials", JsxRuntime.jsx(LucideReact.HelpCircle, {
+                          size: 16
+                        }))
+              ]),
+          makeSubmenuItem("3-2", "Contact Support", JsxRuntime.jsx(LucideReact.Mail, {
+                    size: 16
+                  }), [
+                makeMenuItemWithIcon("3-2-1", "Email Support", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("3-2-2", "Live Chat", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        })),
+                makeMenuItemWithIcon("3-2-3", "Phone Support", JsxRuntime.jsx(LucideReact.Mail, {
+                          size: 16
+                        }))
+              ]),
+          makeMenuItemWithIcon("3-3", "FAQ", JsxRuntime.jsx(LucideReact.HelpCircle, {
+                    size: 16
+                  }))
+        ])
+  ];
+  var multiSelectMenuItems = [
+    makeMultiSelectItem("1", "Option 1", Belt_Array.some(selectedMultiOptions, (function (id) {
+                return id === "1";
+              }))),
+    makeMultiSelectItem("2", "Option 2", Belt_Array.some(selectedMultiOptions, (function (id) {
+                return id === "2";
+              }))),
+    makeMultiSelectItem("3", "Option 3", Belt_Array.some(selectedMultiOptions, (function (id) {
+                return id === "3";
+              })))
+  ];
+  var handleMultiSelectChange = function (selectedIds) {
+    setSelectedMultiOptions(function (param) {
+          return selectedIds;
+        });
+    console.log("Selected items changed:", selectedIds);
+  };
+  var actionMenuItems = [
+    makeActionItem("1", "Edit Profile", JsxRuntime.jsx(LucideReact.User, {
+              size: 16
+            }), "PRIMARY"),
+    makeActionItem("2", "Delete Account", JsxRuntime.jsx(LucideReact.User, {
+              size: 16
+            }), "DANGER")
   ];
   return JsxRuntime.jsxs("div", {
               children: [
                 JsxRuntime.jsx("h1", {
-                      children: "Menu Components",
+                      children: "Menu Examples",
                       className: "text-2xl font-bold"
                     }),
                 JsxRuntime.jsxs("div", {
@@ -141,12 +292,69 @@ function MenuDemo$MenuDemo(props) {
                         JsxRuntime.jsx("div", {
                               children: JsxRuntime.jsx(DesignSystem.Menu, {
                                     className: "min-w-[200px]",
-                                    items: menuItems,
+                                    items: basicMenuItems,
                                     onItemClick: (function (item) {
                                         console.log("Item clicked:", item);
                                       })
                                   }),
                               className: "relative"
+                            })
+                      ],
+                      className: "border rounded p-4"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Menu with Submenu",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.Menu, {
+                                    className: "min-w-[200px]",
+                                    items: nestedMenuItems,
+                                    onItemClick: (function (item) {
+                                        console.log("Item clicked:", item);
+                                      })
+                                  }),
+                              className: "relative"
+                            })
+                      ],
+                      className: "border rounded p-4"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Multi-select Menu",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.Menu, {
+                                    className: "min-w-[200px]",
+                                    type_: "MULTI_SELECT",
+                                    items: multiSelectMenuItems,
+                                    onItemClick: (function (item) {
+                                        var id = Belt_Option.getWithDefault(item.id, "");
+                                        var newSelections = Belt_Array.some(selectedMultiOptions, (function (x) {
+                                                return x === id;
+                                              })) ? Belt_Array.keep(selectedMultiOptions, (function (x) {
+                                                  return x !== id;
+                                                })) : Belt_Array.concat(selectedMultiOptions, [id]);
+                                        setSelectedMultiOptions(function (param) {
+                                              return newSelections;
+                                            });
+                                        console.log("Clicked item:", item);
+                                      }),
+                                    selectedItems: selectedMultiOptions,
+                                    onSelectionChange: handleMultiSelectChange,
+                                    isOpen: true
+                                  }),
+                              className: "relative"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: "Selected options: " + Belt_Array.joinWith(selectedMultiOptions, ", ", (function (x) {
+                                      return x;
+                                    })),
+                              className: "mt-3 text-sm text-gray-600"
                             })
                       ],
                       className: "border rounded p-4"
@@ -161,7 +369,27 @@ function MenuDemo$MenuDemo(props) {
                               children: JsxRuntime.jsx(DesignSystem.Menu, {
                                     className: "min-w-[200px]",
                                     hasSearch: true,
-                                    items: longMenu
+                                    items: basicMenuItems,
+                                    searchPlaceholder: "Search items..."
+                                  }),
+                              className: "relative"
+                            })
+                      ],
+                      className: "border rounded p-4"
+                    }),
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsx("h2", {
+                              children: "Menu with Actions",
+                              className: "text-xl font-semibold mb-4"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: JsxRuntime.jsx(DesignSystem.Menu, {
+                                    className: "min-w-[200px]",
+                                    items: actionMenuItems,
+                                    onItemClick: (function (item) {
+                                        console.log("Item clicked:", item);
+                                      })
                                   }),
                               className: "relative"
                             })
@@ -183,7 +411,7 @@ function MenuDemo$MenuDemo(props) {
                                               className: "font-medium mb-3"
                                             }),
                                         JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
+                                              menuItems: basicMenuItems,
                                               label: "Single Select",
                                               onChange: (function (value) {
                                                   setSelectedOption(function (param) {
@@ -204,14 +432,26 @@ function MenuDemo$MenuDemo(props) {
                                               children: "Icon Only Dropdown",
                                               className: "font-medium mb-3"
                                             }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              dropdownIcon: Caml_option.some(JsxRuntime.jsx("span", {
-                                                        children: "+",
-                                                        className: "flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full text-blue-600"
-                                                      })),
-                                              className: "min-w-[200px]",
-                                              type_: "iconOnly"
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                      menuItems: basicMenuItems,
+                                                      dropdownIcon: Caml_option.some(JsxRuntime.jsx("span", {
+                                                                children: "+",
+                                                                className: "flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full text-gray-600 hover:bg-gray-200"
+                                                              })),
+                                                      placeholder: "Click the icon to select",
+                                                      className: "w-auto",
+                                                      buttonClassName: "flex items-center justify-center",
+                                                      type_: "iconOnly",
+                                                      subType: "noContainer"
+                                                    }),
+                                                JsxRuntime.jsx("p", {
+                                                      children: "Click the icon to select",
+                                                      className: "mt-2 text-gray-500 text-sm"
+                                                    })
+                                              ],
+                                              className: "flex flex-col items-center text-center"
                                             })
                                       ],
                                       className: "border p-4 rounded"
@@ -223,248 +463,33 @@ function MenuDemo$MenuDemo(props) {
                                               className: "font-medium mb-3"
                                             }),
                                         JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
+                                              menuItems: multiSelectMenuItems,
                                               label: "Multi Select",
+                                              placeholder: "Select options",
                                               className: "min-w-[200px]",
-                                              type_: "multiSelect",
-                                              selectedItems: match$1[0],
-                                              onSelectedItemsChange: (function (items) {
-                                                  setSelectedMultiOptions(function (param) {
-                                                        return items;
-                                                      });
+                                              onOpenChange: (function (isOpen) {
+                                                  if (!isOpen) {
+                                                    console.log("Dropdown closed by user");
+                                                    return ;
+                                                  }
+                                                  
                                                 }),
-                                              selectionType: "count"
+                                              type_: "multiSelect",
+                                              selectedItems: selectedMultiOptions,
+                                              onSelectedItemsChange: handleMultiSelectChange,
+                                              selectionType: "text"
+                                            }),
+                                        JsxRuntime.jsx("div", {
+                                              children: "Selected: " + Belt_Array.joinWith(selectedMultiOptions, ", ", (function (x) {
+                                                      return x;
+                                                    })),
+                                              className: "mt-3 text-sm text-gray-600"
                                             })
                                       ],
                                       className: "border p-4 rounded"
                                     })
                               ],
                               className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                            })
-                      ],
-                      className: "border rounded p-4"
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("h2", {
-                              children: "Dropdown Triggers",
-                              className: "text-xl font-semibold mb-4"
-                            }),
-                        JsxRuntime.jsxs("div", {
-                              children: [
-                                JsxRuntime.jsxs("div", {
-                                      children: [
-                                        JsxRuntime.jsx("h3", {
-                                              children: "Click Trigger",
-                                              className: "font-medium mb-3"
-                                            }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              openTrigger: "click",
-                                              label: "Click to open",
-                                              className: "min-w-[200px]"
-                                            })
-                                      ],
-                                      className: "border p-4 rounded"
-                                    }),
-                                JsxRuntime.jsxs("div", {
-                                      children: [
-                                        JsxRuntime.jsx("h3", {
-                                              children: "Hover Trigger",
-                                              className: "font-medium mb-3"
-                                            }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              openTrigger: "hover",
-                                              label: "Hover to open",
-                                              className: "min-w-[200px]"
-                                            })
-                                      ],
-                                      className: "border p-4 rounded"
-                                    })
-                              ],
-                              className: "grid grid-cols-1 md:grid-cols-2 gap-6"
-                            })
-                      ],
-                      className: "border rounded p-4"
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("h2", {
-                              children: "Dropdown Sizes",
-                              className: "text-xl font-semibold mb-4"
-                            }),
-                        JsxRuntime.jsxs("div", {
-                              children: [
-                                JsxRuntime.jsxs("div", {
-                                      children: [
-                                        JsxRuntime.jsx("h3", {
-                                              children: "Small Size",
-                                              className: "font-medium mb-3"
-                                            }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              label: "Small",
-                                              className: "min-w-[160px]",
-                                              size: "sm"
-                                            })
-                                      ]
-                                    }),
-                                JsxRuntime.jsxs("div", {
-                                      children: [
-                                        JsxRuntime.jsx("h3", {
-                                              children: "Medium Size (Default)",
-                                              className: "font-medium mb-3"
-                                            }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              label: "Medium",
-                                              className: "min-w-[200px]",
-                                              size: "md"
-                                            })
-                                      ]
-                                    }),
-                                JsxRuntime.jsxs("div", {
-                                      children: [
-                                        JsxRuntime.jsx("h3", {
-                                              children: "Large Size",
-                                              className: "font-medium mb-3"
-                                            }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              label: "Large",
-                                              className: "min-w-[240px]",
-                                              size: "lg"
-                                            })
-                                      ]
-                                    })
-                              ],
-                              className: "flex flex-col md:flex-row items-end gap-6"
-                            })
-                      ],
-                      className: "border rounded p-4"
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("h2", {
-                              children: "Dropdown SubTypes",
-                              className: "text-xl font-semibold mb-4"
-                            }),
-                        JsxRuntime.jsxs("div", {
-                              children: [
-                                JsxRuntime.jsxs("div", {
-                                      children: [
-                                        JsxRuntime.jsx("h3", {
-                                              children: "With Container (Default)",
-                                              className: "font-medium mb-3"
-                                            }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              label: "Has Container",
-                                              className: "min-w-[200px]",
-                                              subType: "hasContainer"
-                                            })
-                                      ],
-                                      className: "border p-4 rounded"
-                                    }),
-                                JsxRuntime.jsxs("div", {
-                                      children: [
-                                        JsxRuntime.jsx("h3", {
-                                              children: "No Container",
-                                              className: "font-medium mb-3"
-                                            }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              label: "No Container",
-                                              className: "min-w-[200px]",
-                                              subType: "noContainer"
-                                            })
-                                      ],
-                                      className: "border p-4 rounded"
-                                    })
-                              ],
-                              className: "grid grid-cols-1 md:grid-cols-2 gap-6"
-                            })
-                      ],
-                      className: "border rounded p-4"
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("h2", {
-                              children: "Dropdown States",
-                              className: "text-xl font-semibold mb-4"
-                            }),
-                        JsxRuntime.jsxs("div", {
-                              children: [
-                                JsxRuntime.jsxs("div", {
-                                      children: [
-                                        JsxRuntime.jsx("h3", {
-                                              children: "Enabled (Default)",
-                                              className: "font-medium mb-3"
-                                            }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              label: "Enabled Dropdown",
-                                              className: "min-w-[200px]"
-                                            })
-                                      ],
-                                      className: "border p-4 rounded"
-                                    }),
-                                JsxRuntime.jsxs("div", {
-                                      children: [
-                                        JsxRuntime.jsx("h3", {
-                                              children: "Disabled",
-                                              className: "font-medium mb-3"
-                                            }),
-                                        JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                              menuItems: menuItems,
-                                              label: "Disabled Dropdown",
-                                              className: "min-w-[200px]",
-                                              disabled: true
-                                            })
-                                      ],
-                                      className: "border p-4 rounded"
-                                    })
-                              ],
-                              className: "grid grid-cols-1 md:grid-cols-2 gap-6"
-                            })
-                      ],
-                      className: "border rounded p-4"
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("h2", {
-                              children: "Dropdown with Search",
-                              className: "text-xl font-semibold mb-4"
-                            }),
-                        JsxRuntime.jsx("div", {
-                              children: JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                    menuItems: longMenu,
-                                    label: "Searchable Dropdown",
-                                    hasFilterSearch: true,
-                                    searchPlaceholder: "Search items...",
-                                    className: "min-w-[250px]"
-                                  }),
-                              className: "border p-4 rounded"
-                            })
-                      ],
-                      className: "border rounded p-4"
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("h2", {
-                              children: "Stylized Dropdown",
-                              className: "text-xl font-semibold mb-4"
-                            }),
-                        JsxRuntime.jsx("div", {
-                              children: JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                    menuItems: menuItems,
-                                    label: "Custom Styling",
-                                    className: "min-w-[200px]",
-                                    buttonClassName: "bg-indigo-50 hover:bg-indigo-100",
-                                    menuClassName: "border-indigo-200"
-                                  }),
-                              className: "border p-4 rounded"
                             })
                       ],
                       className: "border rounded p-4"
@@ -475,7 +500,10 @@ function MenuDemo$MenuDemo(props) {
 }
 
 var MenuDemo = {
-  longMenu: longMenu,
+  makeMenuItemWithIcon: makeMenuItemWithIcon,
+  makeSubmenuItem: makeSubmenuItem,
+  makeMultiSelectItem: makeMultiSelectItem,
+  makeActionItem: makeActionItem,
   make: MenuDemo$MenuDemo
 };
 
@@ -485,4 +513,4 @@ export {
   DSMenuDropdown ,
   MenuDemo ,
 }
-/* longMenu Not a pure module */
+/* react Not a pure module */

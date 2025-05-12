@@ -35,6 +35,8 @@ var Lock = {};
 
 var MapPin = {};
 
+var HelpCircle = {};
+
 export {
   Check ,
   ChevronLeft ,
@@ -53,5 +55,6 @@ export {
   Search ,
   Lock ,
   MapPin ,
+  HelpCircle ,
 }
 /* No side effect */
