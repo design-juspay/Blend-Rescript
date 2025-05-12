@@ -37,6 +37,14 @@ var MapPin = {};
 
 var HelpCircle = {};
 
+var DollarSign = {};
+
+var Percent = {};
+
+var Plus = {};
+
+var Minus = {};
+
 export {
   Check ,
   ChevronLeft ,
@@ -56,5 +64,9 @@ export {
   Lock ,
   MapPin ,
   HelpCircle ,
+  DollarSign ,
+  Percent ,
+  Plus ,
+  Minus ,
 }
 /* No side effect */

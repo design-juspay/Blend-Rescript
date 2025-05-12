@@ -1,4 +1,4 @@
-// MenuDropdown types based on the component definition
+// Expose dropdown types for public use
 type dropdownType = [
   | #iconOnly
   | #singleSelect
@@ -37,9 +37,9 @@ type dropdownPosition = [
   | #right
 ]
 
-// MenuDropdown component binding with all props based on TS definition
-@module("@vinitjuspay/design-system") @react.component
-external make: (
+// MenuDropdown component binding signature
+@react.component
+let make: (
   ~id: string=?,
   ~className: string=?,
   ~type_: dropdownType=?,
@@ -78,4 +78,5 @@ external make: (
   ~onSearchTermChange: string => unit=?,
   ~onSelectedItemsChange: array<string> => unit=?,
   ~selectedItems: array<string>=?,
-) => React.element = "MenuDropdown" 
+  unit
+) => React.element 

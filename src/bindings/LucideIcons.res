@@ -96,4 +96,24 @@ module MapPin = {
 module HelpCircle = {
   @module("lucide-react") @react.component
   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "HelpCircle"
+}
+
+module DollarSign = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "DollarSign"
+}
+
+module Percent = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Percent"
+}
+
+module Plus = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Plus"
+}
+
+module Minus = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Minus"
 } 

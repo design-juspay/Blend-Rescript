@@ -1,5 +1,4 @@
 // Import the Button component from our bindings
-open TabDemo
 open AccordionDemo
 open TagDemo
 open AlertDemo
@@ -16,6 +15,14 @@ open StatCardDemo
 open ModalDemo
 open MenuDemo
 open TextInputDemo
+open MenuDropdownDemo
+open NumberInputDemo
+open OTPInputDemo
+open TextAreaDemo
+open UnitInputDemo
+open DropdownInputDemo
+open PopoverDemo
+open TabDemo
 
 module TooltipDemo2 = {
   @react.component
@@ -67,31 +74,47 @@ module Sidebar = {
     | ModalComponent
     | MenuComponent
     | TextInputComponent
+    | MenuDropdownComponent
+    | NumberInputComponent
+    | OTPInputComponent
+    | TextAreaComponent
+    | UnitInputComponent
+    | DropdownInputComponent
+    | PopoverComponent
+
   type componentInfo = {
     variant: component,
     label: string,
+    category: string,
   }
 
   let components: array<componentInfo> = [
-    {variant: Buttons, label: "Buttons"},
-    {variant: Tags, label: "Tags"},
-    {variant: Snackbars, label: "Snackbars"},
-    {variant: TabsComponent, label: "Tabs"},
-    {variant: Alerts, label: "Alerts"},
-    {variant: Breadcrumb, label: "Breadcrumb"},
-    {variant: ButtonGroup, label: "ButtonGroup"},
-    {variant: Avatar, label: "Avatar"},
-    {variant: AvatarGroup, label: "AvatarGroup"},
-    {variant: Radio, label: "Radio"},
-    {variant: Switch, label: "Switch"},
-    {variant: DateRangePicker, label: "DateRangePicker"},
-    {variant: TooltipDemo2, label: "TooltipDemo2"},
-    {variant: AccordionDemo, label: "AccordionDemo"},
-    {variant: CheckboxDemo, label: "CheckboxDemo"},
-    {variant: StatCardDemo, label: "StatCardDemo"},
-    {variant: ModalComponent, label: "Modal"},
-    {variant: MenuComponent, label: "Menu"},
-    {variant: TextInputComponent, label: "TextInput"},
+    {variant: Buttons, label: "Buttons", category: "Basic UI"},
+    {variant: ButtonGroup, label: "Button Group", category: "Basic UI"},
+    {variant: Tags, label: "Tags", category: "Basic UI"},
+    {variant: Alerts, label: "Alerts", category: "Basic UI"},
+    {variant: Avatar, label: "Avatar", category: "Basic UI"},
+    {variant: AvatarGroup, label: "Avatar Group", category: "Basic UI"},
+    {variant: StatCardDemo, label: "Stat Card", category: "Basic UI"},
+    {variant: Breadcrumb, label: "Breadcrumb", category: "Basic UI"},
+    {variant: TextInputComponent, label: "Text Input", category: "Form Components"},
+    {variant: NumberInputComponent, label: "Number Input", category: "Form Components"},
+    {variant: TextAreaComponent, label: "Text Area", category: "Form Components"},
+    {variant: UnitInputComponent, label: "Unit Input", category: "Form Components"},
+    {variant: DropdownInputComponent, label: "Dropdown Input", category: "Form Components"},
+    {variant: OTPInputComponent, label: "OTP Input", category: "Form Components"},
+    {variant: CheckboxDemo, label: "Checkbox", category: "Form Components"},
+    {variant: Radio, label: "Radio", category: "Form Components"},
+    {variant: Switch, label: "Switch", category: "Form Components"},
+    {variant: DateRangePicker, label: "Date Range Picker", category: "Form Components"},
+    {variant: MenuComponent, label: "Menu", category: "Navigation & Menus"},
+    {variant: MenuDropdownComponent, label: "Menu Dropdown", category: "Navigation & Menus"},
+    {variant: TabsComponent, label: "Tabs", category: "Navigation & Menus"},
+    {variant: ModalComponent, label: "Modal", category: "Overlays & Notifications"},
+    {variant: PopoverComponent, label: "Popover", category: "Overlays & Notifications"},
+    {variant: TooltipDemo2, label: "Tooltip", category: "Overlays & Notifications"},
+    {variant: Snackbars, label: "Snackbars", category: "Overlays & Notifications"},
+    {variant: AccordionDemo, label: "Accordion", category: "Expandable Content"},
   ]
 
   @react.component
@@ -104,19 +127,38 @@ module Sidebar = {
       activeComponent === component ? activeClass : inactiveClass
     }
 
-    <div
-      className="w-64 h-screen bg-white border-r border-gray-200 fixed left-0 top-0 overflow-y-auto">
+    let categories = components
+      ->Belt.Array.reduce([], (acc, {category}) => {
+        if (acc->Belt.Array.some(c => c === category)) {
+          acc
+        } else {
+          Belt.Array.concat(acc, [category])
+        }
+      })
+
+    <div className="w-64 h-screen bg-white border-r border-gray-200 fixed left-0 top-0 overflow-y-auto">
       <div className="p-4 border-b border-gray-200">
         <h2 className="text-xl font-bold"> {"Components"->React.string} </h2>
       </div>
       <nav className="py-2">
-        {components
-        ->Belt.Array.map(({variant, label}) =>
-          <button key={label} className={getItemClass(variant)} onClick={_ => onSelect(variant)}>
-            {label->React.string}
-          </button>
-        )
-        ->React.array}
+        {categories
+          ->Belt.Array.map(category => {
+            let categoryComponents = components->Belt.Array.keep(({category: cat}) => cat === category)
+            <div key={category}>
+              <div className="px-4 py-2 font-semibold text-sm text-gray-500 uppercase">
+                {category->React.string}
+              </div>
+              {categoryComponents
+                ->Belt.Array.map(({variant, label}) =>
+                  <button key={label} className={getItemClass(variant)} onClick={_ => onSelect(variant)}>
+                    {label->React.string}
+                  </button>
+                )
+                ->React.array}
+              <div className="my-2 border-b border-gray-100"></div>
+            </div>
+          })
+          ->React.array}
       </nav>
     </div>
   }
@@ -152,6 +194,13 @@ let make = () => {
       | ModalComponent => <ModalDemo />
       | MenuComponent => <MenuDemo />
       | TextInputComponent => <TextInputDemo />
+      | MenuDropdownComponent => <MenuDropdownDemo />
+      | NumberInputComponent => <NumberInputDemo />
+      | OTPInputComponent => <OTPInputDemo />
+      | TextAreaComponent => <TextAreaDemo />
+      | UnitInputComponent => <UnitInputDemo />
+      | DropdownInputComponent => <DropdownInputDemo />
+      | PopoverComponent => <PopoverDemo />
       }}
     </div>
   </div>
