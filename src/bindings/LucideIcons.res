@@ -116,4 +116,19 @@ module Plus = {
 module Minus = {
   @module("lucide-react") @react.component
   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Minus"
+}
+
+module LogOut = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "LogOut"
+}
+
+module MoreVertical = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "MoreVertical"
+}
+
+module ChevronDown = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "ChevronDown"
 } 

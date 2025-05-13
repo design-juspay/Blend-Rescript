@@ -1,1 +1,2 @@
-include DesignSystem 
+include DesignSystem
+module Menu = Menu 

@@ -45,6 +45,12 @@ var Plus = {};
 
 var Minus = {};
 
+var LogOut = {};
+
+var MoreVertical = {};
+
+var ChevronDown = {};
+
 export {
   Check ,
   ChevronLeft ,
@@ -68,5 +74,8 @@ export {
   Percent ,
   Plus ,
   Minus ,
+  LogOut ,
+  MoreVertical ,
+  ChevronDown ,
 }
 /* No side effect */
