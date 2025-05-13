@@ -29,57 +29,57 @@ import * as DesignSystem from "@vinitjuspay/design-system";
 
 function App$TooltipDemo2(props) {
   return JsxRuntime.jsxs("div", {
-              children: [
-                JsxRuntime.jsx("h1", {
-                      children: "Tooltip V2 Demo",
-                      className: "text-2xl font-bold mb-6 mt-12"
-                    }),
-                JsxRuntime.jsx(DesignSystem.TooltipV2, {
-                      children: JsxRuntime.jsx("button", {
-                            children: "Hover me"
-                          }),
-                      content: "This is a basic tooltip",
-                      side: "bottom"
-                    })
-              ]
-            });
+    children: [
+      JsxRuntime.jsx("h1", {
+        children: "Tooltip V2 Demo",
+        className: "text-2xl font-bold mb-6 mt-12"
+      }),
+      JsxRuntime.jsx(DesignSystem.TooltipV2, {
+        children: JsxRuntime.jsx("button", {
+          children: "Hover me"
+        }),
+        content: "This is a basic tooltip",
+        side: "bottom"
+      })
+    ]
+  });
 }
 
 function App$BreadcrumbDemo(props) {
   return JsxRuntime.jsxs("div", {
-              children: [
-                JsxRuntime.jsx("h1", {
-                      children: "Breadcrumb Demo",
-                      className: "text-2xl font-bold mb-6 mt-12"
-                    }),
-                JsxRuntime.jsx(DesignSystem.Breadcrumb, {
-                      variant: "default",
-                      items: [
-                        {
-                          label: "Home",
-                          href: "/",
-                          onClick: (function () {
-                              console.log("Home clicked");
-                            })
-                        },
-                        {
-                          label: "Products",
-                          href: "/products",
-                          onClick: (function () {
-                              console.log("Products clicked");
-                            })
-                        },
-                        {
-                          label: "Categories",
-                          href: "/categories",
-                          onClick: (function () {
-                              console.log("Categories clicked");
-                            })
-                        }
-                      ]
-                    })
-              ]
-            });
+    children: [
+      JsxRuntime.jsx("h1", {
+        children: "Breadcrumb Demo",
+        className: "text-2xl font-bold mb-6 mt-12"
+      }),
+      JsxRuntime.jsx(DesignSystem.Breadcrumb, {
+        variant: "default",
+        items: [
+          {
+            label: "Home",
+            href: "/",
+            onClick: function() {
+              console.log("Home clicked");
+            }
+          },
+          {
+            label: "Products",
+            href: "/products",
+            onClick: function() {
+              console.log("Products clicked");
+            }
+          },
+          {
+            label: "Categories",
+            href: "/categories",
+            onClick: function() {
+              console.log("Categories clicked");
+            }
+          }
+        ]
+      })
+    ]
+  });
 }
 
 var components = [
@@ -208,7 +208,7 @@ var components = [
 function App$Sidebar(props) {
   var activeComponent = props.activeComponent;
   var onSelect = props.onSelect;
-  var getItemClass = function (component) {
+  var getItemClass = function(component) {
     var baseClass = "px-4 py-2 w-full text-left transition-colors duration-200";
     var activeClass = baseClass + " bg-blue-500 text-white";
     var inactiveClass = baseClass + " hover:bg-gray-100";
@@ -218,170 +218,179 @@ function App$Sidebar(props) {
       return inactiveClass;
     }
   };
-  var categories = Belt_Array.reduce(components, [], (function (acc, param) {
-          var category = param.category;
-          if (Belt_Array.some(acc, (function (c) {
-                    return c === category;
-                  }))) {
-            return acc;
-          } else {
-            return Belt_Array.concat(acc, [category]);
-          }
-        }));
+  var categories = Belt_Array.reduce(components, [], function(acc, param) {
+    var category = param.category;
+    if (
+      Belt_Array.some(acc, function(c) {
+        return c === category;
+      })
+    ) {
+      return acc;
+    } else {
+      return Belt_Array.concat(acc, [category]);
+    }
+  });
   return JsxRuntime.jsxs("div", {
+    children: [
+      JsxRuntime.jsx("div", {
+        children: JsxRuntime.jsx("h2", {
+          children: "Components",
+          className: "text-xl font-bold"
+        }),
+        className: "p-4 border-b border-gray-200"
+      }),
+      JsxRuntime.jsx("nav", {
+        children: Belt_Array.map(categories, function(category) {
+          var categoryComponents = Belt_Array.keep(components, function(param) {
+            return param.category === category;
+          });
+          return JsxRuntime.jsxs(
+            "div",
+            {
               children: [
                 JsxRuntime.jsx("div", {
-                      children: JsxRuntime.jsx("h2", {
-                            children: "Components",
-                            className: "text-xl font-bold"
-                          }),
-                      className: "p-4 border-b border-gray-200"
-                    }),
-                JsxRuntime.jsx("nav", {
-                      children: Belt_Array.map(categories, (function (category) {
-                              var categoryComponents = Belt_Array.keep(components, (function (param) {
-                                      return param.category === category;
-                                    }));
-                              return JsxRuntime.jsxs("div", {
-                                          children: [
-                                            JsxRuntime.jsx("div", {
-                                                  children: category,
-                                                  className: "px-4 py-2 font-semibold text-sm text-gray-500 uppercase"
-                                                }),
-                                            Belt_Array.map(categoryComponents, (function (param) {
-                                                    var label = param.label;
-                                                    var variant = param.variant;
-                                                    return JsxRuntime.jsx("button", {
-                                                                children: label,
-                                                                className: getItemClass(variant),
-                                                                onClick: (function (param) {
-                                                                    onSelect(variant);
-                                                                  })
-                                                              }, label);
-                                                  })),
-                                            JsxRuntime.jsx("div", {
-                                                  className: "my-2 border-b border-gray-100"
-                                                })
-                                          ]
-                                        }, category);
-                            })),
-                      className: "py-2"
-                    })
-              ],
-              className: "w-64 h-screen bg-white border-r border-gray-200 fixed left-0 top-0 overflow-y-auto"
-            });
+                  children: category,
+                  className:
+                    "px-4 py-2 font-semibold text-sm text-gray-500 uppercase"
+                }),
+                Belt_Array.map(categoryComponents, function(param) {
+                  var label = param.label;
+                  var variant = param.variant;
+                  return JsxRuntime.jsx(
+                    "button",
+                    {
+                      children: label,
+                      className: getItemClass(variant),
+                      onClick: function(param) {
+                        onSelect(variant);
+                      }
+                    },
+                    label
+                  );
+                }),
+                JsxRuntime.jsx("div", {
+                  className: "my-2 border-b border-gray-100"
+                })
+              ]
+            },
+            category
+          );
+        }),
+        className: "py-2"
+      })
+    ],
+    className:
+      "w-64 h-screen bg-white border-r border-gray-200 fixed left-0 top-0 overflow-y-auto"
+  });
 }
 
 function App(props) {
-  var match = React.useState(function () {
-        return "Buttons";
-      });
+  var match = React.useState(function() {
+    return "Buttons";
+  });
   var setActiveComponent = match[1];
   var activeComponent = match[0];
   var tmp;
   switch (activeComponent) {
-    case "Buttons" :
-        tmp = JsxRuntime.jsx(ButtonDemo.ButtonDemo.make, {});
-        break;
-    case "Tags" :
-        tmp = JsxRuntime.jsx(TagDemo.TagDemo.make, {});
-        break;
-    case "Snackbars" :
-        tmp = JsxRuntime.jsx(SnackbarDemo.SnackbarDemo.make, {});
-        break;
-    case "TabsComponent" :
-        tmp = JsxRuntime.jsx(TabDemo.TabsPreviewDemo.make, {});
-        break;
-    case "Alerts" :
-        tmp = JsxRuntime.jsx(AlertDemo.AlertDemo.make, {});
-        break;
-    case "Breadcrumb" :
-        tmp = JsxRuntime.jsx(App$BreadcrumbDemo, {});
-        break;
-    case "ButtonGroup" :
-        tmp = JsxRuntime.jsx(ButtonGroupDemo.ButtonGroupDemo.make, {});
-        break;
-    case "Avatar" :
-        tmp = JsxRuntime.jsx(AvatarDemo.AvatarDemo.make, {});
-        break;
-    case "AvatarGroup" :
-        tmp = JsxRuntime.jsx(AvatarGroupDemo.AvatarGroupDemo.make, {});
-        break;
-    case "Radio" :
-        tmp = JsxRuntime.jsx(RadioDemo.RadioDemo.make, {});
-        break;
-    case "Switch" :
-        tmp = JsxRuntime.jsx(SwitchDemo.SwitchDemo.make, {});
-        break;
-    case "DateRangePicker" :
-        tmp = JsxRuntime.jsx(DateRangePickerDemo.DateRangePickerDemo.make, {});
-        break;
-    case "TooltipDemo2" :
-        tmp = JsxRuntime.jsx(App$TooltipDemo2, {});
-        break;
-    case "AccordionDemo" :
-        tmp = JsxRuntime.jsx(AccordionDemo.AccordionDemo.make, {});
-        break;
-    case "CheckboxDemo" :
-        tmp = JsxRuntime.jsx(CheckboxDemo.CheckboxDemo.make, {});
-        break;
-    case "StatCardDemo" :
-        tmp = JsxRuntime.jsx(StatCardDemo.StatCardDemo.make, {});
-        break;
-    case "ModalComponent" :
-        tmp = JsxRuntime.jsx(ModalDemo.ModalDemo.make, {});
-        break;
-    case "TextInputComponent" :
-        tmp = JsxRuntime.jsx(TextInputDemo.TextInputDemo.make, {});
-        break;
-    case "NumberInputComponent" :
-        tmp = JsxRuntime.jsx(NumberInputDemo.NumberInputDemo.make, {});
-        break;
-    case "OTPInputComponent" :
-        tmp = JsxRuntime.jsx(OTPInputDemo.OTPInputDemo.make, {});
-        break;
-    case "TextAreaComponent" :
-        tmp = JsxRuntime.jsx(TextAreaDemo.TextAreaDemo.make, {});
-        break;
-    case "UnitInputComponent" :
-        tmp = JsxRuntime.jsx(UnitInputDemo.UnitInputDemo.make, {});
-        break;
-    case "DropdownInputComponent" :
-        tmp = JsxRuntime.jsx(DropdownInputDemo.DropdownInputDemo.make, {});
-        break;
-    case "PopoverComponent" :
-        tmp = JsxRuntime.jsx(PopoverDemo.PopoverDemo.make, {});
-        break;
-    
+    case "Buttons":
+      tmp = JsxRuntime.jsx(ButtonDemo.ButtonDemo.make, {});
+      break;
+    case "Tags":
+      tmp = JsxRuntime.jsx(TagDemo.TagDemo.make, {});
+      break;
+    case "Snackbars":
+      tmp = JsxRuntime.jsx(SnackbarDemo.SnackbarDemo.make, {});
+      break;
+    case "TabsComponent":
+      tmp = JsxRuntime.jsx(TabDemo.TabsPreviewDemo.make, {});
+      break;
+    case "Alerts":
+      tmp = JsxRuntime.jsx(AlertDemo.AlertDemo.make, {});
+      break;
+    case "Breadcrumb":
+      tmp = JsxRuntime.jsx(App$BreadcrumbDemo, {});
+      break;
+    case "ButtonGroup":
+      tmp = JsxRuntime.jsx(ButtonGroupDemo.ButtonGroupDemo.make, {});
+      break;
+    case "Avatar":
+      tmp = JsxRuntime.jsx(AvatarDemo.AvatarDemo.make, {});
+      break;
+    case "AvatarGroup":
+      tmp = JsxRuntime.jsx(AvatarGroupDemo.AvatarGroupDemo.make, {});
+      break;
+    case "Radio":
+      tmp = JsxRuntime.jsx(RadioDemo.RadioDemo.make, {});
+      break;
+    case "Switch":
+      tmp = JsxRuntime.jsx(SwitchDemo.SwitchDemo.make, {});
+      break;
+    case "DateRangePicker":
+      tmp = JsxRuntime.jsx(DateRangePickerDemo.DateRangePickerDemo.make, {});
+      break;
+    case "TooltipDemo2":
+      tmp = JsxRuntime.jsx(App$TooltipDemo2, {});
+      break;
+    case "AccordionDemo":
+      tmp = JsxRuntime.jsx(AccordionDemo.AccordionDemo.make, {});
+      break;
+    case "CheckboxDemo":
+      tmp = JsxRuntime.jsx(CheckboxDemo.CheckboxDemo.make, {});
+      break;
+    case "StatCardDemo":
+      tmp = JsxRuntime.jsx(StatCardDemo.StatCardDemo.make, {});
+      break;
+    case "ModalComponent":
+      tmp = JsxRuntime.jsx(ModalDemo.ModalDemo.make, {});
+      break;
+    case "TextInputComponent":
+      tmp = JsxRuntime.jsx(TextInputDemo.TextInputDemo.make, {});
+      break;
+    case "NumberInputComponent":
+      tmp = JsxRuntime.jsx(NumberInputDemo.NumberInputDemo.make, {});
+      break;
+    case "OTPInputComponent":
+      tmp = JsxRuntime.jsx(OTPInputDemo.OTPInputDemo.make, {});
+      break;
+    case "TextAreaComponent":
+      tmp = JsxRuntime.jsx(TextAreaDemo.TextAreaDemo.make, {});
+      break;
+    case "UnitInputComponent":
+      tmp = JsxRuntime.jsx(UnitInputDemo.UnitInputDemo.make, {});
+      break;
+    case "DropdownInputComponent":
+      tmp = JsxRuntime.jsx(DropdownInputDemo.DropdownInputDemo.make, {});
+      break;
+    case "PopoverComponent":
+      tmp = JsxRuntime.jsx(PopoverDemo.make, {});
+      break;
   }
   return JsxRuntime.jsxs("div", {
-              children: [
-                JsxRuntime.jsx(App$Sidebar, {
-                      onSelect: (function (component) {
-                          setActiveComponent(function (param) {
-                                return component;
-                              });
-                        }),
-                      activeComponent: activeComponent
-                    }),
-                JsxRuntime.jsxs("div", {
-                      children: [
-                        JsxRuntime.jsx("h1", {
-                              children: "Design System Components",
-                              className: "text-3xl font-bold mb-8 text-center"
-                            }),
-                        tmp
-                      ],
-                      className: "ml-64 flex-1 p-6"
-                    })
-              ],
-              className: "flex"
-            });
+    children: [
+      JsxRuntime.jsx(App$Sidebar, {
+        onSelect: function(component) {
+          setActiveComponent(function(param) {
+            return component;
+          });
+        },
+        activeComponent: activeComponent
+      }),
+      JsxRuntime.jsxs("div", {
+        children: [
+          JsxRuntime.jsx("h1", {
+            children: "Design System Components",
+            className: "text-3xl font-bold mb-8 text-center"
+          }),
+          tmp
+        ],
+        className: "ml-64 flex-1 p-6"
+      })
+    ],
+    className: "flex"
+  });
 }
 
 var make = App;
 
-export {
-  make ,
-}
+export { make };
 /* react Not a pure module */

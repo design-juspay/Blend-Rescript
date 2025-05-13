@@ -1,86 +1,54 @@
-// ReScript bindings for the Popover component
-module Types = {
-  type placement = [
-    | #top
-    | #"top-start"
-    | #"top-end"
-    | #bottom
-    | #"bottom-start"
-    | #"bottom-end"
-    | #left
-    | #"left-start"
-    | #"left-end"
-    | #right
-    | #"right-start"
-    | #"right-end"
-  ]
+type placement = [
+  | #top
+  | #topStart
+  | #topEnd
+  | #bottom
+  | #bottomStart
+  | #bottomEnd
+  | #left
+  | #leftStart
+  | #leftEnd
+  | #right
+  | #rightStart
+  | #rightEnd
+]
 
-  type alignment = [
-    | #start
-    | #center
-    | #end
-  ]
+type alignment = [
+  | #start
+  | #center
+  | #end
+]
 
-  // Use the existing Button types
-  type buttonType = [
-    | #primary
-    | #secondary
-    | #danger
-    | #success
-  ]
+type buttonType = [
+  | #primary
+  | #secondary
+  | #tertiary
+]
 
-  type buttonSubType = [
-    | #default
-    | #iconOnly
-    | #link
-  ]
-}
+type buttonSubType = [
+  | #default
+  | #danger
+  | #success
+]
 
-// Define the Popover component binding
 @module("@vinitjuspay/design-system") @react.component
 external make: (
   ~children: React.element,
   ~trigger: React.element,
-  ~placement: [
-    | #top
-    | #"top-start"
-    | #"top-end"
-    | #bottom
-    | #"bottom-start"
-    | #"bottom-end"
-    | #left
-    | #"left-start"
-    | #"left-end"
-    | #right
-    | #"right-start"
-    | #"right-end"
-  ]=?,
-  ~alignment: [
-    | #start
-    | #center
-    | #end
-  ]=?,
+  ~placement: placement=?,
+  ~alignment: alignment=?,
   ~className: string=?,
   ~closeOnEscape: bool=?,
   ~closeOnOutsideClick: bool=?,
   ~open_: bool=?,
   ~onOpenChange: bool => unit=?,
   ~offset: int=?,
+  ~collisionBoundaryRef: ReactDOM.Ref.t=?,
   ~collisionPadding: int=?,
   ~heading: string=?,
   ~description: string=?,
-  ~primaryButtonType: [
-    | #primary
-    | #secondary
-    | #danger
-    | #success
-  ]=?,
-  ~secondaryButtonType: [
-    | #primary
-    | #secondary
-    | #danger
-    | #success
-  ]=?,
+  ~primaryButtonType: buttonType=?,
+  ~secondaryButtonType: buttonType=?,
   ~showCloseButton: bool=?,
   ~primaryButtonText: string=?,
   ~secondaryButtonText: string=?,
@@ -88,14 +56,6 @@ external make: (
   ~secondaryButtonDisabled: bool=?,
   ~onPrimaryButtonClick: unit => unit=?,
   ~onSecondaryButtonClick: unit => unit=?,
-  ~primaryButtonSubType: [
-    | #default
-    | #iconOnly
-    | #link
-  ]=?,
-  ~secondaryButtonSubType: [
-    | #default
-    | #iconOnly
-    | #link
-  ]=?,
-) => React.element = "Popover" 
+  ~primaryButtonSubType: buttonSubType=?,
+  ~secondaryButtonSubType: buttonSubType=?,
+) => React.element = "Popover"

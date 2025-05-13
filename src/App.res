@@ -121,38 +121,40 @@ module Sidebar = {
       activeComponent === component ? activeClass : inactiveClass
     }
 
-    let categories = components
-      ->Belt.Array.reduce([], (acc, {category}) => {
-        if (acc->Belt.Array.some(c => c === category)) {
-          acc
-        } else {
-          Belt.Array.concat(acc, [category])
-        }
-      })
+    let categories = components->Belt.Array.reduce([], (acc, {category}) => {
+      if acc->Belt.Array.some(c => c === category) {
+        acc
+      } else {
+        Belt.Array.concat(acc, [category])
+      }
+    })
 
-    <div className="w-64 h-screen bg-white border-r border-gray-200 fixed left-0 top-0 overflow-y-auto">
+    <div
+      className="w-64 h-screen bg-white border-r border-gray-200 fixed left-0 top-0 overflow-y-auto">
       <div className="p-4 border-b border-gray-200">
         <h2 className="text-xl font-bold"> {"Components"->React.string} </h2>
       </div>
       <nav className="py-2">
         {categories
-          ->Belt.Array.map(category => {
-            let categoryComponents = components->Belt.Array.keep(({category: cat}) => cat === category)
-            <div key={category}>
-              <div className="px-4 py-2 font-semibold text-sm text-gray-500 uppercase">
-                {category->React.string}
-              </div>
-              {categoryComponents
-                ->Belt.Array.map(({variant, label}) =>
-                  <button key={label} className={getItemClass(variant)} onClick={_ => onSelect(variant)}>
-                    {label->React.string}
-                  </button>
-                )
-                ->React.array}
-              <div className="my-2 border-b border-gray-100"></div>
+        ->Belt.Array.map(category => {
+          let categoryComponents =
+            components->Belt.Array.keep(({category: cat}) => cat === category)
+          <div key={category}>
+            <div className="px-4 py-2 font-semibold text-sm text-gray-500 uppercase">
+              {category->React.string}
             </div>
-          })
-          ->React.array}
+            {categoryComponents
+            ->Belt.Array.map(({variant, label}) =>
+              <button
+                key={label} className={getItemClass(variant)} onClick={_ => onSelect(variant)}>
+                {label->React.string}
+              </button>
+            )
+            ->React.array}
+            <div className="my-2 border-b border-gray-100" />
+          </div>
+        })
+        ->React.array}
       </nav>
     </div>
   }
