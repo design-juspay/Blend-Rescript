@@ -13,9 +13,7 @@ open AvatarGroupDemo
 open CheckboxDemo
 open StatCardDemo
 open ModalDemo
-open MenuDemo
 open TextInputDemo
-open MenuDropdownDemo
 open NumberInputDemo
 open OTPInputDemo
 open TextAreaDemo
@@ -72,9 +70,7 @@ module Sidebar = {
     | CheckboxDemo
     | StatCardDemo
     | ModalComponent
-    | MenuComponent
     | TextInputComponent
-    | MenuDropdownComponent
     | NumberInputComponent
     | OTPInputComponent
     | TextAreaComponent
@@ -107,8 +103,6 @@ module Sidebar = {
     {variant: Radio, label: "Radio", category: "Form Components"},
     {variant: Switch, label: "Switch", category: "Form Components"},
     {variant: DateRangePicker, label: "Date Range Picker", category: "Form Components"},
-    {variant: MenuComponent, label: "Menu", category: "Navigation & Menus"},
-    {variant: MenuDropdownComponent, label: "Menu Dropdown", category: "Navigation & Menus"},
     {variant: TabsComponent, label: "Tabs", category: "Navigation & Menus"},
     {variant: ModalComponent, label: "Modal", category: "Overlays & Notifications"},
     {variant: PopoverComponent, label: "Popover", category: "Overlays & Notifications"},
@@ -192,9 +186,7 @@ let make = () => {
       | CheckboxDemo => <CheckboxDemo />
       | StatCardDemo => <StatCardDemo />
       | ModalComponent => <ModalDemo />
-      | MenuComponent => <MenuDemo />
       | TextInputComponent => <TextInputDemo />
-      | MenuDropdownComponent => <MenuDropdownDemo />
       | NumberInputComponent => <NumberInputDemo />
       | OTPInputComponent => <OTPInputDemo />
       | TextAreaComponent => <TextAreaDemo />

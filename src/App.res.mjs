@@ -3,7 +3,6 @@
 import * as React from "react";
 import * as TabDemo from "./demo/TabDemo.res.mjs";
 import * as TagDemo from "./demo/TagDemo.res.mjs";
-import * as MenuDemo from "./demo/MenuDemo.res.mjs";
 import * as AlertDemo from "./demo/AlertDemo.res.mjs";
 import * as ModalDemo from "./demo/ModalDemo.res.mjs";
 import * as RadioDemo from "./demo/RadioDemo.res.mjs";
@@ -23,7 +22,6 @@ import * as UnitInputDemo from "./demo/UnitInputDemo.res.mjs";
 import * as AvatarGroupDemo from "./demo/AvatarGroupDemo.res.mjs";
 import * as ButtonGroupDemo from "./demo/ButtonGroupDemo.res.mjs";
 import * as NumberInputDemo from "./demo/NumberInputDemo.res.mjs";
-import * as MenuDropdownDemo from "./demo/MenuDropdownDemo.res.mjs";
 import * as DropdownInputDemo from "./demo/DropdownInputDemo.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
 import * as DateRangePickerDemo from "./demo/DateRangePickerDemo.res.mjs";
@@ -174,16 +172,6 @@ var components = [
     variant: "DateRangePicker",
     label: "Date Range Picker",
     category: "Form Components"
-  },
-  {
-    variant: "MenuComponent",
-    label: "Menu",
-    category: "Navigation & Menus"
-  },
-  {
-    variant: "MenuDropdownComponent",
-    label: "Menu Dropdown",
-    category: "Navigation & Menus"
   },
   {
     variant: "TabsComponent",
@@ -343,14 +331,8 @@ function App(props) {
     case "ModalComponent" :
         tmp = JsxRuntime.jsx(ModalDemo.ModalDemo.make, {});
         break;
-    case "MenuComponent" :
-        tmp = JsxRuntime.jsx(MenuDemo.MenuDemo.make, {});
-        break;
     case "TextInputComponent" :
         tmp = JsxRuntime.jsx(TextInputDemo.TextInputDemo.make, {});
-        break;
-    case "MenuDropdownComponent" :
-        tmp = JsxRuntime.jsx(MenuDropdownDemo.MenuDropdownDemo.make, {});
         break;
     case "NumberInputComponent" :
         tmp = JsxRuntime.jsx(NumberInputDemo.NumberInputDemo.make, {});
