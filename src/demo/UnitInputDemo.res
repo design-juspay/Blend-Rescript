@@ -141,7 +141,7 @@ module UnitInputDemo = {
             placeholder="Small input"
             unitText="$"
             unitPosition=#prefix
-            size=#small
+            size=#md
             className="w-full"
           />
           <UnitInput
@@ -149,7 +149,7 @@ module UnitInputDemo = {
             placeholder="Medium input"
             unitText="$"
             unitPosition=#prefix
-            size=#medium
+            size=#md
             className="w-full"
           />
           <UnitInput
@@ -157,7 +157,7 @@ module UnitInputDemo = {
             placeholder="Large input"
             unitText="$"
             unitPosition=#prefix
-            size=#large
+            size=#lg
             className="w-full"
           />
         </div>

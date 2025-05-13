@@ -1,4 +1,4 @@
- // ReScript bindings for the UnitInput component
+// ReScript bindings for the UnitInput component
 module Types = {
   // Reuse TextInput types for size and state
   type textInputSize = [
@@ -31,10 +31,8 @@ external make: (
   ~mandatory: bool=?,
   ~placeholder: string=?,
   ~size: [
-    | #small
-    | #medium
-    | #large
-    | #default
+    | #md
+    | #lg
   ]=?,
   ~rightSlot: React.element=?,
   ~leftSlot: React.element=?,

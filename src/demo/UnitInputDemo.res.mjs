@@ -187,7 +187,7 @@ function UnitInputDemo$UnitInputDemo(props) {
                                 JsxRuntime.jsx(DesignSystem.UnitInput, {
                                       label: "Small Size",
                                       placeholder: "Small input",
-                                      size: "small",
+                                      size: "md",
                                       unitPosition: "prefix",
                                       unitText: "$",
                                       className: "w-full"
@@ -195,7 +195,7 @@ function UnitInputDemo$UnitInputDemo(props) {
                                 JsxRuntime.jsx(DesignSystem.UnitInput, {
                                       label: "Medium Size",
                                       placeholder: "Medium input",
-                                      size: "medium",
+                                      size: "md",
                                       unitPosition: "prefix",
                                       unitText: "$",
                                       className: "w-full"
@@ -203,7 +203,7 @@ function UnitInputDemo$UnitInputDemo(props) {
                                 JsxRuntime.jsx(DesignSystem.UnitInput, {
                                       label: "Large Size",
                                       placeholder: "Large input",
-                                      size: "large",
+                                      size: "lg",
                                       unitPosition: "prefix",
                                       unitText: "$",
                                       className: "w-full"
