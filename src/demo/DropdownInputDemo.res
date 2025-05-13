@@ -1,17 +1,15 @@
-open RescriptCore
-
 module DropdownInputDemo = {
   @react.component
   let make = () => {
     let (currencyValue, setCurrencyValue) = React.useState(_ => "")
     let (currencyInputValue, setCurrencyInputValue) = React.useState(_ => "")
-    
+
     let (countryValue, setCountryValue) = React.useState(_ => "")
     let (countryInputValue, setCountryInputValue) = React.useState(_ => "")
-    
+
     let (userRoleValue, setUserRoleValue) = React.useState(_ => "")
     let (userRoleInputValue, setUserRoleInputValue) = React.useState(_ => "")
-    
+
     // Currency options with explicit type annotation
     let currencyOptions: array<DropdownInput.Types.dropdownOption> = [
       {label: "USD - US Dollar", value: "USD"},
@@ -20,7 +18,7 @@ module DropdownInputDemo = {
       {label: "JPY - Japanese Yen", value: "JPY"},
       {label: "INR - Indian Rupee", value: "INR"},
     ]
-    
+
     // Country options with explicit type annotation
     let countryOptions: array<DropdownInput.Types.dropdownOption> = [
       {label: "United States", value: "USA"},
@@ -32,7 +30,7 @@ module DropdownInputDemo = {
       {label: "Australia", value: "AUS"},
       {label: "Canada", value: "CAN"},
     ]
-    
+
     // User role options with explicit type annotation
     let userRoleOptions: array<DropdownInput.Types.dropdownOption> = [
       {label: "Admin", value: "admin"},
@@ -41,7 +39,7 @@ module DropdownInputDemo = {
       {label: "Viewer", value: "viewer"},
       {label: "Manager", value: "manager"},
     ]
-    
+
     // Payment method options with explicit type annotation
     let paymentMethodOptions: array<DropdownInput.Types.dropdownOption> = [
       {label: "Credit Card", value: "credit_card"},
@@ -50,42 +48,43 @@ module DropdownInputDemo = {
       {label: "Bank Transfer", value: "bank_transfer"},
       {label: "Cash", value: "cash"},
     ]
-    
+
     let handleCurrencyChange = value => {
       setCurrencyInputValue(_ => value)
       Js.log(`Currency input changed: ${value}`)
     }
-    
+
     let handleCurrencySelect = (option: DropdownInput.Types.dropdownOption) => {
       setCurrencyValue(_ => option.value)
       Js.log(`Currency selected: ${option.label} (${option.value})`)
     }
-    
+
     let handleCountryChange = value => {
       setCountryInputValue(_ => value)
       Js.log(`Country input changed: ${value}`)
     }
-    
+
     let handleCountrySelect = (option: DropdownInput.Types.dropdownOption) => {
       setCountryValue(_ => option.value)
       Js.log(`Country selected: ${option.label} (${option.value})`)
     }
-    
+
     let handleUserRoleChange = value => {
       setUserRoleInputValue(_ => value)
       Js.log(`User role input changed: ${value}`)
     }
-    
+
     let handleUserRoleSelect = (option: DropdownInput.Types.dropdownOption) => {
       setUserRoleValue(_ => option.value)
       Js.log(`User role selected: ${option.label} (${option.value})`)
     }
-    
+
     <div className="p-4 space-y-8">
       <h1 className="text-2xl font-bold"> {"DropdownInput Components"->React.string} </h1>
-      
       <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"Basic DropdownInput Examples"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"Basic DropdownInput Examples"->React.string}
+        </h2>
         <div className="space-y-4 max-w-md">
           <DropdownInput
             label="Currency"
@@ -98,7 +97,6 @@ module DropdownInputDemo = {
             dropdownPlaceholder="Select currency"
             className="w-full"
           />
-          
           <DropdownInput
             label="Country"
             placeholder="Enter or select country"
@@ -111,7 +109,6 @@ module DropdownInputDemo = {
             dropdownPosition=#right
             className="w-full"
           />
-          
           <DropdownInput
             label="User Role"
             placeholder="Enter or select role"
@@ -126,7 +123,6 @@ module DropdownInputDemo = {
           />
         </div>
       </div>
-      
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"DropdownInput States"->React.string} </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -137,7 +133,6 @@ module DropdownInputDemo = {
             dropdownPlaceholder="Select"
             state=#default
           />
-          
           <DropdownInput
             label="Hover State"
             placeholder="Hover state"
@@ -145,7 +140,6 @@ module DropdownInputDemo = {
             dropdownPlaceholder="Select"
             state=#hover
           />
-          
           <DropdownInput
             label="Focused State"
             placeholder="Focused state"
@@ -153,7 +147,6 @@ module DropdownInputDemo = {
             dropdownPlaceholder="Select"
             state=#focused
           />
-          
           <DropdownInput
             label="Filled State"
             placeholder="Filled state"
@@ -163,7 +156,6 @@ module DropdownInputDemo = {
             value="USD"
             inputValue="US Dollar"
           />
-          
           <DropdownInput
             label="Error State"
             placeholder="Error state"
@@ -172,7 +164,6 @@ module DropdownInputDemo = {
             state=#error
             errorMessage="This field has an error"
           />
-          
           <DropdownInput
             label="Success State"
             placeholder="Success state"
@@ -183,7 +174,6 @@ module DropdownInputDemo = {
             value="USD"
             inputValue="US Dollar"
           />
-          
           <DropdownInput
             label="Disabled State"
             placeholder="Disabled state"
@@ -193,9 +183,10 @@ module DropdownInputDemo = {
           />
         </div>
       </div>
-      
       <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"DropdownInput Configurations"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"DropdownInput Configurations"->React.string}
+        </h2>
         <div className="space-y-4 max-w-md">
           <DropdownInput
             label="With Icons"
@@ -204,7 +195,6 @@ module DropdownInputDemo = {
             dropdownPlaceholder="Payment method"
             className="w-full"
           />
-          
           <DropdownInput
             label="With Dropdown Width"
             placeholder="Enter or select currency"
@@ -213,7 +203,6 @@ module DropdownInputDemo = {
             dropdownWidth="120px"
             className="w-full"
           />
-          
           <DropdownInput
             label="Right Dropdown"
             placeholder="Enter or select country"
@@ -222,7 +211,6 @@ module DropdownInputDemo = {
             dropdownPosition=#right
             className="w-full"
           />
-          
           <DropdownInput
             label="Show Selected in Input"
             placeholder="Select role"
@@ -233,9 +221,10 @@ module DropdownInputDemo = {
           />
         </div>
       </div>
-      
       <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"DropdownInput with Additional Elements"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"DropdownInput with Additional Elements"->React.string}
+        </h2>
         <div className="space-y-4 max-w-md">
           <DropdownInput
             label="With Sublabel"
@@ -245,7 +234,6 @@ module DropdownInputDemo = {
             dropdownPlaceholder="Select"
             className="w-full"
           />
-          
           <DropdownInput
             label="With Hint"
             hintText="This is a hint to help you fill this field"
@@ -254,7 +242,6 @@ module DropdownInputDemo = {
             dropdownPlaceholder="Select"
             className="w-full"
           />
-          
           <DropdownInput
             label="Mandatory Field"
             mandatory={true}
@@ -263,7 +250,6 @@ module DropdownInputDemo = {
             dropdownPlaceholder="Select"
             className="w-full"
           />
-          
           <DropdownInput
             label="With Info Tooltip"
             infoTooltip="This tooltip provides additional information about the field"
@@ -274,12 +260,11 @@ module DropdownInputDemo = {
           />
         </div>
       </div>
-      
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"DropdownInput Use Cases"->React.string} </h2>
         <div className="space-y-6">
           <div className="border p-4 rounded-lg bg-gray-50">
-            <h3 className="text-lg font-medium mb-2">{"Payment Form"->React.string}</h3>
+            <h3 className="text-lg font-medium mb-2"> {"Payment Form"->React.string} </h3>
             <div className="grid grid-cols-1 gap-4">
               <DropdownInput
                 label="Currency"
@@ -294,7 +279,6 @@ module DropdownInputDemo = {
                 mandatory={true}
                 className="w-full"
               />
-              
               <DropdownInput
                 label="Payment Method"
                 placeholder="Select payment method"
@@ -306,18 +290,18 @@ module DropdownInputDemo = {
               />
             </div>
             <div className="mt-4">
-              <button 
-                className={`px-4 py-2 rounded-md text-white font-medium ${currencyValue->Js.String2.length > 0 ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-300 cursor-not-allowed"}`}
+              <button
+                className={`px-4 py-2 rounded-md text-white font-medium ${currencyValue->Js.String2.length > 0
+                    ? "bg-blue-600 hover:bg-blue-700"
+                    : "bg-gray-300 cursor-not-allowed"}`}
                 disabled={currencyValue->Js.String2.length === 0}
-                onClick={_ => Js.log("Processing payment...")}
-              >
+                onClick={_ => Js.log("Processing payment...")}>
                 {"Process Payment"->React.string}
               </button>
             </div>
           </div>
-          
           <div className="border p-4 rounded-lg bg-gray-50">
-            <h3 className="text-lg font-medium mb-2">{"User Profile"->React.string}</h3>
+            <h3 className="text-lg font-medium mb-2"> {"User Profile"->React.string} </h3>
             <div className="grid grid-cols-1 gap-4">
               <DropdownInput
                 label="Country"
@@ -330,7 +314,6 @@ module DropdownInputDemo = {
                 dropdownPlaceholder="Select country"
                 className="w-full"
               />
-              
               <DropdownInput
                 label="Role"
                 placeholder="Enter or select role"
@@ -344,11 +327,14 @@ module DropdownInputDemo = {
               />
             </div>
             <div className="mt-4">
-              <button 
-                className={`px-4 py-2 rounded-md text-white font-medium ${countryValue->Js.String2.length > 0 && userRoleValue->Js.String2.length > 0 ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-300 cursor-not-allowed"}`}
-                disabled={countryValue->Js.String2.length === 0 || userRoleValue->Js.String2.length === 0}
-                onClick={_ => Js.log("Saving user profile...")}
-              >
+              <button
+                className={`px-4 py-2 rounded-md text-white font-medium ${countryValue->Js.String2.length > 0 &&
+                    userRoleValue->Js.String2.length > 0
+                    ? "bg-blue-600 hover:bg-blue-700"
+                    : "bg-gray-300 cursor-not-allowed"}`}
+                disabled={countryValue->Js.String2.length === 0 ||
+                  userRoleValue->Js.String2.length === 0}
+                onClick={_ => Js.log("Saving user profile...")}>
                 {"Save Profile"->React.string}
               </button>
             </div>
@@ -360,4 +346,4 @@ module DropdownInputDemo = {
 }
 
 // Export the main component
-let default = DropdownInputDemo.make 
+let default = DropdownInputDemo.make

@@ -1,5 +1,3 @@
-open RescriptCore
-
 module UnitInputDemo = {
   @react.component
   let make = () => {
@@ -7,34 +5,33 @@ module UnitInputDemo = {
     let (percentValue, setPercentValue) = React.useState(_ => "")
     let (measurementValue, setMeasurementValue) = React.useState(_ => "")
     let (weightValue, setWeightValue) = React.useState(_ => "")
-    
+
     let handleCurrencyChange = e => {
       let value = ReactEvent.Form.target(e)["value"]
       setCurrencyValue(_ => value)
       Js.log(`Currency value changed: ${value}`)
     }
-    
+
     let handlePercentChange = e => {
       let value = ReactEvent.Form.target(e)["value"]
       setPercentValue(_ => value)
       Js.log(`Percent value changed: ${value}`)
     }
-    
+
     let handleMeasurementChange = e => {
       let value = ReactEvent.Form.target(e)["value"]
       setMeasurementValue(_ => value)
       Js.log(`Measurement value changed: ${value}`)
     }
-    
+
     let handleWeightChange = e => {
       let value = ReactEvent.Form.target(e)["value"]
       setWeightValue(_ => value)
       Js.log(`Weight value changed: ${value}`)
     }
-    
+
     <div className="p-4 space-y-8">
       <h1 className="text-2xl font-bold"> {"UnitInput Components"->React.string} </h1>
-      
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"Basic UnitInput Examples"->React.string} </h2>
         <div className="space-y-4 max-w-md">
@@ -47,7 +44,6 @@ module UnitInputDemo = {
             onChange={handleCurrencyChange}
             className="w-full"
           />
-          
           <UnitInput
             label="Percentage Input (Suffix)"
             placeholder="Enter percentage"
@@ -57,7 +53,6 @@ module UnitInputDemo = {
             onChange={handlePercentChange}
             className="w-full"
           />
-          
           <UnitInput
             label="Measurement Input (Suffix)"
             placeholder="Enter length"
@@ -67,7 +62,6 @@ module UnitInputDemo = {
             onChange={handleMeasurementChange}
             className="w-full"
           />
-          
           <UnitInput
             label="Weight Input (Suffix)"
             placeholder="Enter weight"
@@ -79,7 +73,6 @@ module UnitInputDemo = {
           />
         </div>
       </div>
-      
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"UnitInput States"->React.string} </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -90,7 +83,6 @@ module UnitInputDemo = {
             unitPosition=#prefix
             state=#default
           />
-          
           <UnitInput
             label="Hover State"
             placeholder="Hover state"
@@ -98,7 +90,6 @@ module UnitInputDemo = {
             unitPosition=#prefix
             state=#hover
           />
-          
           <UnitInput
             label="Focused State"
             placeholder="Focused state"
@@ -106,7 +97,6 @@ module UnitInputDemo = {
             unitPosition=#prefix
             state=#focused
           />
-          
           <UnitInput
             label="Filled State"
             placeholder="Filled state"
@@ -115,7 +105,6 @@ module UnitInputDemo = {
             state=#filled
             value="100"
           />
-          
           <UnitInput
             label="Error State"
             placeholder="Error state"
@@ -124,7 +113,6 @@ module UnitInputDemo = {
             state=#error
             errorMessage="This field has an error"
           />
-          
           <UnitInput
             label="Success State"
             placeholder="Success state"
@@ -134,7 +122,6 @@ module UnitInputDemo = {
             successMessage="This field is valid"
             value="100"
           />
-          
           <UnitInput
             label="Disabled State"
             placeholder="Disabled state"
@@ -144,9 +131,10 @@ module UnitInputDemo = {
           />
         </div>
       </div>
-      
       <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"UnitInput with Different Sizes"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"UnitInput with Different Sizes"->React.string}
+        </h2>
         <div className="space-y-4 max-w-md">
           <UnitInput
             label="Small Size"
@@ -156,7 +144,6 @@ module UnitInputDemo = {
             size=#small
             className="w-full"
           />
-          
           <UnitInput
             label="Medium Size"
             placeholder="Medium input"
@@ -165,7 +152,6 @@ module UnitInputDemo = {
             size=#medium
             className="w-full"
           />
-          
           <UnitInput
             label="Large Size"
             placeholder="Large input"
@@ -176,9 +162,10 @@ module UnitInputDemo = {
           />
         </div>
       </div>
-      
       <div className="border rounded p-4">
-        <h2 className="text-xl font-semibold mb-4"> {"UnitInput with Additional Elements"->React.string} </h2>
+        <h2 className="text-xl font-semibold mb-4">
+          {"UnitInput with Additional Elements"->React.string}
+        </h2>
         <div className="space-y-4 max-w-md">
           <UnitInput
             label="With Sublabel"
@@ -188,7 +175,6 @@ module UnitInputDemo = {
             unitPosition=#prefix
             className="w-full"
           />
-          
           <UnitInput
             label="With Hint"
             hintText="This is a hint to help you fill this field"
@@ -197,7 +183,6 @@ module UnitInputDemo = {
             unitPosition=#prefix
             className="w-full"
           />
-          
           <UnitInput
             label="Mandatory Field"
             mandatory={true}
@@ -206,7 +191,6 @@ module UnitInputDemo = {
             unitPosition=#prefix
             className="w-full"
           />
-          
           <UnitInput
             label="With Info Tooltip"
             infoTooltip="This tooltip provides additional information about the field"
@@ -217,12 +201,11 @@ module UnitInputDemo = {
           />
         </div>
       </div>
-      
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"UnitInput Use Cases"->React.string} </h2>
         <div className="space-y-6">
           <div className="border p-4 rounded-lg bg-gray-50">
-            <h3 className="text-lg font-medium mb-2">{"Price Input"->React.string}</h3>
+            <h3 className="text-lg font-medium mb-2"> {"Price Input"->React.string} </h3>
             <div className="grid grid-cols-2 gap-4">
               <UnitInput
                 label="Price (USD)"
@@ -234,7 +217,6 @@ module UnitInputDemo = {
                 value={currencyValue}
                 onChange={handleCurrencyChange}
               />
-              
               <UnitInput
                 label="Discount"
                 placeholder="Enter discount"
@@ -247,18 +229,20 @@ module UnitInputDemo = {
               />
             </div>
             <div className="mt-4">
-              <button 
-                className={`px-4 py-2 rounded-md text-white font-medium ${currencyValue->Js.String2.length > 0 && percentValue->Js.String2.length > 0 ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-300 cursor-not-allowed"}`}
-                disabled={currencyValue->Js.String2.length === 0 || percentValue->Js.String2.length === 0}
-                onClick={_ => Js.log("Saving price information...")}
-              >
+              <button
+                className={`px-4 py-2 rounded-md text-white font-medium ${currencyValue->Js.String2.length > 0 &&
+                    percentValue->Js.String2.length > 0
+                    ? "bg-blue-600 hover:bg-blue-700"
+                    : "bg-gray-300 cursor-not-allowed"}`}
+                disabled={currencyValue->Js.String2.length === 0 ||
+                  percentValue->Js.String2.length === 0}
+                onClick={_ => Js.log("Saving price information...")}>
                 {"Save Price Information"->React.string}
               </button>
             </div>
           </div>
-          
           <div className="border p-4 rounded-lg bg-gray-50">
-            <h3 className="text-lg font-medium mb-2">{"Product Dimensions"->React.string}</h3>
+            <h3 className="text-lg font-medium mb-2"> {"Product Dimensions"->React.string} </h3>
             <div className="grid grid-cols-2 gap-4">
               <UnitInput
                 label="Length"
@@ -269,7 +253,6 @@ module UnitInputDemo = {
                 value={measurementValue}
                 onChange={handleMeasurementChange}
               />
-              
               <UnitInput
                 label="Weight"
                 placeholder="Enter weight"
@@ -281,11 +264,14 @@ module UnitInputDemo = {
               />
             </div>
             <div className="mt-4">
-              <button 
-                className={`px-4 py-2 rounded-md text-white font-medium ${measurementValue->Js.String2.length > 0 && weightValue->Js.String2.length > 0 ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-300 cursor-not-allowed"}`}
-                disabled={measurementValue->Js.String2.length === 0 || weightValue->Js.String2.length === 0}
-                onClick={_ => Js.log("Saving product dimensions...")}
-              >
+              <button
+                className={`px-4 py-2 rounded-md text-white font-medium ${measurementValue->Js.String2.length > 0 &&
+                    weightValue->Js.String2.length > 0
+                    ? "bg-blue-600 hover:bg-blue-700"
+                    : "bg-gray-300 cursor-not-allowed"}`}
+                disabled={measurementValue->Js.String2.length === 0 ||
+                  weightValue->Js.String2.length === 0}
+                onClick={_ => Js.log("Saving product dimensions...")}>
                 {"Save Dimensions"->React.string}
               </button>
             </div>
@@ -297,4 +283,4 @@ module UnitInputDemo = {
 }
 
 // Export the main component
-let default = UnitInputDemo.make 
+let default = UnitInputDemo.make

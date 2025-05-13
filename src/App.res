@@ -19,7 +19,6 @@ open OTPInputDemo
 open TextAreaDemo
 open UnitInputDemo
 open DropdownInputDemo
-open PopoverDemo
 open TabDemo
 
 module TooltipDemo2 = {

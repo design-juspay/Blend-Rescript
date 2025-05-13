@@ -1,5 +1,4 @@
 open React
-open Popover
 
 @react.component
 let make = () => {

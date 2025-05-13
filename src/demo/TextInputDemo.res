@@ -1,4 +1,3 @@
-open RescriptCore
 open LucideIcons
 
 module TextInputDemo = {
@@ -8,10 +7,9 @@ module TextInputDemo = {
     let (passwordValue, setPasswordValue) = React.useState(_ => "")
     let (numberValue, setNumberValue) = React.useState(_ => "")
     let (emailValue, setEmailValue) = React.useState(_ => "")
-    
+
     <div className="p-4 space-y-8">
       <h1 className="text-2xl font-bold"> {"TextInput Components"->React.string} </h1>
-
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"Basic TextInput"->React.string} </h2>
         <div className="space-y-4 max-w-md">
@@ -24,43 +22,21 @@ module TextInputDemo = {
           />
         </div>
       </div>
-
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"TextInput Sizes"->React.string} </h2>
         <div className="space-y-4 max-w-md">
           <TextInput
-            label="Medium Size (Default)"
-            placeholder="Medium input"
-            size=#md
-            className="w-full"
+            label="Medium Size (Default)" placeholder="Medium input" size=#md className="w-full"
           />
-          <TextInput
-            label="Large Size"
-            placeholder="Large input"
-            size=#lg
-            className="w-full"
-          />
+          <TextInput label="Large Size" placeholder="Large input" size=#lg className="w-full" />
         </div>
       </div>
-
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"TextInput States"->React.string} </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <TextInput
-            label="Default State"
-            placeholder="Default state"
-            state=#default
-          />
-          <TextInput
-            label="Hover State"
-            placeholder="Hover state"
-            state=#hover
-          />
-          <TextInput
-            label="Focused State"
-            placeholder="Focused state"
-            state=#focused
-          />
+          <TextInput label="Default State" placeholder="Default state" state=#default />
+          <TextInput label="Hover State" placeholder="Hover state" state=#hover />
+          <TextInput label="Focused State" placeholder="Focused state" state=#focused />
           <TextInput
             label="Filled State"
             placeholder="Filled state"
@@ -79,14 +55,9 @@ module TextInputDemo = {
             state=#success
             successMessage="This field is valid"
           />
-          <TextInput
-            label="Disabled State"
-            placeholder="Disabled state"
-            state=#disabled
-          />
+          <TextInput label="Disabled State" placeholder="Disabled state" state=#disabled />
         </div>
       </div>
-
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"TextInput with Icons"->React.string} </h2>
         <div className="space-y-4 max-w-md">
@@ -111,16 +82,10 @@ module TextInputDemo = {
           />
         </div>
       </div>
-
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"TextInput Types"->React.string} </h2>
         <div className="space-y-4 max-w-md">
-          <TextInput
-            label="Text Input"
-            placeholder="Enter text"
-            type_="text"
-            className="w-full"
-          />
+          <TextInput label="Text Input" placeholder="Enter text" type_="text" className="w-full" />
           <TextInput
             label="Password Input"
             placeholder="Enter password"
@@ -148,15 +113,10 @@ module TextInputDemo = {
           />
         </div>
       </div>
-
       <div className="border rounded p-4">
         <h2 className="text-xl font-semibold mb-4"> {"TextInput with Labels"->React.string} </h2>
         <div className="space-y-4 max-w-md">
-          <TextInput
-            label="Main Label"
-            placeholder="With main label"
-            className="w-full"
-          />
+          <TextInput label="Main Label" placeholder="With main label" className="w-full" />
           <TextInput
             label="With Sublabel"
             sublabel="Additional information about this field"
@@ -185,4 +145,4 @@ module TextInputDemo = {
       </div>
     </div>
   }
-} 
+}
