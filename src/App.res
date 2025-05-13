@@ -13,6 +13,7 @@ open SwitchDemo
 open AvatarGroupDemo
 open CheckboxDemo
 open StatCardDemo
+open PopoverDemo
 
 module TooltipDemo2 = {
   @react.component
@@ -61,6 +62,7 @@ module Sidebar = {
     | AccordionDemo
     | CheckboxDemo
     | StatCardDemo
+    | PopoverComponent
   type componentInfo = {
     variant: component,
     label: string,
@@ -83,6 +85,7 @@ module Sidebar = {
     {variant: AccordionDemo, label: "AccordionDemo"},
     {variant: CheckboxDemo, label: "CheckboxDemo"},
     {variant: StatCardDemo, label: "StatCardDemo"},
+    {variant: PopoverComponent, label: "Popover"},
   ]
 
   @react.component
@@ -140,6 +143,7 @@ let make = () => {
       | AccordionDemo => <AccordionDemo />
       | CheckboxDemo => <CheckboxDemo />
       | StatCardDemo => <StatCardDemo />
+      | PopoverComponent => <PopoverDemo />
       }}
     </div>
   </div>

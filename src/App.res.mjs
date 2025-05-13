@@ -9,6 +9,7 @@ import * as AvatarDemo from "./demo/AvatarDemo.res.mjs";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as ButtonDemo from "./demo/ButtonDemo.res.mjs";
 import * as SwitchDemo from "./demo/SwitchDemo.res.mjs";
+import * as PopoverDemo from "./demo/PopoverDemo.res.mjs";
 import * as CheckboxDemo from "./demo/CheckboxDemo.res.mjs";
 import * as SnackbarDemo from "./demo/SnackbarDemo.res.mjs";
 import * as StatCardDemo from "./demo/StatCardDemo.res.mjs";
@@ -138,6 +139,10 @@ var components = [
   {
     variant: "StatCardDemo",
     label: "StatCardDemo"
+  },
+  {
+    variant: "PopoverComponent",
+    label: "Popover"
   }
 ];
 
@@ -237,6 +242,9 @@ function App(props) {
         break;
     case "StatCardDemo" :
         tmp = JsxRuntime.jsx(StatCardDemo.StatCardDemo.make, {});
+        break;
+    case "PopoverComponent" :
+        tmp = JsxRuntime.jsx(PopoverDemo.make, {});
         break;
     
   }
