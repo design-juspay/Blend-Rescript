@@ -348,16 +348,17 @@ let make = () => {
                 placeholder="Select options"
                 selectedOption={Belt.Array.joinWith(selectedItems, ",", x => x)}
                 selectedText={
+                  let placeholder = "Select options"
                   if Belt.Array.length(selectedItems) > 0 {
                     let firstItem = Belt.Array.get(selectedItems, 0)->Belt.Option.getWithDefault("")
                     let remainingCount = Belt.Array.length(selectedItems) - 1
                     if remainingCount > 0 {
-                      `${firstItem}, +${remainingCount->Belt.Int.toString} more`
+                      `${placeholder} ${firstItem}, +${remainingCount->Belt.Int.toString} more`
                     } else {
-                      firstItem
+                      `${placeholder} ${firstItem}`
                     }
                   } else {
-                    ""
+                    placeholder
                   }
                 }
                 selectedCount={Belt.Array.length(selectedItems)}
@@ -405,16 +406,17 @@ let make = () => {
                 }}
                 selectedOption={Belt.Array.joinWith(selectedItems, ",", x => x)}
                 selectedText={
+                  let placeholder = "Text display"
                   if Belt.Array.length(selectedItems) > 0 {
                     let firstItem = Belt.Array.get(selectedItems, 0)->Belt.Option.getWithDefault("")
                     let remainingCount = Belt.Array.length(selectedItems) - 1
                     if remainingCount > 0 {
-                      `${firstItem}, +${remainingCount->Belt.Int.toString} more`
+                      `${placeholder} ${firstItem}, +${remainingCount->Belt.Int.toString} more`
                     } else {
-                      firstItem
+                      `${placeholder} ${firstItem}`
                     }
                   } else {
-                    ""
+                    placeholder
                   }
                 }
                 selectedCount={Belt.Array.length(selectedItems)}

@@ -187,21 +187,23 @@ function MenuDropdownDemo(props) {
           return x;
         }));
   var selectedCount = selectedItems.length;
+  var placeholder = "Select options";
   var tmp;
   if (selectedItems.length !== 0) {
     var firstItem = Belt_Option.getWithDefault(Belt_Array.get(selectedItems, 0), "");
     var remainingCount = selectedItems.length - 1 | 0;
-    tmp = remainingCount > 0 ? firstItem + ", +" + String(remainingCount) + " more" : firstItem;
+    tmp = remainingCount > 0 ? placeholder + " " + firstItem + ", +" + String(remainingCount) + " more" : placeholder + " " + firstItem;
   } else {
-    tmp = "";
+    tmp = placeholder;
   }
+  var placeholder$1 = "Text display";
   var tmp$1;
   if (selectedItems.length !== 0) {
     var firstItem$1 = Belt_Option.getWithDefault(Belt_Array.get(selectedItems, 0), "");
     var remainingCount$1 = selectedItems.length - 1 | 0;
-    tmp$1 = remainingCount$1 > 0 ? firstItem$1 + ", +" + String(remainingCount$1) + " more" : firstItem$1;
+    tmp$1 = remainingCount$1 > 0 ? placeholder$1 + " " + firstItem$1 + ", +" + String(remainingCount$1) + " more" : placeholder$1 + " " + firstItem$1;
   } else {
-    tmp$1 = "";
+    tmp$1 = placeholder$1;
   }
   return JsxRuntime.jsxs("div", {
               children: [
