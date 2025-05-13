@@ -27,6 +27,24 @@ var Users = {};
 
 var BarChart = {};
 
+var X = {};
+
+var Search = {};
+
+var Lock = {};
+
+var MapPin = {};
+
+var HelpCircle = {};
+
+var DollarSign = {};
+
+var Percent = {};
+
+var Plus = {};
+
+var Minus = {};
+
 export {
   Check ,
   ChevronLeft ,
@@ -41,5 +59,14 @@ export {
   Zap ,
   Users ,
   BarChart ,
+  X ,
+  Search ,
+  Lock ,
+  MapPin ,
+  HelpCircle ,
+  DollarSign ,
+  Percent ,
+  Plus ,
+  Minus ,
 }
 /* No side effect */

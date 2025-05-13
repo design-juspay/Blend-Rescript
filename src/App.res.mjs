@@ -4,6 +4,7 @@ import * as React from "react";
 import * as TabDemo from "./demo/TabDemo.res.mjs";
 import * as TagDemo from "./demo/TagDemo.res.mjs";
 import * as AlertDemo from "./demo/AlertDemo.res.mjs";
+import * as ModalDemo from "./demo/ModalDemo.res.mjs";
 import * as RadioDemo from "./demo/RadioDemo.res.mjs";
 import * as AvatarDemo from "./demo/AvatarDemo.res.mjs";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
@@ -11,11 +12,17 @@ import * as ButtonDemo from "./demo/ButtonDemo.res.mjs";
 import * as SwitchDemo from "./demo/SwitchDemo.res.mjs";
 import * as PopoverDemo from "./demo/PopoverDemo.res.mjs";
 import * as CheckboxDemo from "./demo/CheckboxDemo.res.mjs";
+import * as OTPInputDemo from "./demo/OTPInputDemo.res.mjs";
 import * as SnackbarDemo from "./demo/SnackbarDemo.res.mjs";
 import * as StatCardDemo from "./demo/StatCardDemo.res.mjs";
+import * as TextAreaDemo from "./demo/TextAreaDemo.res.mjs";
 import * as AccordionDemo from "./demo/AccordionDemo.res.mjs";
+import * as TextInputDemo from "./demo/TextInputDemo.res.mjs";
+import * as UnitInputDemo from "./demo/UnitInputDemo.res.mjs";
 import * as AvatarGroupDemo from "./demo/AvatarGroupDemo.res.mjs";
 import * as ButtonGroupDemo from "./demo/ButtonGroupDemo.res.mjs";
+import * as NumberInputDemo from "./demo/NumberInputDemo.res.mjs";
+import * as DropdownInputDemo from "./demo/DropdownInputDemo.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
 import * as DateRangePickerDemo from "./demo/DateRangePickerDemo.res.mjs";
 import * as DesignSystem from "@vinitjuspay/design-system";
@@ -78,71 +85,123 @@ function App$BreadcrumbDemo(props) {
 var components = [
   {
     variant: "Buttons",
-    label: "Buttons"
-  },
-  {
-    variant: "Tags",
-    label: "Tags"
-  },
-  {
-    variant: "Snackbars",
-    label: "Snackbars"
-  },
-  {
-    variant: "TabsComponent",
-    label: "Tabs"
-  },
-  {
-    variant: "Alerts",
-    label: "Alerts"
-  },
-  {
-    variant: "Breadcrumb",
-    label: "Breadcrumb"
+    label: "Buttons",
+    category: "Basic UI"
   },
   {
     variant: "ButtonGroup",
-    label: "ButtonGroup"
+    label: "Button Group",
+    category: "Basic UI"
+  },
+  {
+    variant: "Tags",
+    label: "Tags",
+    category: "Basic UI"
+  },
+  {
+    variant: "Alerts",
+    label: "Alerts",
+    category: "Basic UI"
   },
   {
     variant: "Avatar",
-    label: "Avatar"
+    label: "Avatar",
+    category: "Basic UI"
   },
   {
     variant: "AvatarGroup",
-    label: "AvatarGroup"
-  },
-  {
-    variant: "Radio",
-    label: "Radio"
-  },
-  {
-    variant: "Switch",
-    label: "Switch"
-  },
-  {
-    variant: "DateRangePicker",
-    label: "DateRangePicker"
-  },
-  {
-    variant: "TooltipDemo2",
-    label: "TooltipDemo2"
-  },
-  {
-    variant: "AccordionDemo",
-    label: "AccordionDemo"
-  },
-  {
-    variant: "CheckboxDemo",
-    label: "CheckboxDemo"
+    label: "Avatar Group",
+    category: "Basic UI"
   },
   {
     variant: "StatCardDemo",
-    label: "StatCardDemo"
+    label: "Stat Card",
+    category: "Basic UI"
+  },
+  {
+    variant: "Breadcrumb",
+    label: "Breadcrumb",
+    category: "Basic UI"
+  },
+  {
+    variant: "TextInputComponent",
+    label: "Text Input",
+    category: "Form Components"
+  },
+  {
+    variant: "NumberInputComponent",
+    label: "Number Input",
+    category: "Form Components"
+  },
+  {
+    variant: "TextAreaComponent",
+    label: "Text Area",
+    category: "Form Components"
+  },
+  {
+    variant: "UnitInputComponent",
+    label: "Unit Input",
+    category: "Form Components"
+  },
+  {
+    variant: "DropdownInputComponent",
+    label: "Dropdown Input",
+    category: "Form Components"
+  },
+  {
+    variant: "OTPInputComponent",
+    label: "OTP Input",
+    category: "Form Components"
+  },
+  {
+    variant: "CheckboxDemo",
+    label: "Checkbox",
+    category: "Form Components"
+  },
+  {
+    variant: "Radio",
+    label: "Radio",
+    category: "Form Components"
+  },
+  {
+    variant: "Switch",
+    label: "Switch",
+    category: "Form Components"
+  },
+  {
+    variant: "DateRangePicker",
+    label: "Date Range Picker",
+    category: "Form Components"
+  },
+  {
+    variant: "TabsComponent",
+    label: "Tabs",
+    category: "Navigation & Menus"
+  },
+  {
+    variant: "ModalComponent",
+    label: "Modal",
+    category: "Overlays & Notifications"
   },
   {
     variant: "PopoverComponent",
-    label: "Popover"
+    label: "Popover",
+    category: "Overlays & Notifications"
+  },
+  {
+    variant: "TooltipDemo2",
+    label: "Tooltip",
+    category: "Overlays & Notifications"
+  },
+  {
+    variant: "Snackbars",
+    label: "Snackbars",
+    category: "Overlays & Notifications"
+  },
+  {
+    variant: "AccordionDemo",
+    label: "Accordion",
+    category: "Expandable Content"
   }
 ];
 
@@ -159,6 +218,16 @@ function App$Sidebar(props) {
       return inactiveClass;
     }
   };
+  var categories = Belt_Array.reduce(components, [], (function (acc, param) {
+          var category = param.category;
+          if (Belt_Array.some(acc, (function (c) {
+                    return c === category;
+                  }))) {
+            return acc;
+          } else {
+            return Belt_Array.concat(acc, [category]);
+          }
+        }));
   return JsxRuntime.jsxs("div", {
               children: [
                 JsxRuntime.jsx("div", {
@@ -169,16 +238,32 @@ function App$Sidebar(props) {
                       className: "p-4 border-b border-gray-200"
                     }),
                 JsxRuntime.jsx("nav", {
-                      children: Belt_Array.map(components, (function (param) {
-                              var label = param.label;
-                              var variant = param.variant;
-                              return JsxRuntime.jsx("button", {
-                                          children: label,
-                                          className: getItemClass(variant),
-                                          onClick: (function (param) {
-                                              onSelect(variant);
-                                            })
-                                        }, label);
+                      children: Belt_Array.map(categories, (function (category) {
+                              var categoryComponents = Belt_Array.keep(components, (function (param) {
+                                      return param.category === category;
+                                    }));
+                              return JsxRuntime.jsxs("div", {
+                                          children: [
+                                            JsxRuntime.jsx("div", {
+                                                  children: category,
+                                                  className: "px-4 py-2 font-semibold text-sm text-gray-500 uppercase"
+                                                }),
+                                            Belt_Array.map(categoryComponents, (function (param) {
+                                                    var label = param.label;
+                                                    var variant = param.variant;
+                                                    return JsxRuntime.jsx("button", {
+                                                                children: label,
+                                                                className: getItemClass(variant),
+                                                                onClick: (function (param) {
+                                                                    onSelect(variant);
+                                                                  })
+                                                              }, label);
+                                                  })),
+                                            JsxRuntime.jsx("div", {
+                                                  className: "my-2 border-b border-gray-100"
+                                                })
+                                          ]
+                                        }, category);
                             })),
                       className: "py-2"
                     })
@@ -242,6 +327,27 @@ function App(props) {
         break;
     case "StatCardDemo" :
         tmp = JsxRuntime.jsx(StatCardDemo.StatCardDemo.make, {});
+        break;
+    case "ModalComponent" :
+        tmp = JsxRuntime.jsx(ModalDemo.ModalDemo.make, {});
+        break;
+    case "TextInputComponent" :
+        tmp = JsxRuntime.jsx(TextInputDemo.TextInputDemo.make, {});
+        break;
+    case "NumberInputComponent" :
+        tmp = JsxRuntime.jsx(NumberInputDemo.NumberInputDemo.make, {});
+        break;
+    case "OTPInputComponent" :
+        tmp = JsxRuntime.jsx(OTPInputDemo.OTPInputDemo.make, {});
+        break;
+    case "TextAreaComponent" :
+        tmp = JsxRuntime.jsx(TextAreaDemo.TextAreaDemo.make, {});
+        break;
+    case "UnitInputComponent" :
+        tmp = JsxRuntime.jsx(UnitInputDemo.UnitInputDemo.make, {});
+        break;
+    case "DropdownInputComponent" :
+        tmp = JsxRuntime.jsx(DropdownInputDemo.DropdownInputDemo.make, {});
         break;
     case "PopoverComponent" :
         tmp = JsxRuntime.jsx(PopoverDemo.make, {});

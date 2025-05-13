@@ -63,6 +63,11 @@ module BarChart = {
   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "BarChart"
 }
 
+module X = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?, ~onClick: ReactEvent.Mouse.t => unit=?) => React.element = "X"
+}
+
 // module AlertCircle = {
 //   @module("lucide-react") @react.component
 //   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "AlertCircle"
@@ -71,4 +76,44 @@ module BarChart = {
 // module Info = {
 //   @module("lucide-react") @react.component
 //   external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Info"
-// } 
+// }
+
+module Search = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Search"
+}
+
+module Lock = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Lock"
+}
+
+module MapPin = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "MapPin"
+}
+
+module HelpCircle = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "HelpCircle"
+}
+
+module DollarSign = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "DollarSign"
+}
+
+module Percent = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Percent"
+}
+
+module Plus = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Plus"
+}
+
+module Minus = {
+  @module("lucide-react") @react.component
+  external make: (~size: int=?, ~color: string=?, ~className: string=?) => React.element = "Minus"
+} 
