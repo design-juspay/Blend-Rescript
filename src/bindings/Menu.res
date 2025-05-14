@@ -35,7 +35,7 @@ type rec menuItem = {
   text: string,
   className?: string,
   disabled?: bool,
-  type_?: menuItemType,
+  menuType?: menuItemType,
   state?: menuItemState,
   action?: menuItemAction,
   onClick?: unit => unit,
@@ -54,15 +54,6 @@ type rec menuItem = {
   hasSubmenu?: bool,
   submenuItems?: array<menuItem>,
   parentId?: string,
-}
-
-// Function to create a multi-select menu item
-let createMultiSelectItem = (~id, ~text, ~disabled=false) => {
-  id: id,
-  text: text,
-  type_: #MULTI_SELECT,
-  isMultiSelect: true,
-  disabled: disabled
 }
 
 // Context Value type
@@ -100,4 +91,4 @@ external make: (
   ~searchTerm: string=?,
   ~onSearchTermChange: string => unit=?,
   ~onContextChange: menuContextValue => unit=?,
-) => React.element = "Menu" 
+) => React.element = "Menu"
