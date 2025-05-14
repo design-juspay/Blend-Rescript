@@ -1,10 +1,10 @@
 open Menu
-open DropdownBinding
 
 @react.component
 let make = () => {
   let (selectedItems, setSelectedItems) = React.useState(_ => [])
-  let (_isOpen, setIsOpen) = React.useState(_ => false)
+  let (_, setSelectedSingleItem) = React.useState(_ => "")
+  let (_isOpen, _) = React.useState(_ => false)
 
   // For debugging
   React.useEffect1(() => {
@@ -14,7 +14,26 @@ let make = () => {
     None
   }, [selectedItems])
 
-  // Define multi-select menu items properly for the design system
+  // Define standard menu items
+  let standardMenuItems = [
+    {
+      id: "item1",
+      text: "Option 1",
+      menuType: #DEFAULT,
+    },
+    {
+      id: "item2",
+      text: "Option 2",
+      menuType: #DEFAULT,
+    },
+    {
+      id: "item3",
+      text: "Option 3",
+      menuType: #DEFAULT,
+    },
+  ]
+
+  // Define multi-select menu items
   let multiSelectMenuItems = [
     {
       id: "1",
@@ -33,36 +52,199 @@ let make = () => {
     },
   ]
 
+  // Handle selection for single select
+  let handleSingleSelect = (item: menuItem) => {
+    switch item.id {
+    | Some(id) => {
+        setSelectedSingleItem(_ => id)
+        Js.log("Selected single item: " ++ id)
+      }
+    | None => ()
+    }
+  }
+
+  // Handle selection for multi-select
+  let handleMultiSelect = (item: menuItem) => {
+    switch item.id {
+    | Some(id) =>
+      setSelectedItems(prev => {
+        let isSelected = prev->Belt.Array.some(item => item == id)
+        if isSelected {
+          prev->Belt.Array.keep(item => item != id)
+        } else {
+          Belt.Array.concat(prev, [id])
+        }
+      })
+    | None => ()
+    }
+  }
+
   <div className="space-y-10 p-6">
-    // <button
-    //   className="inline-flex items-center justify-center transition-all duration-200 disabled:pointer-events-none font-600 font-sans focus-visible:outline-gray-100 focus-visible:outline-2 focus:outline-gray-100 focus:outline-2 focus:bg-white focus:border-gray-150 h-9 aspect-square p-0 bg-white text-gray-600 hover:bg-gray-50 hover:border-gray-150 active:bg-gray-25 active:shadow-[inset_0px_4px_4px_0px_rgba(0,0,0,0.1)] active:border-gray-200 border-[1.5px] border-gray-200 disabled:bg-gray-150 disabled:border-0 disabled:text-gray-400 rounded-lg rounded-l-none border-[1px]">
-    //   <span className="text-body-md truncate">
-    //     <svg
-    //       xmlns="http://www.w3.org/2000/svg"
-    //       width="16"
-    //       height="16"
-    //       viewBox="0 0 24 24"
-    //       fill="none"
-    //       stroke="currentColor"
-    //       strokeWidth="2"
-    //       strokeLinecap="round"
-    //       strokeLinejoin="round"
-    //       className="lucide lucide-x text-gray-600">
-    //       <path d="M18 6 6 18" />
-    //       <path d="m6 6 12 12" />
-    //     </svg>
-    //   </span>
-    //   // <span className="text-body-md truncate"> {"X"->React.string} </span>
-    // </button>
-    <h1 className="text-2xl font-bold mb-6"> {"Correct Dropdown Demo"->React.string} </h1>
+    <h1 className="text-2xl font-bold mb-6"> {"Dropdown Types Demo"->React.string} </h1>
     <div className="space-y-8">
       <div>
-        <h2 className="text-xl font-semibold mb-4">
-          {"Multi-select MenuDropdown"->React.string}
-        </h2>
+        <h2 className="text-xl font-semibold mb-4"> {"Icon-Only Dropdown"->React.string} </h2>
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-lg font-medium mb-2"> {"Basic Icon Dropdown"->React.string} </h3>
+            <div className="flex flex-wrap gap-4">
+              <DropdownBinding.make
+                id="icon-only-basic"
+                dropdownType=#iconOnly
+                menuItems=standardMenuItems
+                onSelect=handleSingleSelect
+              />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium mb-2">
+              {"Icon Dropdown with Different Sizes"->React.string}
+            </h3>
+            <div className="flex flex-wrap gap-4 items-end">
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Small"->React.string} </p>
+                <DropdownBinding.make
+                  id="icon-only-sm"
+                  dropdownType=#iconOnly
+                  size=#sm
+                  menuItems=standardMenuItems
+                  onSelect=handleSingleSelect
+                />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Medium"->React.string} </p>
+                <DropdownBinding.make
+                  id="icon-only-md"
+                  dropdownType=#iconOnly
+                  size=#md
+                  menuItems=standardMenuItems
+                  onSelect=handleSingleSelect
+                />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Large"->React.string} </p>
+                <DropdownBinding.make
+                  id="icon-only-lg"
+                  dropdownType=#iconOnly
+                  size=#lg
+                  menuItems=standardMenuItems
+                  onSelect=handleSingleSelect
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      // Single Select Dropdown
+      <div>
+        <h2 className="text-xl font-semibold mb-4"> {"Single-Select Dropdown"->React.string} </h2>
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-lg font-medium mb-2"> {"Basic Single Select"->React.string} </h3>
+            <div className="flex flex-wrap gap-4">
+              <DropdownBinding.make
+                id="single-select-basic"
+                dropdownType=#singleSelect
+                menuItems=standardMenuItems
+                hasLabel=true
+                label="Single Select"
+                hasHint=true
+                hint="Select one option"
+                placeholder="Select an option"
+                onSelect=handleSingleSelect
+              />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium mb-2">
+              {"Single Select with Different States"->React.string}
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Default"->React.string} </p>
+                <DropdownBinding.make
+                  id="single-select-default"
+                  subType=#noContainer
+                  dropdownType=#singleSelect
+                  menuItems=standardMenuItems
+                  state=#default
+                  placeholder="Default state"
+                  onSelect=handleSingleSelect
+                />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Hover"->React.string} </p>
+                <DropdownBinding.make
+                  id="single-select-hover"
+                  dropdownType=#singleSelect
+                  menuItems=standardMenuItems
+                  state=#hover
+                  placeholder="Hover state"
+                  onSelect=handleSingleSelect
+                />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Selected"->React.string} </p>
+                <DropdownBinding.make
+                  id="single-select-selected"
+                  dropdownType=#singleSelect
+                  menuItems=standardMenuItems
+                  state=#selected
+                  placeholder="Selected state"
+                  selectedOption="Option 1"
+                  onSelect=handleSingleSelect
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium mb-2">
+              {"Single Select with Different Sizes"->React.string}
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Small"->React.string} </p>
+                <DropdownBinding.make
+                  id="single-select-sm"
+                  dropdownType=#singleSelect
+                  size=#sm
+                  menuItems=standardMenuItems
+                  placeholder="Small dropdown"
+                  onSelect=handleSingleSelect
+                />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Medium"->React.string} </p>
+                <DropdownBinding.make
+                  id="single-select-md"
+                  dropdownType=#singleSelect
+                  size=#md
+                  menuItems=standardMenuItems
+                  placeholder="Medium dropdown"
+                  onSelect=handleSingleSelect
+                />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Large"->React.string} </p>
+                <DropdownBinding.make
+                  id="single-select-lg"
+                  dropdownType=#singleSelect
+                  size=#lg
+                  menuItems=standardMenuItems
+                  placeholder="Large dropdown"
+                  onSelect=handleSingleSelect
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      // Multi-select Dropdown
+      <div>
+        <h2 className="text-xl font-semibold mb-4"> {"Multi-select Dropdown"->React.string} </h2>
         <div className="space-y-8">
           <div>
-            <h3 className="text-lg  font-medium mb-2">
+            <h3 className="text-lg font-medium mb-2">
               {"Count Display (hasContainer)"->React.string}
             </h3>
             <div className="flex flex-wrap gap-4">
@@ -75,6 +257,7 @@ let make = () => {
                 Js.log2("selectedCount", selectedCount)
 
                 <DropdownBinding.make
+                  id="multi-select-count"
                   dropdownType=#multiSelect
                   selectionType=#count
                   menuItems=multiSelectMenuItems
@@ -83,6 +266,10 @@ let make = () => {
                   hasHint=true
                   hint="Select multiple options"
                   placeholder="Select options"
+                  onSelect=handleMultiSelect
+                  selectedCount
+                  hasClearButton=true
+                  onClear={() => setSelectedItems(_ => [])}
                 />
               }
             </div>
@@ -102,30 +289,43 @@ let make = () => {
                 hasHint=true
                 hint="Select multiple options"
                 placeholder="Select options"
+                onSelect=handleMultiSelect
+                selectedText={if Belt.Array.length(selectedItems) > 0 {
+                  Belt.Array.map(selectedItems, id => {
+                    let item = Belt.Array.getBy(multiSelectMenuItems, item => {
+                      switch item.id {
+                      | Some(itemId) => itemId == id
+                      | None => false
+                      }
+                    })
+                    switch item {
+                    | Some(found) => found.text
+                    | None => id
+                    }
+                  })->Belt.Array.joinWith(", ", x => x)
+                } else {
+                  ""
+                }}
+                hasClearButton=true
+                onClear={() => setSelectedItems(_ => [])}
               />
             </div>
           </div>
-          // <div>
-          //   <h3 className="text-lg font-medium mb-2"> {"noContainer Variant"->React.string} </h3>
-          //   <div className="flex flex-wrap gap-4">
-          //     <DropdownBinding.make
-          //       type_=#multiSelect
-          //       subType=#noContainer
-          //       menuItems=multiSelectMenuItems
-          //       placeholder="Select options"
-          //       selectionType=#count
-          //       closeOnSelect=false
-          //       onSelect={item => {
-          //         switch item.id {
-          //         | Some(id) => handleMultiSelectItemClick(id)
-          //         | None => ()
-          //         }
-          //       }}
-          //       selectedOption={Belt.Array.joinWith(selectedItems, ",", x => x)}
-          //       selectedCount={Belt.Array.length(selectedItems)}
-          //     />
-          //   </div>
-          // </div>
+          <div>
+            <h3 className="text-lg font-medium mb-2"> {"Disabled Multi-select"->React.string} </h3>
+            <div className="flex flex-wrap gap-4">
+              <DropdownBinding.make
+                id="multi-select-disabled"
+                dropdownType=#multiSelect
+                menuItems=multiSelectMenuItems
+                selectionType=#count
+                hasLabel=true
+                label="Disabled Multi-select"
+                placeholder="Cannot select options"
+                disabled=true
+              />
+            </div>
+          </div>
         </div>
         <div className="mt-4">
           <p className="font-medium">
@@ -135,6 +335,81 @@ let make = () => {
               React.string("Selected items: " ++ Belt.Array.joinWith(selectedItems, ", ", x => x))
             }}
           </p>
+        </div>
+      </div>
+      // Additional dropdown configurations
+      <div>
+        <h2 className="text-xl font-semibold mb-4">
+          {"Additional Configurations"->React.string}
+        </h2>
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-lg font-medium mb-2"> {"Dropdown with Position"->React.string} </h3>
+            <div className="flex flex-wrap gap-4">
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Bottom-start"->React.string} </p>
+                <DropdownBinding.make
+                  id="position-bottom-start"
+                  dropdownType=#singleSelect
+                  menuItems=standardMenuItems
+                  placeholder="Bottom-start position"
+                  position=#"bottom-start"
+                />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Bottom-end"->React.string} </p>
+                <DropdownBinding.make
+                  id="position-bottom-end"
+                  dropdownType=#singleSelect
+                  menuItems=standardMenuItems
+                  placeholder="Bottom-end position"
+                  position=#"bottom-end"
+                />
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 mb-1"> {"Top-start"->React.string} </p>
+                <DropdownBinding.make
+                  id="position-top-start"
+                  dropdownType=#singleSelect
+                  menuItems=standardMenuItems
+                  placeholder="Top-start position"
+                  position=#"top-start"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium mb-2">
+              {"Dropdown with Mandatory Field"->React.string}
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              <DropdownBinding.make
+                id="mandatory-dropdown"
+                dropdownType=#singleSelect
+                menuItems=standardMenuItems
+                hasLabel=true
+                label="Required Field"
+                placeholder="Must select an option"
+                mandatory=true
+              />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium mb-2">
+              {"Dropdown with Custom Width"->React.string}
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              <DropdownBinding.make
+                id="custom-width"
+                dropdownType=#singleSelect
+                menuItems=standardMenuItems
+                hasLabel=true
+                label="Custom Width"
+                placeholder="Width: 300px"
+                width="300px"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

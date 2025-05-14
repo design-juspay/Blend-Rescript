@@ -9,7 +9,12 @@ function CorrectDropdownDemo(props) {
   var match = React.useState(function () {
         return [];
       });
+  var setSelectedItems = match[1];
   var selectedItems = match[0];
+  var match$1 = React.useState(function () {
+        return "";
+      });
+  var setSelectedSingleItem = match$1[1];
   React.useState(function () {
         return false;
       });
@@ -18,6 +23,23 @@ function CorrectDropdownDemo(props) {
           console.log(selectedItems);
           console.log("Count: " + String(selectedItems.length));
         }), [selectedItems]);
+  var standardMenuItems = [
+    {
+      id: "item1",
+      text: "Option 1",
+      menuType: "DEFAULT"
+    },
+    {
+      id: "item2",
+      text: "Option 2",
+      menuType: "DEFAULT"
+    },
+    {
+      id: "item3",
+      text: "Option 3",
+      menuType: "DEFAULT"
+    }
+  ];
   var multiSelectMenuItems = [
     {
       id: "1",
@@ -35,6 +57,35 @@ function CorrectDropdownDemo(props) {
       menuType: "MULTI_SELECT"
     }
   ];
+  var handleSingleSelect = function (item) {
+    var id = item.id;
+    if (id !== undefined) {
+      setSelectedSingleItem(function (param) {
+            return id;
+          });
+      console.log("Selected single item: " + id);
+      return ;
+    }
+    
+  };
+  var handleMultiSelect = function (item) {
+    var id = item.id;
+    if (id !== undefined) {
+      return setSelectedItems(function (prev) {
+                  var isSelected = Belt_Array.some(prev, (function (item) {
+                          return item === id;
+                        }));
+                  if (isSelected) {
+                    return Belt_Array.keep(prev, (function (item) {
+                                  return item !== id;
+                                }));
+                  } else {
+                    return Belt_Array.concat(prev, [id]);
+                  }
+                });
+    }
+    
+  };
   var selectedItemsStr = Belt_Array.joinWith(selectedItems, ",", (function (x) {
           return x;
         }));
@@ -42,75 +93,489 @@ function CorrectDropdownDemo(props) {
   return JsxRuntime.jsxs("div", {
               children: [
                 JsxRuntime.jsx("h1", {
-                      children: "Correct Dropdown Demo",
+                      children: "Dropdown Types Demo",
                       className: "text-2xl font-bold mb-6"
                     }),
-                JsxRuntime.jsx("div", {
-                      children: JsxRuntime.jsxs("div", {
-                            children: [
-                              JsxRuntime.jsx("h2", {
-                                    children: "Multi-select MenuDropdown",
-                                    className: "text-xl font-semibold mb-4"
-                                  }),
-                              JsxRuntime.jsxs("div", {
-                                    children: [
-                                      JsxRuntime.jsxs("div", {
-                                            children: [
-                                              JsxRuntime.jsx("h3", {
-                                                    children: "Count Display (hasContainer)",
-                                                    className: "text-lg  font-medium mb-2"
-                                                  }),
-                                              JsxRuntime.jsx("div", {
-                                                    children: (console.log("Rendering Count dropdown with:"), console.log("selectedOption", selectedItemsStr), console.log("selectedCount", selectedCount), JsxRuntime.jsx(DesignSystem.Dropdown, {
+                JsxRuntime.jsxs("div", {
+                      children: [
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx("h2", {
+                                      children: "Icon-Only Dropdown",
+                                      className: "text-xl font-semibold mb-4"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Basic Icon Dropdown",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsx("div", {
+                                                      children: JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                            id: "icon-only-basic",
+                                                            dropdownType: "iconOnly",
+                                                            menuItems: standardMenuItems,
+                                                            onSelect: handleSingleSelect
+                                                          }),
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            }),
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Icon Dropdown with Different Sizes",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsxs("div", {
+                                                      children: [
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Small",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "icon-only-sm",
+                                                                      dropdownType: "iconOnly",
+                                                                      size: "sm",
+                                                                      menuItems: standardMenuItems,
+                                                                      onSelect: handleSingleSelect
+                                                                    })
+                                                              ]
+                                                            }),
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Medium",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "icon-only-md",
+                                                                      dropdownType: "iconOnly",
+                                                                      size: "md",
+                                                                      menuItems: standardMenuItems,
+                                                                      onSelect: handleSingleSelect
+                                                                    })
+                                                              ]
+                                                            }),
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Large",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "icon-only-lg",
+                                                                      dropdownType: "iconOnly",
+                                                                      size: "lg",
+                                                                      menuItems: standardMenuItems,
+                                                                      onSelect: handleSingleSelect
+                                                                    })
+                                                              ]
+                                                            })
+                                                      ],
+                                                      className: "flex flex-wrap gap-4 items-end"
+                                                    })
+                                              ]
+                                            })
+                                      ],
+                                      className: "space-y-4"
+                                    })
+                              ]
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx("h2", {
+                                      children: "Single-Select Dropdown",
+                                      className: "text-xl font-semibold mb-4"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Basic Single Select",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsx("div", {
+                                                      children: JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                            id: "single-select-basic",
+                                                            dropdownType: "singleSelect",
+                                                            hasLabel: true,
+                                                            hasHint: true,
+                                                            label: "Single Select",
+                                                            hint: "Select one option",
+                                                            placeholder: "Select an option",
+                                                            menuItems: standardMenuItems,
+                                                            onSelect: handleSingleSelect
+                                                          }),
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            }),
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Single Select with Different States",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsxs("div", {
+                                                      children: [
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Default",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "single-select-default",
+                                                                      dropdownType: "singleSelect",
+                                                                      subType: "noContainer",
+                                                                      state: "default",
+                                                                      placeholder: "Default state",
+                                                                      menuItems: standardMenuItems,
+                                                                      onSelect: handleSingleSelect
+                                                                    })
+                                                              ]
+                                                            }),
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Hover",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "single-select-hover",
+                                                                      dropdownType: "singleSelect",
+                                                                      state: "hover",
+                                                                      placeholder: "Hover state",
+                                                                      menuItems: standardMenuItems,
+                                                                      onSelect: handleSingleSelect
+                                                                    })
+                                                              ]
+                                                            }),
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Selected",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "single-select-selected",
+                                                                      dropdownType: "singleSelect",
+                                                                      state: "selected",
+                                                                      placeholder: "Selected state",
+                                                                      selectedOption: "Option 1",
+                                                                      menuItems: standardMenuItems,
+                                                                      onSelect: handleSingleSelect
+                                                                    })
+                                                              ]
+                                                            })
+                                                      ],
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            }),
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Single Select with Different Sizes",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsxs("div", {
+                                                      children: [
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Small",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "single-select-sm",
+                                                                      dropdownType: "singleSelect",
+                                                                      size: "sm",
+                                                                      placeholder: "Small dropdown",
+                                                                      menuItems: standardMenuItems,
+                                                                      onSelect: handleSingleSelect
+                                                                    })
+                                                              ]
+                                                            }),
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Medium",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "single-select-md",
+                                                                      dropdownType: "singleSelect",
+                                                                      size: "md",
+                                                                      placeholder: "Medium dropdown",
+                                                                      menuItems: standardMenuItems,
+                                                                      onSelect: handleSingleSelect
+                                                                    })
+                                                              ]
+                                                            }),
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Large",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "single-select-lg",
+                                                                      dropdownType: "singleSelect",
+                                                                      size: "lg",
+                                                                      placeholder: "Large dropdown",
+                                                                      menuItems: standardMenuItems,
+                                                                      onSelect: handleSingleSelect
+                                                                    })
+                                                              ]
+                                                            })
+                                                      ],
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            })
+                                      ],
+                                      className: "space-y-4"
+                                    })
+                              ]
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx("h2", {
+                                      children: "Multi-select Dropdown",
+                                      className: "text-xl font-semibold mb-4"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Count Display (hasContainer)",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsx("div", {
+                                                      children: (console.log("Rendering Count dropdown with:"), console.log("selectedOption", selectedItemsStr), console.log("selectedCount", selectedCount), JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                              id: "multi-select-count",
+                                                              dropdownType: "multiSelect",
+                                                              selectionType: "count",
+                                                              hasLabel: true,
+                                                              hasHint: true,
+                                                              hasClearButton: true,
+                                                              label: "Multi Select (Count)",
+                                                              hint: "Select multiple options",
+                                                              placeholder: "Select options",
+                                                              selectedCount: selectedCount,
+                                                              menuItems: multiSelectMenuItems,
+                                                              onSelect: handleMultiSelect,
+                                                              onClear: (function () {
+                                                                  setSelectedItems(function (param) {
+                                                                        return [];
+                                                                      });
+                                                                })
+                                                            })),
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            }),
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Text Display (hasContainer)",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsx("div", {
+                                                      children: JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                            id: "multi-select-text-correct",
+                                                            dropdownType: "multiSelect",
+                                                            selectionType: "text",
+                                                            hasLabel: true,
+                                                            hasHint: true,
+                                                            hasClearButton: true,
+                                                            label: "Multi Select (Text)",
+                                                            hint: "Select multiple options",
+                                                            placeholder: "Select options",
+                                                            selectedText: selectedItems.length !== 0 ? Belt_Array.joinWith(Belt_Array.map(selectedItems, (function (id) {
+                                                                          var item = Belt_Array.getBy(multiSelectMenuItems, (function (item) {
+                                                                                  var itemId = item.id;
+                                                                                  if (itemId !== undefined) {
+                                                                                    return itemId === id;
+                                                                                  } else {
+                                                                                    return false;
+                                                                                  }
+                                                                                }));
+                                                                          if (item !== undefined) {
+                                                                            return item.text;
+                                                                          } else {
+                                                                            return id;
+                                                                          }
+                                                                        })), ", ", (function (x) {
+                                                                      return x;
+                                                                    })) : "",
+                                                            menuItems: multiSelectMenuItems,
+                                                            onSelect: handleMultiSelect,
+                                                            onClear: (function () {
+                                                                setSelectedItems(function (param) {
+                                                                      return [];
+                                                                    });
+                                                              })
+                                                          }),
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            }),
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Disabled Multi-select",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsx("div", {
+                                                      children: JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                            id: "multi-select-disabled",
                                                             dropdownType: "multiSelect",
                                                             selectionType: "count",
                                                             hasLabel: true,
-                                                            hasHint: true,
-                                                            label: "Multi Select (Count)",
-                                                            hint: "Select multiple options",
-                                                            placeholder: "Select options",
-                                                            menuItems: multiSelectMenuItems
-                                                          })),
-                                                    className: "flex flex-wrap gap-4"
-                                                  })
-                                            ]
+                                                            label: "Disabled Multi-select",
+                                                            placeholder: "Cannot select options",
+                                                            menuItems: multiSelectMenuItems,
+                                                            disabled: true
+                                                          }),
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            })
+                                      ],
+                                      className: "space-y-8"
+                                    }),
+                                JsxRuntime.jsx("div", {
+                                      children: JsxRuntime.jsx("p", {
+                                            children: selectedItems.length === 0 ? "No items selected" : "Selected items: " + Belt_Array.joinWith(selectedItems, ", ", (function (x) {
+                                                      return x;
+                                                    })),
+                                            className: "font-medium"
                                           }),
-                                      JsxRuntime.jsxs("div", {
-                                            children: [
-                                              JsxRuntime.jsx("h3", {
-                                                    children: "Text Display (hasContainer)",
-                                                    className: "text-lg font-medium mb-2"
-                                                  }),
-                                              JsxRuntime.jsx("div", {
-                                                    children: JsxRuntime.jsx(DesignSystem.Dropdown, {
-                                                          id: "multi-select-text-correct",
-                                                          dropdownType: "multiSelect",
-                                                          selectionType: "text",
-                                                          hasLabel: true,
-                                                          hasHint: true,
-                                                          label: "Multi Select (Text)",
-                                                          hint: "Select multiple options",
-                                                          placeholder: "Select options",
-                                                          menuItems: multiSelectMenuItems
-                                                        }),
-                                                    className: "flex flex-wrap gap-4"
-                                                  })
-                                            ]
-                                          })
-                                    ],
-                                    className: "space-y-8"
-                                  }),
-                              JsxRuntime.jsx("div", {
-                                    children: JsxRuntime.jsx("p", {
-                                          children: selectedItems.length === 0 ? "No items selected" : "Selected items: " + Belt_Array.joinWith(selectedItems, ", ", (function (x) {
-                                                    return x;
-                                                  })),
-                                          className: "font-medium"
-                                        }),
-                                    className: "mt-4"
-                                  })
-                            ]
-                          }),
+                                      className: "mt-4"
+                                    })
+                              ]
+                            }),
+                        JsxRuntime.jsxs("div", {
+                              children: [
+                                JsxRuntime.jsx("h2", {
+                                      children: "Additional Configurations",
+                                      className: "text-xl font-semibold mb-4"
+                                    }),
+                                JsxRuntime.jsxs("div", {
+                                      children: [
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Dropdown with Position",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsxs("div", {
+                                                      children: [
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Bottom-start",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "position-bottom-start",
+                                                                      dropdownType: "singleSelect",
+                                                                      placeholder: "Bottom-start position",
+                                                                      menuItems: standardMenuItems,
+                                                                      position: "bottom-start"
+                                                                    })
+                                                              ]
+                                                            }),
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Bottom-end",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "position-bottom-end",
+                                                                      dropdownType: "singleSelect",
+                                                                      placeholder: "Bottom-end position",
+                                                                      menuItems: standardMenuItems,
+                                                                      position: "bottom-end"
+                                                                    })
+                                                              ]
+                                                            }),
+                                                        JsxRuntime.jsxs("div", {
+                                                              children: [
+                                                                JsxRuntime.jsx("p", {
+                                                                      children: "Top-start",
+                                                                      className: "text-sm text-gray-600 mb-1"
+                                                                    }),
+                                                                JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                                      id: "position-top-start",
+                                                                      dropdownType: "singleSelect",
+                                                                      placeholder: "Top-start position",
+                                                                      menuItems: standardMenuItems,
+                                                                      position: "top-start"
+                                                                    })
+                                                              ]
+                                                            })
+                                                      ],
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            }),
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Dropdown with Mandatory Field",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsx("div", {
+                                                      children: JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                            id: "mandatory-dropdown",
+                                                            dropdownType: "singleSelect",
+                                                            hasLabel: true,
+                                                            mandatory: true,
+                                                            label: "Required Field",
+                                                            placeholder: "Must select an option",
+                                                            menuItems: standardMenuItems
+                                                          }),
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            }),
+                                        JsxRuntime.jsxs("div", {
+                                              children: [
+                                                JsxRuntime.jsx("h3", {
+                                                      children: "Dropdown with Custom Width",
+                                                      className: "text-lg font-medium mb-2"
+                                                    }),
+                                                JsxRuntime.jsx("div", {
+                                                      children: JsxRuntime.jsx(DesignSystem.Dropdown, {
+                                                            id: "custom-width",
+                                                            dropdownType: "singleSelect",
+                                                            hasLabel: true,
+                                                            label: "Custom Width",
+                                                            placeholder: "Width: 300px",
+                                                            menuItems: standardMenuItems,
+                                                            width: "300px"
+                                                          }),
+                                                      className: "flex flex-wrap gap-4"
+                                                    })
+                                              ]
+                                            })
+                                      ],
+                                      className: "space-y-4"
+                                    })
+                              ]
+                            })
+                      ],
                       className: "space-y-8"
                     })
               ],
