@@ -30,23 +30,18 @@ function DateRangePickerDemo$DateRangePickerDemo(props) {
                               children: "Basic DateRangePicker",
                               className: "text-xl font-semibold mb-4"
                             }),
-                        JsxRuntime.jsxs("div", {
-                              children: [
-                                JsxRuntime.jsx(DesignSystem.DateRangePicker, {
-                                      value: dateRange,
-                                      onChange: (function (range) {
-                                          setDateRange(function (param) {
-                                                return range;
-                                              });
-                                        }),
-                                      placeholder: "Select date range"
-                                    }),
-                                JsxRuntime.jsx("div", {
-                                      children: "Selected range: " + dateRange.startDate.toLocaleDateString() + " - " + dateRange.endDate.toLocaleDateString(),
-                                      className: "text-sm text-gray-600"
-                                    })
-                              ],
-                              className: "flex flex-col gap-4"
+                        JsxRuntime.jsx(DesignSystem.DateRangePicker, {
+                              value: dateRange,
+                              onChange: (function (range) {
+                                  setDateRange(function (param) {
+                                        return range;
+                                      });
+                                }),
+                              placeholder: "Select date range"
+                            }),
+                        JsxRuntime.jsx("div", {
+                              children: "Selected range: " + dateRange.startDate.toLocaleDateString() + " - " + dateRange.endDate.toLocaleDateString(),
+                              className: "text-sm text-gray-600"
                             })
                       ],
                       className: "mb-8"

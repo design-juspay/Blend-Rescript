@@ -17,6 +17,7 @@ import * as SnackbarDemo from "./demo/SnackbarDemo.res.mjs";
 import * as StatCardDemo from "./demo/StatCardDemo.res.mjs";
 import * as TextAreaDemo from "./demo/TextAreaDemo.res.mjs";
 import * as AccordionDemo from "./demo/AccordionDemo.res.mjs";
+import * as DataTableDemo from "./demo/DataTableDemo.res.mjs";
 import * as TextInputDemo from "./demo/TextInputDemo.res.mjs";
 import * as UnitInputDemo from "./demo/UnitInputDemo.res.mjs";
 import * as AvatarGroupDemo from "./demo/AvatarGroupDemo.res.mjs";
@@ -202,6 +203,11 @@ var components = [
     variant: "AccordionDemo",
     label: "Accordion",
     category: "Expandable Content"
+  },
+  {
+    variant: "DataTableDemo",
+    label: "Data Table",
+    category: "Data Display"
   }
 ];
 
@@ -351,6 +357,9 @@ function App(props) {
         break;
     case "PopoverComponent" :
         tmp = JsxRuntime.jsx(PopoverDemo.make, {});
+        break;
+    case "DataTableDemo" :
+        tmp = JsxRuntime.jsx(DataTableDemo.DataTableDemo.make, {});
         break;
     
   }

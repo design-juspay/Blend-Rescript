@@ -20,6 +20,7 @@ open TextAreaDemo
 open UnitInputDemo
 open DropdownInputDemo
 open TabDemo
+open DataTableDemo
 
 module TooltipDemo2 = {
   @react.component
@@ -76,7 +77,7 @@ module Sidebar = {
     | UnitInputComponent
     | DropdownInputComponent
     | PopoverComponent
-
+    | DataTableDemo
   type componentInfo = {
     variant: component,
     label: string,
@@ -108,6 +109,7 @@ module Sidebar = {
     {variant: TooltipDemo2, label: "Tooltip", category: "Overlays & Notifications"},
     {variant: Snackbars, label: "Snackbars", category: "Overlays & Notifications"},
     {variant: AccordionDemo, label: "Accordion", category: "Expandable Content"},
+    {variant: DataTableDemo, label: "Data Table", category: "Data Display"},
   ]
 
   @react.component
@@ -151,7 +153,7 @@ module Sidebar = {
             )
             ->React.array}
             <div className="my-2 border-b border-gray-100" />
-          </div>
+      </div>
         })
         ->React.array}
       </nav>
@@ -166,9 +168,9 @@ let make = () => {
   <div className="flex">
     <Sidebar activeComponent onSelect={component => setActiveComponent(_ => component)} />
     <div className="ml-64 flex-1 p-6">
-      <h1 className="text-3xl font-bold mb-8 text-center">
-        {"Design System Components"->React.string}
-      </h1>
+    <h1 className="text-3xl font-bold mb-8 text-center">
+      {"Design System Components"->React.string}
+    </h1>
       {switch activeComponent {
       | Buttons => <ButtonDemo />
       | Tags => <TagDemo />
@@ -194,7 +196,8 @@ let make = () => {
       | UnitInputComponent => <UnitInputDemo />
       | DropdownInputComponent => <DropdownInputDemo />
       | PopoverComponent => <PopoverDemo />
+      | DataTableDemo => <DataTableDemo />
       }}
-    </div>
+        </div>
   </div>
 }
