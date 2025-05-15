@@ -68,20 +68,6 @@ module DataTableDemo = {
         field: "status",
         header: "Status",
         isSortable: true,
-        renderCell: (value, row) => {
-          let status = Js.Json.decodeString(value)->Belt.Option.getWithDefault("")
-          let bgColor = switch status {
-          | "Active" => "bg-green-100 text-green-800"
-          | "Inactive" => "bg-gray-100 text-gray-800"
-          | "Pending" => "bg-yellow-100 text-yellow-800"
-          | "Suspended" => "bg-red-100 text-red-800"
-          | _ => "bg-gray-100 text-gray-800"
-          }
-          
-          <span className={`px-2 py-1 rounded-full text-xs font-medium ${bgColor}`}>
-            {React.string(status)}
-          </span>
-        }
       },
       {
         field: "role",
