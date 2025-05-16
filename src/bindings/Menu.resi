@@ -1,4 +1,4 @@
-// Menu component bindings
+// Menu component interface
 
 // Enums for Menu component
 type menuItemType = [
