@@ -137,11 +137,7 @@ function AccordionDemo$AccordionDemo(props) {
                                 JsxRuntime.jsx(DesignSystem.AccordionItem, {
                                       value: "slots-2",
                                       title: "Item with Right Slot",
-                                      rightSlot: Caml_option.some(JsxRuntime.jsx(DesignSystem.Tag, {
-                                                variant: "attentive",
-                                                color: "primary",
-                                                label: "New"
-                                              })),
+                                      rightSlot: Caml_option.some(JsxRuntime.jsx(LucideReact.Tag, {})),
                                       children: JsxRuntime.jsx("div", {
                                             children: "Content with right slot"
                                           })

@@ -29,6 +29,10 @@ var BarChart = {};
 
 var X = {};
 
+var AlertCircle = {};
+
+var Info = {};
+
 var Search = {};
 
 var Lock = {};
@@ -45,6 +49,20 @@ var Plus = {};
 
 var Minus = {};
 
+var LogOut = {};
+
+var MoreVertical = {};
+
+var ChevronDown = {};
+
+var Bell = {};
+
+var Type = {};
+
+var Tag = {};
+
+var Layers = {};
+
 export {
   Check ,
   ChevronLeft ,
@@ -60,6 +78,8 @@ export {
   Users ,
   BarChart ,
   X ,
+  AlertCircle ,
+  Info ,
   Search ,
   Lock ,
   MapPin ,
@@ -68,5 +88,12 @@ export {
   Percent ,
   Plus ,
   Minus ,
+  LogOut ,
+  MoreVertical ,
+  ChevronDown ,
+  Bell ,
+  Type ,
+  Tag ,
+  Layers ,
 }
 /* No side effect */

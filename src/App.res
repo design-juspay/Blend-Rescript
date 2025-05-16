@@ -77,6 +77,10 @@ module Sidebar = {
     | UnitInputComponent
     | DropdownInputComponent
     | PopoverComponent
+    | MenuComponent
+    | MenuDropdownComponent
+    | CorrectDropdownDemoComponent
+
     | DataTableDemo
   type componentInfo = {
     variant: component,
@@ -104,6 +108,13 @@ module Sidebar = {
     {variant: Switch, label: "Switch", category: "Form Components"},
     {variant: DateRangePicker, label: "Date Range Picker", category: "Form Components"},
     {variant: TabsComponent, label: "Tabs", category: "Navigation & Menus"},
+    {variant: MenuComponent, label: "Menu", category: "Navigation & Menus"},
+    {variant: MenuDropdownComponent, label: "Menu Dropdown", category: "Navigation & Menus"},
+    {
+      variant: CorrectDropdownDemoComponent,
+      label: "Fixed Dropdown Demo",
+      category: "Navigation & Menus",
+    },
     {variant: ModalComponent, label: "Modal", category: "Overlays & Notifications"},
     {variant: PopoverComponent, label: "Popover", category: "Overlays & Notifications"},
     {variant: TooltipDemo2, label: "Tooltip", category: "Overlays & Notifications"},
@@ -153,7 +164,7 @@ module Sidebar = {
             )
             ->React.array}
             <div className="my-2 border-b border-gray-100" />
-      </div>
+          </div>
         })
         ->React.array}
       </nav>
@@ -168,9 +179,9 @@ let make = () => {
   <div className="flex">
     <Sidebar activeComponent onSelect={component => setActiveComponent(_ => component)} />
     <div className="ml-64 flex-1 p-6">
-    <h1 className="text-3xl font-bold mb-8 text-center">
-      {"Design System Components"->React.string}
-    </h1>
+      <h1 className="text-3xl font-bold mb-8 text-center">
+        {"Design System Components"->React.string}
+      </h1>
       {switch activeComponent {
       | Buttons => <ButtonDemo />
       | Tags => <TagDemo />
@@ -196,8 +207,11 @@ let make = () => {
       | UnitInputComponent => <UnitInputDemo />
       | DropdownInputComponent => <DropdownInputDemo />
       | PopoverComponent => <PopoverDemo />
+      | MenuComponent => <MenuDemo />
+      | MenuDropdownComponent => <MenuDropdownDemo />
+      | CorrectDropdownDemoComponent => <CorrectDropdownDemo />
       | DataTableDemo => <DataTableDemo />
       }}
-        </div>
+    </div>
   </div>
 }

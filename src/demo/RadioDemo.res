@@ -1,4 +1,3 @@
-
 open LucideIcons
 
 module RadioDemo = {
@@ -26,8 +25,7 @@ module RadioDemo = {
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Radio with Right Slot"->React.string} </h2>
         <div className="flex flex-col gap-4">
-          <Radio
-            value="right_slot" rightSlot={<Tag variant=#attentive label="New" color=#primary />}>
+          <Radio value="right_slot" rightSlot={<Tag />}>
             {React.string("Radio with Right Slot")}
           </Radio>
         </div>
@@ -39,7 +37,7 @@ module RadioDemo = {
           <Radio value="checked" isChecked=true> {React.string("Checked Radio")} </Radio>
           <Radio value="disabled" isDisabled=true> {React.string("Disabled Radio")} </Radio>
           <Radio value="disabled_checked" isDisabled=true isChecked=true>
-          // <Radio value="basic" isDisabled isChecked={true}>Basic Plan</Radio>
+            // <Radio value="basic" isDisabled isChecked={true}>Basic Plan</Radio>
             {React.string("Disabled and Checked")}
           </Radio>
         </div>

@@ -3,6 +3,7 @@
 import * as React from "react";
 import * as TabDemo from "./demo/TabDemo.res.mjs";
 import * as TagDemo from "./demo/TagDemo.res.mjs";
+import * as MenuDemo from "./demo/MenuDemo.res.mjs";
 import * as AlertDemo from "./demo/AlertDemo.res.mjs";
 import * as ModalDemo from "./demo/ModalDemo.res.mjs";
 import * as RadioDemo from "./demo/RadioDemo.res.mjs";
@@ -23,8 +24,10 @@ import * as UnitInputDemo from "./demo/UnitInputDemo.res.mjs";
 import * as AvatarGroupDemo from "./demo/AvatarGroupDemo.res.mjs";
 import * as ButtonGroupDemo from "./demo/ButtonGroupDemo.res.mjs";
 import * as NumberInputDemo from "./demo/NumberInputDemo.res.mjs";
+import * as MenuDropdownDemo from "./demo/MenuDropdownDemo.res.mjs";
 import * as DropdownInputDemo from "./demo/DropdownInputDemo.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
+import * as CorrectDropdownDemo from "./demo/CorrectDropdownDemo.res.mjs";
 import * as DateRangePickerDemo from "./demo/DateRangePickerDemo.res.mjs";
 import * as DesignSystem from "@vinitjuspay/design-system";
 
@@ -177,6 +180,21 @@ var components = [
   {
     variant: "TabsComponent",
     label: "Tabs",
+    category: "Navigation & Menus"
+  },
+  {
+    variant: "MenuComponent",
+    label: "Menu",
+    category: "Navigation & Menus"
+  },
+  {
+    variant: "MenuDropdownComponent",
+    label: "Menu Dropdown",
+    category: "Navigation & Menus"
+  },
+  {
+    variant: "CorrectDropdownDemoComponent",
+    label: "Fixed Dropdown Demo",
     category: "Navigation & Menus"
   },
   {
@@ -357,6 +375,15 @@ function App(props) {
         break;
     case "PopoverComponent" :
         tmp = JsxRuntime.jsx(PopoverDemo.make, {});
+        break;
+    case "MenuComponent" :
+        tmp = JsxRuntime.jsx(MenuDemo.make, {});
+        break;
+    case "MenuDropdownComponent" :
+        tmp = JsxRuntime.jsx(MenuDropdownDemo.make, {});
+        break;
+    case "CorrectDropdownDemoComponent" :
+        tmp = JsxRuntime.jsx(CorrectDropdownDemo.make, {});
         break;
     case "DataTableDemo" :
         tmp = JsxRuntime.jsx(DataTableDemo.DataTableDemo.make, {});

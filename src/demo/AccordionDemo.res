@@ -17,8 +17,6 @@ module AccordionDemo = {
             <div> {"Another accordion item"->React.string} </div>
           </Accordion.Item>
         </Accordion>
-
-
       </div>
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Accordion Types"->React.string} </h2>
@@ -62,7 +60,8 @@ module AccordionDemo = {
           <Accordion.Item
             value="slots-2"
             title="Item with Right Slot"
-            rightSlot={<Tag variant=#attentive label="New" color=#primary />}>
+            // rightSlot={<Tag variant=#attentive label="New" color=#primary />}>
+            rightSlot={<Tag />}>
             <div> {"Content with right slot"->React.string} </div>
           </Accordion.Item>
         </Accordion>

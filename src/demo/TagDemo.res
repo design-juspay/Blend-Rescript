@@ -1,4 +1,4 @@
-open LucideIcons
+// open LucideIcons
 
 module TagDemo = {
   @react.component
@@ -48,9 +48,9 @@ module TagDemo = {
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Tags with Slots"->React.string} </h2>
         <div className="flex flex-wrap gap-3">
-          <Tag label="Leading Icon" leadingSlot={<Check size=14 />} />
+          <Tag label="Leading Icon" />
           <Tag label="Trailing Icon" />
-          <Tag label="Both Slots" leadingSlot={<Check size=14 />} />
+          <Tag label="Both Slots" />
         </div>
       </div>
       // Split Tags
@@ -61,7 +61,7 @@ module TagDemo = {
           <Tag.Split
             leftLabel="With"
             rightLabel="Icons"
-            leftSlot={<Check size=14 />}
+            // leftSlot={<Check size=14 />}
             // rightSlot={<X size=14 />}
           />
           <Tag.Split color=#success leftLabel="Success" rightLabel="Tag" />
@@ -77,7 +77,7 @@ module TagDemo = {
             tagStyle=#rounded
             size=#lg
             label="Combined"
-            leadingSlot={<Check size=16 />}
+            // leadingSlot={<Check size=16 />}
           />
           <Tag
             variant=#subtle

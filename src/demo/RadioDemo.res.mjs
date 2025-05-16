@@ -69,11 +69,7 @@ function RadioDemo$RadioDemo(props) {
                               children: JsxRuntime.jsx(DesignSystem.Radio, {
                                     value: "right_slot",
                                     children: "Radio with Right Slot",
-                                    rightSlot: Caml_option.some(JsxRuntime.jsx(DesignSystem.Tag, {
-                                              variant: "attentive",
-                                              color: "primary",
-                                              label: "New"
-                                            }))
+                                    rightSlot: Caml_option.some(JsxRuntime.jsx(LucideReact.Tag, {}))
                                   }),
                               className: "flex flex-col gap-4"
                             })
