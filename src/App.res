@@ -20,6 +20,7 @@ open TextAreaDemo
 open UnitInputDemo
 open DropdownInputDemo
 open TabDemo
+open DataTableDemo
 
 module TooltipDemo2 = {
   @react.component
@@ -80,6 +81,7 @@ module Sidebar = {
     | MenuDropdownComponent
     | CorrectDropdownDemoComponent
 
+    | DataTableDemo
   type componentInfo = {
     variant: component,
     label: string,
@@ -118,6 +120,7 @@ module Sidebar = {
     {variant: TooltipDemo2, label: "Tooltip", category: "Overlays & Notifications"},
     {variant: Snackbars, label: "Snackbars", category: "Overlays & Notifications"},
     {variant: AccordionDemo, label: "Accordion", category: "Expandable Content"},
+    {variant: DataTableDemo, label: "Data Table", category: "Data Display"},
   ]
 
   @react.component
@@ -207,6 +210,7 @@ let make = () => {
       | MenuComponent => <MenuDemo />
       | MenuDropdownComponent => <MenuDropdownDemo />
       | CorrectDropdownDemoComponent => <CorrectDropdownDemo />
+      | DataTableDemo => <DataTableDemo />
       }}
     </div>
   </div>

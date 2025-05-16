@@ -17,7 +17,7 @@ module DateRangePickerDemo = {
       <h1 className="text-2xl font-bold mb-6 mt-12"> {"DateRangePicker Demo"->React.string} </h1>
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"Basic DateRangePicker"->React.string} </h2>
-        <div className="flex flex-col gap-4">
+        // <div className="flex flex-col gap-4">
           <DateRangePicker
             value=dateRange
             onChange={range => setDateRange(_ => range)}
@@ -28,7 +28,7 @@ module DateRangePickerDemo = {
                 dateRange.startDate,
               )} - ${Js.Date.toLocaleDateString(dateRange.endDate)}`->React.string}
           </div>
-        </div>
+        // </div>
       </div>
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4"> {"DateRangePicker Variants"->React.string} </h2>
