@@ -1,35 +1,34 @@
 open Menu
 
 // Define types that exactly match the TypeScript enum values
-// These are lowercase/camelCase following the TypeScript enum values
 type dropdownType = [
-  | #iconOnly // DropdownType.ICON_ONLY = 'iconOnly'
-  | #singleSelect // DropdownType.SINGLE_SELECT = 'singleSelect'
+  | #iconOnly
+  | #singleSelect
   | #multiSelect
-] // DropdownType.MULTI_SELECT = 'multiSelect'
+]
 
 type dropdownState = [
-  | #default // DropdownState.DEFAULT = 'default'
-  | #hover // DropdownState.HOVER = 'hover'
-  | #"open" // DropdownState.OPEN = 'open' - escaped because 'open' is a reserved keyword
+  | #default
+  | #hover
+  | #"open"
   | #selected
-] // DropdownState.SELECTED = 'selected'
+]
 
 type dropdownSubType = [
-  | #hasContainer // DropdownSubType.HAS_CONTAINER = 'hasContainer'
+  | #hasContainer
   | #noContainer
-] // DropdownSubType.NO_CONTAINER = 'noContainer'
+]
 
 type dropdownSelectionType = [
-  | #text // DropdownSelectionType.TEXT = 'text'
+  | #text
   | #count
-] // DropdownSelectionType.COUNT = 'count'
+]
 
 type dropdownSize = [
-  | #sm // DropdownSize.SMALL = 'sm'
-  | #md // DropdownSize.MEDIUM = 'md'
+  | #sm
+  | #md
   | #lg
-] // DropdownSize.LARGE = 'lg'
+]
 
 type dropdownPosition = [
   | #"bottom-start"
@@ -76,7 +75,7 @@ external make: (
   ~width: string=?,
   ~position: dropdownPosition=?,
   ~offset: int=?,
-  ~ariaLabel: string=?, // changed from ~"aria-label" to ~ariaLabel
+  ~ariaLabel: string=?,
   ~searchTerm: string=?,
   ~onSearchTermChange: string => unit=?,
   ~onSelectedItemsChange: array<string> => unit=?,

@@ -27,7 +27,6 @@ import * as NumberInputDemo from "./demo/NumberInputDemo.res.mjs";
 import * as MenuDropdownDemo from "./demo/MenuDropdownDemo.res.mjs";
 import * as DropdownInputDemo from "./demo/DropdownInputDemo.res.mjs";
 import * as JsxRuntime from "react/jsx-runtime";
-import * as CorrectDropdownDemo from "./demo/CorrectDropdownDemo.res.mjs";
 import * as DateRangePickerDemo from "./demo/DateRangePickerDemo.res.mjs";
 import * as DesignSystem from "@vinitjuspay/design-system";
 
@@ -190,11 +189,6 @@ var components = [
   {
     variant: "MenuDropdownComponent",
     label: "Menu Dropdown",
-    category: "Navigation & Menus"
-  },
-  {
-    variant: "CorrectDropdownDemoComponent",
-    label: "Fixed Dropdown Demo",
     category: "Navigation & Menus"
   },
   {
@@ -381,9 +375,6 @@ function App(props) {
         break;
     case "MenuDropdownComponent" :
         tmp = JsxRuntime.jsx(MenuDropdownDemo.make, {});
-        break;
-    case "CorrectDropdownDemoComponent" :
-        tmp = JsxRuntime.jsx(CorrectDropdownDemo.make, {});
         break;
     case "DataTableDemo" :
         tmp = JsxRuntime.jsx(DataTableDemo.DataTableDemo.make, {});

@@ -1,4 +1,4 @@
-// MenuDropdown component bindings
+// MenuDropdown component interface
 open Menu
 
 // Define additional types specific to MenuDropdown
