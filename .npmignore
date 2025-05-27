@@ -1,0 +1,16 @@
+.git/
+.github/
+.vscode/
+node_modules/
+public/
+.DS_Store
+.gitignore
+.npmignore
+vite.config.js
+index.html
+src/demo/
+src/Main.res
+src/Main.res.mjs
+src/App.res
+src/App.res.mjs
+src/App.resi

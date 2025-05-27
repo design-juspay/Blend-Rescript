@@ -1,11 +1,11 @@
 open DropdownBinding
-open Menu
+// open Menu
 open LucideIcons
 
 @react.component
 let make = () => {
   // Simple menu items for single selection
-  let basicMenuItems: array<menuItem> = [
+  let basicMenuItems: array<Menu.menuItem> = [
     {
       id: Some("1"),
       text: "Option 1",
@@ -84,7 +84,7 @@ let make = () => {
   ]
 
   // Menu items with icons
-  let iconMenuItems: array<menuItem> = [
+  let iconMenuItems: array<Menu.menuItem> = [
     {
       id: Some("1"),
       text: "Profile",
@@ -163,7 +163,7 @@ let make = () => {
   ]
 
   // Multi-select menu items
-  let multiSelectMenuItems: array<menuItem> = [
+  let multiSelectMenuItems: array<Menu.menuItem> = [
     {
       id: Some("1"),
       text: "Option 1",
